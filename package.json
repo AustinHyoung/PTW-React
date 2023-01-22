@@ -1,7 +1,6 @@
 {
   "name": "toy-frontend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "proxy": "http://localhost:8080",
   "scripts": {
