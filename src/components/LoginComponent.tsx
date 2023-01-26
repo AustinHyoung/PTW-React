@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 
 const LoginComponent = () => {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%',
       }}
     >
       <div
         style={{
-          display: "flex",
-          border: "1px solid red",
+          display: 'flex',
+          border: '1px solid red',
           borderRadius: 4,
-          backgroundColor: "gray",
-          flexDirection: "column",
+          backgroundColor: 'gray',
+          flexDirection: 'column',
           padding: 100,
         }}
       >
