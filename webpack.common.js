@@ -5,7 +5,7 @@ const path = require("path");
 module.exports = {
   entry: "./src/index.tsx",
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx", "css"],
   },
   module: {
     rules: [
@@ -20,6 +20,10 @@ module.exports = {
             loader: "file-loader",
           },
         ],
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },

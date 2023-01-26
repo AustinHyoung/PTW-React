@@ -1,26 +1,12 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
 
 const App = () => {
-  const [message, setMessage] = useState("");
-
-  const testApi = async () => {
-    try {
-      const response = axios.get("http://localhost:8080/api/test");
-      console.log(response);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    testApi();
-  }, []);
-
   return (
-    <>
-      <div>123</div>
-    </>
+    <Routes>
+      <Route path="/" element={<Login />} />
+    </Routes>
   );
 };
 
