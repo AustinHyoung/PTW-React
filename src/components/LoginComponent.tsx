@@ -1,6 +1,27 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 
 const LoginComponent = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const changeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const changePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const doLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:8080/apis/login');
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div
       style={{
@@ -20,11 +41,11 @@ const LoginComponent = () => {
           padding: 100,
         }}
       >
-        <input type="text" />
-        <input type="password" />
+        <input type="text" value={email} onChange={changeEmail} />
+        <input type="password" value={password} onChange={changePassword} />
         <span>이메일 | 비밀번호 찾기</span>
         <span>회원가입</span>
-        <button>로그인</button>
+        <button onClick={doLogin}>로그인</button>
       </div>
     </div>
   );
