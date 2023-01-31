@@ -43,8 +43,8 @@ const LoginComponent = () => {
       >
         <input type="text" value={email} onChange={changeEmail} />
         <input type="password" value={password} onChange={changePassword} />
-        <span>이메일 | 비밀번호 찾기</span>
-        <span>회원가입</span>
+        <span style={{ color: 'red' }}>이메일 | 비밀번호 찾기</span>
+        <span style={{ color: 'red' }}>회원가입</span>
         <button onClick={doLogin}>로그인</button>
       </div>
     </div>
