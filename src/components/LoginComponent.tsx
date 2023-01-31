@@ -13,9 +13,23 @@ const LoginComponent = () => {
     setPassword(e.target.value);
   };
 
+  const param = {
+    email: email,
+    password: password,
+  };
+
   const doLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/apis/login');
+      const response = await axios.post('http://localhost:8080/apis/login', param);
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const doTestAll = async () => {
+    try {
+      const response = await axios.post('http://localhost:8080/apis/all');
       console.log(response);
     } catch (err) {
       console.log(err);
@@ -45,7 +59,7 @@ const LoginComponent = () => {
         <input type="password" value={password} onChange={changePassword} />
         <span style={{ color: 'red' }}>이메일 | 비밀번호 찾기</span>
         <span style={{ color: 'red' }}>회원가입</span>
-        <button onClick={doLogin}>로그인</button>
+        <button onClick={doTestAll}>로그인</button>
       </div>
     </div>
   );
