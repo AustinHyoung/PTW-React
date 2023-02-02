@@ -53,8 +53,8 @@ const LoginComponent = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           padding: 20,
-          width: '40%',
-          height: '40%',
+          width: 400,
+          height: 400,
         }}
       >
         <h1 style={{ color: '#576574', textAlign: 'center' }}>Plan The Work</h1>
@@ -67,8 +67,8 @@ const LoginComponent = () => {
           </button>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}>
-          <div style={{ padding: 5, margin: '0px 10px' }}>이메일 / 비밀번호 찾기</div>
-          <div style={{ padding: 5, margin: '0px 10px' }}>회원가입</div>
+          <div style={{ padding: 5, margin: '0px 10px', cursor: 'pointer' }}>이메일 / 비밀번호 찾기</div>
+          <div style={{ padding: 5, margin: '0px 10px', cursor: 'pointer' }}>회원가입</div>
         </div>
       </div>
     </div>
