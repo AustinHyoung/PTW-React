@@ -48,18 +48,25 @@ const LoginComponent = () => {
       <div
         style={{
           display: 'flex',
-          border: '1px solid red',
-          borderRadius: 4,
-          backgroundColor: 'gray',
+          borderRadius: 6,
+          backgroundColor: '#c8d6e5',
           flexDirection: 'column',
-          padding: 100,
+          padding: 20,
+          width: '40%',
+          height: '40%',
         }}
       >
-        <input type="text" value={email} onChange={changeEmail} />
-        <input type="password" value={password} onChange={changePassword} />
-        <span style={{ color: 'red' }}>이메일 | 비밀번호 찾기</span>
-        <span style={{ color: 'red' }}>회원가입</span>
-        <button onClick={doTestAll}>로그인</button>
+        <h1 style={{ color: '#576574', textAlign: 'center' }}>Plan The Work</h1>
+        <input type="text" value={email} onChange={changeEmail} style={{ margin: 10, padding: 10, border: '1px solid #535c68', borderRadius: 4 }} />
+        <input type="password" value={password} onChange={changePassword} style={{ margin: 10, padding: 10, border: '1px solid #535c68', borderRadius: 4 }} />
+
+        <div style={{ display: 'flex', justifyContent: 'center', fontSize: 12 }}>
+          <span style={{ color: 'white' }}>이메일 / 비밀번호 찾기</span>
+          <span style={{ color: 'white' }}>회원가입</span>
+        </div>
+        <div>
+          <button onClick={doTestAll}>로그인</button>
+        </div>
       </div>
     </div>
   );
