@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import * as S from '../style/styles';
 
 const LoginComponent = () => {
   const [email, setEmail] = useState('');
@@ -37,28 +38,10 @@ const LoginComponent = () => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100%',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          borderRadius: 6,
-          backgroundColor: '#c8d6e5',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: 20,
-          width: 400,
-          height: 400,
-        }}
-      >
-        <h1 style={{ color: '#576574', textAlign: 'center' }}>Plan The Work</h1>
-        <div style={{ textAlign: 'center', color: '#576574', margin: 10, fontSize: 15 }}>자신의 업무 진행도를 관리해보세요!</div>
+    <S.LoginDisplay>
+      <S.LoginBox>
+        <S.IntroTitle>Plan The Work</S.IntroTitle>
+        <S.IntroSubTitle>자신의 업무 진행도를 관리해보세요!</S.IntroSubTitle>
         <input type="text" placeholder="이메일" value={email} onChange={changeEmail} style={{ margin: 5, padding: 10, border: '1px solid #535c68', borderRadius: 4 }} />
         <input type="password" placeholder="비밀번호" value={password} onChange={changePassword} style={{ margin: 5, padding: 10, border: '1px solid #535c68', borderRadius: 4 }} />
         <div style={{ margin: 5 }}>
@@ -70,8 +53,8 @@ const LoginComponent = () => {
           <div style={{ padding: 5, margin: '0px 10px', cursor: 'pointer' }}>이메일 / 비밀번호 찾기</div>
           <div style={{ padding: 5, margin: '0px 10px', cursor: 'pointer' }}>회원가입</div>
         </div>
-      </div>
-    </div>
+      </S.LoginBox>
+    </S.LoginDisplay>
   );
 };
 
