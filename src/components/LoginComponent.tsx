@@ -42,17 +42,13 @@ const LoginComponent = () => {
       <S.LoginBox>
         <S.IntroTitle>Plan The Work</S.IntroTitle>
         <S.IntroSubTitle>자신의 업무 진행도를 관리해보세요!</S.IntroSubTitle>
-        <input type="text" placeholder="이메일" value={email} onChange={changeEmail} style={{ margin: 5, padding: 10, border: '1px solid #535c68', borderRadius: 4 }} />
-        <input type="password" placeholder="비밀번호" value={password} onChange={changePassword} style={{ margin: 5, padding: 10, border: '1px solid #535c68', borderRadius: 4 }} />
-        <div style={{ margin: 5 }}>
-          <button onClick={doTestAll} style={{ width: '100%', padding: 10, borderRadius: 4, backgroundColor: '#2e86de', color: '#fff', cursor: 'pointer' }}>
-            로그인
-          </button>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}>
-          <div style={{ padding: 5, margin: '0px 10px', cursor: 'pointer' }}>이메일 / 비밀번호 찾기</div>
-          <div style={{ padding: 5, margin: '0px 10px', cursor: 'pointer' }}>회원가입</div>
-        </div>
+        <S.LoginInput type="text" placeholder="이메일" value={email} onChange={changeEmail} />
+        <S.LoginInput type="password" placeholder="비밀번호" value={password} onChange={changePassword} />
+        <S.LoginBtn onClick={doTestAll}>로그인</S.LoginBtn>
+        <S.EctBox>
+          <S.EctLink>이메일 / 비밀번호 찾기</S.EctLink>
+          <S.EctLink>회원가입</S.EctLink>
+        </S.EctBox>
       </S.LoginBox>
     </S.LoginDisplay>
   );
