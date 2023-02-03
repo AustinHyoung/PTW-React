@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import * as S from '../style/styles';
+import * as S from '../styles/styles';
 
 const LoginComponent = () => {
   const [email, setEmail] = useState('');
@@ -38,7 +38,7 @@ const LoginComponent = () => {
   };
 
   return (
-    <S.LoginDisplay>
+    <S.LoginDisplay backgroundColor="#fff">
       <S.LoginBox>
         <S.IntroTitle>Plan The Work</S.IntroTitle>
         <S.IntroSubTitle>자신의 업무 진행도를 관리해보세요!</S.IntroSubTitle>

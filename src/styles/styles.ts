@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
-export const LoginDisplay = styled.div`
+interface Login {
+  backgroundColor: string;
+}
+
+export const LoginDisplay = styled.div<Login>`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  background-color: ${(props) => props.backgroundColor};
 `;
 
 export const LoginBox = styled.div`
