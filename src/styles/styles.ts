@@ -67,9 +67,16 @@ export const EctBox = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 12px;
+  margin: 0 5px;
 `;
 
 export const EctLink = styled.div`
   padding: 5px;
+  border-radius: 4px;
   cursor: pointer;
+  &:hover {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  }
 `;

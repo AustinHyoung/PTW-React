@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import * as S from '../styles/styles';
 
 const LoginComponent = () => {
@@ -46,8 +47,12 @@ const LoginComponent = () => {
         <S.LoginInput type="password" placeholder="비밀번호" value={password} onChange={changePassword} />
         <S.LoginBtn onClick={doTestAll}>로그인</S.LoginBtn>
         <S.EctBox>
-          <S.EctLink>이메일 / 비밀번호 찾기</S.EctLink>
-          <S.EctLink>회원가입</S.EctLink>
+          <Link to="/find">
+            <S.EctLink>이메일 / 비밀번호 찾기</S.EctLink>
+          </Link>
+          <Link to="/regist">
+            <S.EctLink>회원가입</S.EctLink>
+          </Link>
         </S.EctBox>
       </S.LoginBox>
     </S.LoginDisplay>
