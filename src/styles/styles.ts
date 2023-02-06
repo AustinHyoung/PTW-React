@@ -80,3 +80,9 @@ export const EctLink = styled.div`
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   }
 `;
+
+export const ErrText = styled.div`
+  color: red;
+  font-size: 11px;
+  padding: 0 5px 5px 5px;
+`;
