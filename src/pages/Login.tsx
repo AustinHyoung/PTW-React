@@ -5,7 +5,7 @@ import LoginComponent from '../components/LoginComponent';
 const Login = () => {
   const testApi = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/apis/a');
+      const response = await axios.get('http://localhost:8080/apis/hi');
       console.log(response);
     } catch (err) {
       console.log(err);

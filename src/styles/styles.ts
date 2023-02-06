@@ -12,7 +12,7 @@ export const LoginDisplay = styled.div<Login>`
   background-color: ${(props) => props.backgroundColor};
 `;
 
-export const LoginBox = styled.div`
+export const LoginBox = styled.form`
   display: flex;
   border-radius: 6px;
   background-color: #c8d6e5;

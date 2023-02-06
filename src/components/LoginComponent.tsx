@@ -1,26 +1,26 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import * as S from '../styles/styles';
 
+interface FormValue {
+  email: string;
+  password: string;
+}
+
 const LoginComponent = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValue>();
 
-  const changeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+  const onSubmitHandler: SubmitHandler<FormValue> = (data) => {
+    doLogin(data);
   };
 
-  const changePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const param = {
-    email: email,
-    password: password,
-  };
-
-  const doLogin = async () => {
+  const doLogin = async (param: FormValue) => {
     try {
       const response = await axios.post('http://localhost:8080/apis/login', param);
       console.log(response);
@@ -29,23 +29,22 @@ const LoginComponent = () => {
     }
   };
 
-  const doTestAll = async () => {
-    try {
-      const response = await axios.post('http://localhost:8080/apis/all');
-      console.log(response);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <S.LoginDisplay backgroundColor="#fff">
-      <S.LoginBox>
+      <S.LoginBox onSubmit={handleSubmit(onSubmitHandler)}>
         <S.IntroTitle>Plan The Work</S.IntroTitle>
         <S.IntroSubTitle>자신의 업무 진행도를 관리해보세요!</S.IntroSubTitle>
-        <S.LoginInput type="text" placeholder="이메일" value={email} onChange={changeEmail} />
-        <S.LoginInput type="password" placeholder="비밀번호" value={password} onChange={changePassword} />
-        <S.LoginBtn onClick={doTestAll}>로그인</S.LoginBtn>
+
+        <S.LoginInput type="email" placeholder="이메일" {...register('email', { required: true, pattern: /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/ })} />
+
+        {errors.email && errors.email.type === 'required' && <div>이름을 입력해 주세요!</div>}
+        {errors.email && errors.email.type === 'pattern' && <div>이메일 형식에 맞게 작성해 주세요!</div>}
+        <S.LoginInput type="password" placeholder="비밀번호" {...register('password', { required: true, pattern: /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/ })} />
+
+        {errors.password && errors.password.type === 'required' && <div>비밀번호를 입력해 주세요!</div>}
+        {errors.password && errors.password.type === 'pattern' && <div>대문자, 숫자, 특수문자 각각 한 개씩 사용해 주세요!</div>}
+
+        <S.LoginBtn>로그인</S.LoginBtn>
         <S.EctBox>
           <Link to="/find">
             <S.EctLink>이메일 / 비밀번호 찾기</S.EctLink>
