@@ -10,8 +10,6 @@ interface FormValue {
 }
 
 const LoginComponent = () => {
-  const [errChk, setErrChk] = useState(false);
-
   const {
     register,
     handleSubmit,
