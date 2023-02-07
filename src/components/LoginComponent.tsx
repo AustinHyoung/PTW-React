@@ -43,7 +43,7 @@ const LoginComponent = () => {
         <S.LoginInput type="password" placeholder="비밀번호" {...register('password', { required: true, pattern: /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/ })} />
 
         {errors.password && errors.password.type === 'required' ? <S.ErrText>비밀번호를 입력해 주세요!</S.ErrText> : null}
-        {errors.password && errors.password.type === 'pattern' ? <S.ErrText>대문자, 숫자, 특수문자 각각 한 개씩 사용해 주세요!</S.ErrText> : null}
+        {errors.password && errors.password.type === 'pattern' ? <S.ErrText>대문자, 특수문자, 숫자 한 자씩 포함해 주세요!</S.ErrText> : null}
 
         <S.LoginBtn>로그인</S.LoginBtn>
         <S.EctBox>

@@ -41,7 +41,7 @@ export const IntroSubTitle = styled.div`
 export const LoginInput = styled.input`
   margin: 5px;
   padding: 10px;
-  border: 2px solid #535c68;
+  border: 1px solid #535c68;
   border-radius: 4px;
   &:hover {
     border-color: #5e9fdd;
