@@ -8,7 +8,7 @@ import * as S from '../styles/styles';
 interface FormValue {
   email: string;
   name: string;
-  nickName: string;
+  nickname: string;
   password: string;
   passwordConfirm: string;
 }
@@ -46,7 +46,7 @@ const RegistComponent = () => {
         <S.LoginInput type="text" placeholder="이메일" {...register('email', { required: true, pattern: /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/ })} />
         <S.LoginInput type="text" placeholder="이름" {...register('name', { required: true, pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z|]+$/ })} />
         <S.ErrText style={{ color: 'black' }}>문자만 가능해요!</S.ErrText>
-        <S.LoginInput type="text" placeholder="닉네임" {...register('nickName', { required: true, pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/ })} />
+        <S.LoginInput type="text" placeholder="닉네임" {...register('nickname', { required: true, pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/ })} />
         <S.ErrText style={{ color: 'black' }}>문자와 숫자만 가능해요!</S.ErrText>
         <S.LoginInput type="password" placeholder="비밀번호" {...register('password', { required: true, pattern: /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/ })} />
         <S.ErrText style={{ color: 'black' }}>최소 대문자, 특수문자, 숫자 한 자씩 포함해 주세요</S.ErrText>
