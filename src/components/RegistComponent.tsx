@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useQuery } from 'react-query/types/react';
+import { useMutation, useQuery } from 'react-query/types/react';
 import { Link } from 'react-router-dom';
 import * as S from '../styles/styles';
 
@@ -10,7 +10,7 @@ interface FormValue {
   password: string;
 }
 
-const LoginComponent = () => {
+const RegistComponent = () => {
   const {
     register,
     handleSubmit,
@@ -59,4 +59,4 @@ const LoginComponent = () => {
   );
 };
 
-export default LoginComponent;
+export default RegistComponent;

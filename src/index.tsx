@@ -6,15 +6,20 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { legacy_createStore as createStore } from 'redux';
 import rootReducer from './reducer';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 const store = createStore(rootReducer);
+const queryClient = new QueryClient();
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);
 root.render(
   <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </Provider>
   </BrowserRouter>,
 );
