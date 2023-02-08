@@ -1,9 +1,11 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useQuery } from 'react-query/types/react';
 import { Link } from 'react-router-dom';
 import * as S from '../styles/styles';
+import { useSelector, useDispatch } from 'react-redux';
+import { sessionInfo } from 'src/reducer/session';
 
 interface FormValue {
   email: string;
@@ -25,6 +27,8 @@ const LoginComponent = () => {
     try {
       const response = await axios.post('http://localhost:8080/apis/login', param);
       console.log(response);
+      localStorage.setItem('user_session', JSON.stringify(response.data.session));
+      window.location.replace('/');
     } catch (err) {
       console.log(err);
     }
