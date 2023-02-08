@@ -6,11 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { sessionInfo } from 'src/reducer/session';
 
 const Login = () => {
-  useEffect(() => {
-    if (localStorage.getItem('user_session') !== null || localStorage.getItem('user_session') !== undefined) {
-      window.location.href = '/';
-    }
-  }, []);
   return (
     <>
       <LoginComponent />
