@@ -1,10 +1,11 @@
 import React from 'react';
+import FindComponent from '../components/FindComponent';
 
 const Find = () => {
   return (
-    <div>
-      <div>find</div>
-    </div>
+    <>
+      <FindComponent />
+    </>
   );
 };
 

@@ -13,7 +13,7 @@ interface FormValue {
   passwordConfirm: string;
 }
 
-const RegistComponent = () => {
+const FindComponent = () => {
   const navigate = useNavigate();
   const {
     register,
@@ -71,4 +71,4 @@ const RegistComponent = () => {
   );
 };
 
-export default RegistComponent;
+export default FindComponent;
