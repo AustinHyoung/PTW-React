@@ -54,7 +54,6 @@ const LoginComponent = () => {
       <S.LoginBox onSubmit={handleSubmit(onSubmitHandler)}>
         <S.IntroTitle>Plan The Work</S.IntroTitle>
         <S.IntroSubTitle>자신의 업무 진행도를 관리해보세요!</S.IntroSubTitle>
-        <button onClick={test}>클릭</button>
         <S.LoginInput type="text" placeholder="이메일" {...register('email', { required: true, pattern: /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/ })} />
 
         {errors.email && errors.email.type === 'required' ? <S.ErrText>이메일을 입력해 주세요!</S.ErrText> : null}

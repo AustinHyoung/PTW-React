@@ -51,7 +51,7 @@ const RegistComponent = () => {
         <S.LoginInput type="text" placeholder="닉네임" {...register('nickname', { required: true, pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/ })} />
         <S.ErrText style={{ color: 'black' }}>문자와 숫자만 가능해요!</S.ErrText>
         <S.LoginInput type="password" placeholder="비밀번호" {...register('password', { required: true, pattern: /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/ })} />
-        <S.ErrText style={{ color: 'black' }}>최소 대문자, 특수문자, 숫자 한 자씩 포함해 주세요</S.ErrText>
+        <S.ErrText style={{ color: 'black' }}>대문자, 특수문자, 숫자 한 자씩 포함해 주세요</S.ErrText>
         <S.LoginInput
           type="password"
           placeholder="비밀번호 확인"
