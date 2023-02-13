@@ -89,22 +89,21 @@ export const ErrText = styled.div`
 
 export const MainContent = styled.div`
   display: flex;
-  height: calc(100% - 62px);
+  height: calc(100% - 50px);
   width: 100%;
   background-color: gray;
-  padding-top: 62px;
+  padding-top: 50px;
   margin: auto;
 `;
 
 export const HeaderBox = styled.div`
-  padding: 6px;
-  width: 100%;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  position: fixed;
   align-items: center;
   border-bottom: 1px solid rgb(110, 110, 110, 0.3);
   height: 50px;
-  position: fixed;
   background-color: #fff;
   left: 0;
   top: 0;

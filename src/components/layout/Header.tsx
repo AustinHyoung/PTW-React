@@ -19,10 +19,14 @@ const Header = () => {
   return (
     <>
       <S.HeaderBox>
-        <div>123</div>
-        <div>
-          <button onClick={doLogout}>로그아웃</button>
-        </div>
+        <ul style={{ padding: 6 }}>
+          <li>ptw</li>
+          <li>ptw</li>
+        </ul>
+        <ul style={{ padding: 6 }}>
+          <li>user</li>
+          <li>user</li>
+        </ul>
       </S.HeaderBox>
     </>
   );
