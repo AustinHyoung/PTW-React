@@ -1,12 +1,22 @@
 import axios from 'axios';
 import React from 'react';
+import * as S from '../styles/styles';
 import Header from './layout/Header';
 
 const MainComponent = () => {
   return (
     <>
       <Header />
-      <div style={{ backgroundColor: '#3d3d3d', height: '100%' }}></div>
+      <S.MainContent>
+        <div style={{ padding: 6 }}>
+          <div>1</div>
+          <div>1</div>
+          <div>1</div>
+          <div>1</div>
+          <div>1</div>
+          <div>1</div>
+        </div>
+      </S.MainContent>
     </>
   );
 };
