@@ -91,7 +91,7 @@ export const MainContent = styled.div`
   display: flex;
   height: calc(100% - 50px);
   width: 100%;
-  background-color: gray;
+  background-color: #f1f2f6;
   padding-top: 50px;
   margin: auto;
 `;
@@ -104,7 +104,22 @@ export const HeaderBox = styled.div`
   align-items: center;
   border-bottom: 1px solid rgb(110, 110, 110, 0.3);
   height: 50px;
-  background-color: #fff;
+  background-color: #ffffff;
   left: 0;
   top: 0;
 `;
+
+export const LeftContents = styled.ul`
+  padding: 4px;
+`;
+
+export const RightContents = styled.ul`
+  display: flex;
+  align-items: center;
+`;
+
+export const RightList = styled.li`
+  display: flex;
+`;
+
+export const SearchInput = styled.li``;
