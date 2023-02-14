@@ -55,15 +55,9 @@ const Header = () => {
       </S.HeaderBox>
       {userDropdown ? (
         <S.DropBox ref={dropMenuRef}>
-          <div>23232</div>
-          <div>23232</div>
-          <div>23232</div>
-          <div>23232</div>
-          <div>23232</div>
-          <div>23232</div>
-          <div>23232</div>
-          <div>23232</div>
-          <div>23232</div>
+          <S.DropMenu>23232</S.DropMenu>
+          <S.DropMenu>23232</S.DropMenu>
+          <S.DropMenu>23232</S.DropMenu>
         </S.DropBox>
       ) : null}
     </>

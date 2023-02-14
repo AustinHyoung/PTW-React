@@ -152,3 +152,12 @@ export const DropBox = styled.div`
   line-height: 20px;
   padding: 5px 0;
 `;
+
+export const DropMenu = styled.div`
+  padding: 10px;
+  cursor: pointer;
+
+  :hover {
+    background-color: #d8e8e8;
+  }
+`;
