@@ -110,7 +110,7 @@ export const HeaderBox = styled.div`
 `;
 
 export const LeftContents = styled.ul`
-  padding: 4px;
+  padding: 6px;
 `;
 
 export const RightContents = styled.ul`
@@ -122,4 +122,33 @@ export const RightList = styled.li`
   display: flex;
 `;
 
-export const SearchInput = styled.li``;
+export const SearchInput = styled.input`
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  margin: 0 8px;
+  padding: 0 8px 0 40px;
+  height: 32px;
+  width: 200px;
+  font-size: 14px;
+  &:hover {
+    background-color: #dfe4ea;
+  }
+  &:focus {
+    width: 350px;
+    background-color: #ffffff;
+  }
+`;
+
+export const DropBox = styled.div`
+  position: absolute;
+  right: 3px;
+  top: 55px;
+  background-color: #eef4f4;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  box-shadow: -1px 1px 10px 4px rgba(0, 0, 0, 0.3);
+  width: 230px;
+  font-size: 12px;
+  line-height: 20px;
+  padding: 5px 0;
+`;
