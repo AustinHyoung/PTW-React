@@ -1,1 +1,7 @@
-# React-toy
+#### install
+
+    yarn
+
+#### start
+
+    yarn dev
