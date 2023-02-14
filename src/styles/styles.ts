@@ -123,7 +123,7 @@ export const RightList = styled.li`
 `;
 
 export const SearchInput = styled.input`
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   margin: 0 8px;
   padding: 0 8px 0 40px;
