@@ -28,6 +28,10 @@ const LoginComponent = () => {
   const doLogin = async (param: FormValue) => {
     try {
       const response = await axios.post('http://localhost:8080/apis/login', param);
+      if (response.data.code === 404) {
+        alert(response.data.msg);
+        return;
+      }
       sessionStorage.setItem('session_id', JSON.stringify(response.data.session));
       console.log(response);
       navigate('/');
