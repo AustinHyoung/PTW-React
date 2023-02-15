@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import * as S from '../styles/styles';
 import Header from './layout/Header';
+import DragAndDrop from './dnd/DragAndDrop';
 
 const MainComponent = () => {
   return (
@@ -9,28 +10,7 @@ const MainComponent = () => {
       <Header />
       <S.MainContent>
         <div style={{ padding: 6 }}>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
+          <DragAndDrop />
         </div>
       </S.MainContent>
     </>

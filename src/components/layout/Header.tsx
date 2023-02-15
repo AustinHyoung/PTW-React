@@ -57,7 +57,7 @@ const Header = () => {
         <S.DropBox ref={dropMenuRef}>
           <S.DropMenu>23232</S.DropMenu>
           <S.DropMenu>23232</S.DropMenu>
-          <S.DropMenu>23232</S.DropMenu>
+          <S.DropMenu onClick={doLogout}>로그아웃</S.DropMenu>
         </S.DropBox>
       ) : null}
     </>
