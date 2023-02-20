@@ -1,1 +1,1 @@
-module.exports = { singleQuote: true, trailingComma: 'all', printWidth: 200 };
+module.exports = { singleQuote: true, trailingComma: 'all', printWidth: 130 };
