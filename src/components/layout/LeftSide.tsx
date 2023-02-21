@@ -1,15 +1,13 @@
 import React from 'react';
+import * as S from '../../styles/styles';
 
 const LeftSide = () => {
   return (
     <>
-      <div style={{ display: 'flex', flexDirection: 'column', border: '1px solid black' }}>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-      </div>
+      <S.SideMenu>
+        <div></div>
+        <div>참여자</div>
+      </S.SideMenu>
     </>
   );
 };

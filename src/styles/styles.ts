@@ -160,3 +160,15 @@ export const DropMenu = styled.div`
     background-color: #d8e8e8;
   }
 `;
+
+export const SideMenu = styled.div`
+  width: 250px;
+  background-color: #dfe4ea;
+  padding: 6px;
+`;
+
+export const SideChat = styled.div`
+  width: 300px;
+  background-color: #ced6e0;
+  padding: 6px;
+`;

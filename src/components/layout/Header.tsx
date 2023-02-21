@@ -55,7 +55,7 @@ const Header = () => {
       </S.HeaderBox>
       {userDropdown ? (
         <S.DropBox ref={dropMenuRef}>
-          <S.DropMenu>23232</S.DropMenu>
+          <S.DropMenu>내 정보</S.DropMenu>
           <S.DropMenu>23232</S.DropMenu>
           <S.DropMenu onClick={doLogout}>로그아웃</S.DropMenu>
         </S.DropBox>

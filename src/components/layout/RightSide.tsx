@@ -1,9 +1,10 @@
 import React from 'react';
+import * as S from '../../styles/styles';
 
 const RightSide = () => {
   return (
     <>
-      <div></div>
+      <S.SideChat>hello</S.SideChat>
     </>
   );
 };
