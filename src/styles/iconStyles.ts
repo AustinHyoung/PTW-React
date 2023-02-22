@@ -13,3 +13,7 @@ export const SearchIcon = styled(Icon)`
   top: 5px;
   left: 15px;
 `;
+
+export const ChatIcon = styled(Icon)`
+  color: #1e90ff;
+`;

@@ -87,14 +87,6 @@ export const ErrText = styled.div`
   padding: 0 5px 5px 5px;
 `;
 
-export const MainContent = styled.div`
-  height: calc(100% - 50px);
-  width: 100%;
-  background-color: #f1f2f6;
-  padding-top: 50px;
-  margin: auto;
-`;
-
 export const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
@@ -170,5 +162,37 @@ export const SideMenu = styled.div`
 export const SideChat = styled.div`
   width: 300px;
   background-color: #ced6e0;
+  padding: 6px;
+`;
+
+export const IconBtn = styled.button`
+  cursor: pointer;
+  border-radius: 6px;
+  :hover {
+    background-color: #dfe4ea;
+  }
+`;
+
+export const MainDisplay = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+export const BoardHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(110, 110, 110, 0.3);
+  padding: 6px;
+`;
+
+export const FlexBox = styled.div`
+  display: flex;
+  height: 100%;
+`;
+
+export const DndBox = styled.div`
+  flex: 1;
+  overflow: auto;
   padding: 6px;
 `;

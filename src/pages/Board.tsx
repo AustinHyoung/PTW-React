@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import MainComponent from '../components/MainComponent';
+import BoardComponent from '../components/BoardComponent';
 
 const Main = () => {
   return (
     <>
-      <MainComponent />
+      <BoardComponent />
     </>
   );
 };
