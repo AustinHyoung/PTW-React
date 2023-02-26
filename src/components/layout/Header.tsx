@@ -5,12 +5,21 @@ import * as Icons from '../../styles/iconStyles';
 import { useNavigate } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiAccountCircle, mdiMagnify } from '@mdi/js';
+import { useQuery } from 'react-query';
 
 const Header = () => {
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [userDropdown, setUserDropdown] = useState(false);
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
+
+  const fetchUser = () => {
+    return axios.get('http://localhost:8080/apis/myinfo');
+  };
+
+  const { data, isLoading, isError } = useQuery('my-info', fetchUser);
+
+  console.log(data, isLoading, isError);
 
   //Dropdown 클릭, 공백 클릭
   useEffect(() => {
