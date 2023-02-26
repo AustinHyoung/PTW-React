@@ -145,12 +145,16 @@ export const DropBox = styled.div`
 `;
 
 export const DropMenu = styled.div`
-  padding: 10px;
+  padding: 10px 16px;
   cursor: pointer;
 
   :hover {
     background-color: #d8e8e8;
   }
+`;
+
+export const MyInfo = styled.div`
+  padding: 20px;
 `;
 
 export const SideMenu = styled.div`
@@ -195,4 +199,9 @@ export const DndBox = styled.div`
   flex: 1;
   overflow: auto;
   padding: 6px;
+`;
+
+export const Hr = styled.div`
+  border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+  margin: 10px 0;
 `;

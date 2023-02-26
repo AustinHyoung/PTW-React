@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as S from '../../styles/styles';
 import * as Icons from '../../styles/iconStyles';
 import { useNavigate } from 'react-router-dom';
+import Icon from '@mdi/react';
 import { mdiAccountCircle, mdiMagnify } from '@mdi/js';
 
 const Header = () => {
@@ -55,8 +56,16 @@ const Header = () => {
       </S.HeaderBox>
       {userDropdown ? (
         <S.DropBox ref={dropMenuRef}>
-          <S.DropMenu>내 정보</S.DropMenu>
-          <S.DropMenu>23232</S.DropMenu>
+          <h2 style={{ padding: '0 16px', fontWeight: 400 }}>내 정보</h2>
+          <div style={{ display: 'flex', alignItems: 'center', padding: 10 }}>
+            <Icon path={mdiAccountCircle} size={2} color={'#1e90ff'} />
+            <div>
+              <div>닉네임</div>
+              <div>이메일</div>
+            </div>
+          </div>
+          <S.DropMenu>내 정보 관리</S.DropMenu>
+          <S.Hr />
           <S.DropMenu onClick={doLogout}>로그아웃</S.DropMenu>
         </S.DropBox>
       ) : null}
