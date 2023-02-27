@@ -207,6 +207,10 @@ export const Hr = styled.div`
   margin: 10px 0;
 `;
 
+export const VHr = styled.div`
+  border-right: 1px solid rgba(9, 30, 66, 0.13);
+`;
+
 export const DropTitle = styled.h2`
   padding: 0 16px;
   font-weight: 400;

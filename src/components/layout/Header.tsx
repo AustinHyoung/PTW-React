@@ -50,7 +50,9 @@ const Header = () => {
     <>
       <S.HeaderBox>
         <S.LeftContents>
-          <li>Plan The Work</li>
+          <li onClick={() => navigate('/', { replace: true })} style={{ cursor: 'default' }}>
+            Plan The Work
+          </li>
         </S.LeftContents>
         <S.RightContents>
           <S.RightList style={{ position: 'relative' }}>
