@@ -96,6 +96,7 @@ export const HeaderBox = styled.div`
   background-color: #ffffff;
   left: 0;
   top: 0;
+  height: 50px;
 `;
 
 export const LeftContents = styled.ul`

@@ -20,7 +20,6 @@ const BoardComponent = () => {
   return (
     <>
       <S.MainDisplay>
-        <Header />
         <S.MainDisplay style={{ backgroundColor: '#f1f2f6' }}>
           <S.BoardHeader>
             <div>

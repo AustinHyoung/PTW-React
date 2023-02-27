@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from '../../styles/styles';
 import * as Icons from '../../styles/iconStyles';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiAccountCircle, mdiMagnify } from '@mdi/js';
 import { useSelector } from 'react-redux';
@@ -41,6 +41,11 @@ const Header = () => {
     }
   };
 
+  const routeMy = () => {
+    setUserDropdown(false);
+    navigate('/my');
+  };
+
   return (
     <>
       <S.HeaderBox>
@@ -69,7 +74,7 @@ const Header = () => {
               <div style={{ color: '#B3BAC5' }}>{data?.email}</div>
             </div>
           </S.FlexAlign>
-          <S.DropMenu>내 정보 관리</S.DropMenu>
+          <S.DropMenu onClick={routeMy}>내 정보 관리</S.DropMenu>
           <S.Hr />
           <S.DropMenu onClick={doLogout}>로그아웃</S.DropMenu>
         </S.DropBox>

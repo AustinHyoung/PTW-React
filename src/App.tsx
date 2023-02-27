@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, redirect } from 'react-router-dom';
+import Layout from './components/layout/Layout';
 import Login from './pages/Login';
 import Regist from './pages/Regist';
 import Find from './pages/Find';
 import Board from './pages/Board';
 import Home from './pages/Home';
+import My from './pages/My';
 import PrivateRoute from './utils/privateRouter';
 
 const App = () => {
   return (
     <Routes>
       <Route element={<PrivateRoute authentication={true} />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/board" element={<Board />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/board" element={<Board />} />
+          <Route path="/my" element={<My />} />
+        </Route>
       </Route>
 
       <Route element={<PrivateRoute authentication={false} />}>

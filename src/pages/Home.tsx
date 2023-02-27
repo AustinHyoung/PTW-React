@@ -7,7 +7,7 @@ const Home = () => {
   const data = useSelector((state: RootState) => state.persistedReducer.data);
   console.log(data);
   return (
-    <div>
+    <div style={{ backgroundColor: 'rgb(241, 242, 246)', height: '100%' }}>
       <Link to="/board">
         <div>MAIN</div>
       </Link>
