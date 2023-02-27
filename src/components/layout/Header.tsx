@@ -43,7 +43,7 @@ const Header = () => {
 
   const routeMy = () => {
     setUserDropdown(false);
-    navigate('/my');
+    navigate('/my', { replace: true });
   };
 
   return (
