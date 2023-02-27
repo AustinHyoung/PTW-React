@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as S from '../styles/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { setInfo } from '../reducer/storage';
+import { InfoProps } from '../reducer/storage';
 
 interface FormValue {
   email: string;
@@ -34,7 +35,11 @@ const LoginComponent = () => {
         return;
       }
       sessionStorage.setItem('session_id', JSON.stringify(response.data.session));
-      dispath(setInfo(response.data.email));
+      const infoParam: InfoProps = {
+        email: response.data.email,
+        nickname: response.data.nickname,
+      };
+      dispath(setInfo(infoParam));
       console.log(response);
       navigate('/');
     } catch (err) {

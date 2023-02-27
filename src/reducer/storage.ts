@@ -3,7 +3,12 @@ import storage from 'redux-persist/lib/storage';
 
 const SET_INFO = 'storage/SET_INFO' as const;
 
-export const setInfo = (diff: string) => ({
+export type InfoProps = {
+  email: string;
+  nickname: string;
+};
+
+export const setInfo = (diff: InfoProps) => ({
   type: SET_INFO,
   payload: diff,
 });
@@ -16,7 +21,7 @@ export const persistConfig = {
 type InfoAction = ReturnType<typeof setInfo>;
 
 type InfoState = {
-  data: string | null;
+  data: InfoProps | null;
 };
 
 const initialState: InfoState = {
