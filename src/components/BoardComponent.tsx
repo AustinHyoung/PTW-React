@@ -7,10 +7,16 @@ import LeftSide from './layout/LeftSide';
 import RightSide from './layout/RightSide';
 import Icon from '@mdi/react';
 import { mdiMenu, mdiChat } from '@mdi/js';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/reducer';
 
 const BoardComponent = () => {
   const [leftSide, setLeftSide] = useState(false);
   const [rightSide, setRightSide] = useState(false);
+
+  const data = useSelector((state: RootState) => state.persistedReducer.data);
+  console.log(data);
+
   return (
     <>
       <S.MainDisplay>

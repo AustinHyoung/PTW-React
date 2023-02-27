@@ -5,7 +5,7 @@ import { useQuery } from 'react-query/types/react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as S from '../styles/styles';
 import { useSelector, useDispatch } from 'react-redux';
-import { sessionInfo } from 'src/reducer/session';
+import { setInfo } from '../reducer/storage';
 
 interface FormValue {
   email: string;
@@ -13,6 +13,7 @@ interface FormValue {
 }
 
 const LoginComponent = () => {
+  const dispath = useDispatch();
   const navigate = useNavigate();
 
   const {
@@ -33,6 +34,7 @@ const LoginComponent = () => {
         return;
       }
       sessionStorage.setItem('session_id', JSON.stringify(response.data.session));
+      dispath(setInfo(response.data.email));
       console.log(response);
       navigate('/');
     } catch (err) {

@@ -6,11 +6,14 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { legacy_createStore as createStore } from 'redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 import rootReducer from './reducer';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 const store = createStore(rootReducer);
+const persistor = persistStore(store);
 const queryClient = new QueryClient();
 
 const container = document.getElementById('root') as HTMLElement;
@@ -18,9 +21,11 @@ const root = createRoot(container);
 root.render(
   <BrowserRouter>
     <Provider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </PersistGate>
     </Provider>
   </BrowserRouter>,
 );

@@ -13,13 +13,13 @@ const Header = () => {
   const [userDropdown, setUserDropdown] = useState(false);
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
 
-  const fetchUser = () => {
-    return axios.get('http://localhost:8080/apis/myinfo');
-  };
+  // const fetchUser = () => {
+  //   return axios.get('http://localhost:8080/apis/myinfo');
+  // };
 
-  const { data, isLoading, isError } = useQuery('my-info', fetchUser);
+  // const { data, isLoading, isError } = useQuery('my-info', fetchUser);
 
-  console.log(data, isLoading, isError);
+  // console.log(data, isLoading, isError);
 
   //Dropdown 클릭, 공백 클릭
   useEffect(() => {

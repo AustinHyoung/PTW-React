@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import counter from './counter';
-import session from './session';
+import { persistedReducer } from './storage';
 
 const rootReducer = combineReducers({
   counter,
-  session,
+  persistedReducer,
 });
 
 export default rootReducer;
