@@ -5,7 +5,8 @@ import * as Icons from '../../styles/iconStyles';
 import { useNavigate } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiAccountCircle, mdiMagnify } from '@mdi/js';
-import { useQuery } from 'react-query';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/reducer';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,13 +14,8 @@ const Header = () => {
   const [userDropdown, setUserDropdown] = useState(false);
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
 
-  // const fetchUser = () => {
-  //   return axios.get('http://localhost:8080/apis/myinfo');
-  // };
-
-  // const { data, isLoading, isError } = useQuery('my-info', fetchUser);
-
-  // console.log(data, isLoading, isError);
+  // user info
+  const data = useSelector((state: RootState) => state.persistedReducer.data);
 
   //Dropdown 클릭, 공백 클릭
   useEffect(() => {
@@ -65,14 +61,14 @@ const Header = () => {
       </S.HeaderBox>
       {userDropdown ? (
         <S.DropBox ref={dropMenuRef}>
-          <h2 style={{ padding: '0 16px', fontWeight: 400 }}>내 정보</h2>
-          <div style={{ display: 'flex', alignItems: 'center', padding: 10 }}>
-            <Icon path={mdiAccountCircle} size={2} color={'#1e90ff'} />
+          <S.DropTitle>내 정보</S.DropTitle>
+          <S.FlexAlign style={{ padding: 10 }}>
+            <Icon path={mdiAccountCircle} size={2} color={'#1e90ff'} style={{ marginRight: 8 }} />
             <div>
-              <div>닉네임</div>
-              <div>이메일</div>
+              <div>{data?.nickname}</div>
+              <div style={{ color: '#B3BAC5' }}>{data?.email}</div>
             </div>
-          </div>
+          </S.FlexAlign>
           <S.DropMenu>내 정보 관리</S.DropMenu>
           <S.Hr />
           <S.DropMenu onClick={doLogout}>로그아웃</S.DropMenu>

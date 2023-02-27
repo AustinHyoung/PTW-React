@@ -205,3 +205,13 @@ export const Hr = styled.div`
   border-bottom: 1px solid rgba(9, 30, 66, 0.13);
   margin: 10px 0;
 `;
+
+export const DropTitle = styled.h2`
+  padding: 0 16px;
+  font-weight: 400;
+`;
+
+export const FlexAlign = styled.div`
+  display: flex;
+  align-items: center;
+`;
