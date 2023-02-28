@@ -107,7 +107,7 @@ const MyComponent = () => {
           <S.Hr />
           <div style={{ padding: 50, justifyContent: 'flex-end', flex: 1 }}>
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <S.updateBtn onClick={nicknameUpdate} isActive={btnIsActive}>
+              <S.updateBtn onClick={nicknameUpdate} disabled={!btnIsActive} isActive={btnIsActive}>
                 저장
               </S.updateBtn>
             </div>

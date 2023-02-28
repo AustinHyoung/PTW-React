@@ -225,11 +225,11 @@ export const FlexAlign = styled.div`
   align-items: center;
 `;
 
-export const updateBtn = styled.div<ActiveProps>`
+export const updateBtn = styled.button<ActiveProps>`
   padding: 10px 30px;
   background-color: ${(props) => (props.isActive ? '#1e90ff' : '#75BAFD')};
   border-radius: 6px;
   color: #fff;
-  cursor: pointer;
+  cursor: ${(props) => (props.isActive ? 'pointer' : 'default')};
   font-weight: 600;
 `;
