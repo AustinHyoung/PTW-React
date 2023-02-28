@@ -1,12 +1,48 @@
-import React from 'react';
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import * as S from '../styles/styles';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/reducer';
 import Icon from '@mdi/react';
 import { mdiAccountCircle } from '@mdi/js';
+import axios from 'axios';
+
+interface UpdateProps {
+  nickname: string;
+}
 
 const MyComponent = () => {
   const data = useSelector((state: RootState) => state.persistedReducer.data);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [nickVal, setNickVal] = useState<any>(data?.nickname);
+  const [btnIsActive, setBtnIsActive] = useState(false);
+
+  useEffect(() => {}, [nickVal]);
+
+  const param: UpdateProps = {
+    nickname: nickVal,
+  };
+  const nicknameUpdate = () => {
+    try {
+      const response = axios.put('http://localhost:8080/apis/put', param);
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const changeNickname = (e: ChangeEvent<HTMLInputElement>) => {
+    setNickVal(e.target.value);
+    if (e.target.value === data?.nickname) {
+      setBtnIsActive(false);
+    } else {
+      setBtnIsActive(true);
+    }
+    console.log(nickVal);
+    console.log(data?.nickname);
+    console.log(btnIsActive);
+  };
+
   return (
     <>
       <div style={{ height: '100%', backgroundColor: 'rgb(241, 242, 246)', display: 'flex' }}>
@@ -33,7 +69,12 @@ const MyComponent = () => {
                         padding: 10,
                         width: '100%',
                         boxSizing: 'border-box',
+                        fontFamily: 'inherit',
+                        fontSize: 16,
                       }}
+                      type="text"
+                      defaultValue={data?.email}
+                      disabled
                     />
                   </div>
                 </div>
@@ -41,13 +82,19 @@ const MyComponent = () => {
                   <div style={{ lineHeight: 2 }}>닉네임</div>
                   <div style={{ width: '100%' }}>
                     <input
+                      ref={inputRef}
                       style={{
                         border: '1px solid rgba(83,92,104,0.5)',
                         borderRadius: 4,
                         padding: 10,
                         width: '100%',
                         boxSizing: 'border-box',
+                        fontFamily: 'inherit',
+                        fontSize: 16,
                       }}
+                      type="text"
+                      value={nickVal}
+                      onChange={changeNickname}
                     />
                   </div>
                 </div>
@@ -60,18 +107,9 @@ const MyComponent = () => {
           <S.Hr />
           <div style={{ padding: 50, justifyContent: 'flex-end', flex: 1 }}>
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <button
-                style={{
-                  padding: '10px 30px',
-                  backgroundColor: '#1e90ff',
-                  borderRadius: 6,
-                  color: '#fff',
-                  cursor: 'pointer',
-                  fontWeight: 600,
-                }}
-              >
+              <S.updateBtn onClick={nicknameUpdate} isActive={btnIsActive}>
                 저장
-              </button>
+              </S.updateBtn>
             </div>
           </div>
         </div>

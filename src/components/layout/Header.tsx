@@ -50,7 +50,7 @@ const Header = () => {
     <>
       <S.HeaderBox>
         <S.LeftContents>
-          <li onClick={() => navigate('/', { replace: true })} style={{ cursor: 'default' }}>
+          <li onClick={() => navigate('/', { replace: true })} style={{ cursor: 'default', fontSize: 24 }}>
             Plan The Work
           </li>
         </S.LeftContents>
@@ -61,7 +61,7 @@ const Header = () => {
             </div>
             <S.SearchInput ref={inputRef} />
           </S.RightList>
-          <S.RightList style={{ padding: 6, cursor: 'pointer' }} onClick={() => setUserDropdown(true)}>
+          <S.RightList style={{ margin: '6px 12px', cursor: 'pointer' }} onClick={() => setUserDropdown(true)}>
             <Icons.UserIcon path={mdiAccountCircle} size={1.5} />
           </S.RightList>
         </S.RightContents>

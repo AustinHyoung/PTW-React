@@ -4,6 +4,10 @@ interface Login {
   backgroundColor: string;
 }
 
+interface ActiveProps {
+  isActive: boolean;
+}
+
 export const LoginDisplay = styled.div<Login>`
   display: flex;
   justify-content: center;
@@ -96,11 +100,11 @@ export const HeaderBox = styled.div`
   background-color: #ffffff;
   left: 0;
   top: 0;
-  height: 50px;
+  height: 60px;
 `;
 
 export const LeftContents = styled.ul`
-  padding: 6px 8px;
+  padding: 6px 12px;
   display: flex;
   align-items: center;
 `;
@@ -138,7 +142,7 @@ export const DropBox = styled.div`
   background-color: #eef4f4;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 3px;
-  box-shadow: -1px 1px 10px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: -1px 1px 10px 4px rgba(0, 0, 0, 0.1);
   width: 230px;
   font-size: 12px;
   line-height: 20px;
@@ -219,4 +223,13 @@ export const DropTitle = styled.h2`
 export const FlexAlign = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const updateBtn = styled.div<ActiveProps>`
+  padding: 10px 30px;
+  background-color: ${(props) => (props.isActive ? '#1e90ff' : '#75BAFD')};
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
 `;
