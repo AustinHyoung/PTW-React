@@ -1,31 +1,43 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import * as S from '../styles/styles';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/reducer';
 import Icon from '@mdi/react';
 import { mdiAccountCircle } from '@mdi/js';
 import axios from 'axios';
+import { useQuery } from 'react-query';
+import { setInfo } from '../reducer/storage';
+import { InfoProps } from '../reducer/storage';
 
 interface UpdateProps {
+  email: string;
   nickname: string;
 }
 
 const MyComponent = () => {
+  const dispatch = useDispatch();
   const data = useSelector((state: RootState) => state.persistedReducer.data);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [nickVal, setNickVal] = useState<any>(data?.nickname);
   const [btnIsActive, setBtnIsActive] = useState(false);
 
-  useEffect(() => {}, [nickVal]);
+  useEffect(() => {}, [nickVal, dispatch, data]);
 
   const param: UpdateProps = {
+    email: data?.email as string,
     nickname: nickVal,
   };
-  const nicknameUpdate = () => {
+
+  const nicknameUpdate = async () => {
     try {
-      const response = axios.put('http://localhost:8080/apis/put', param);
-      console.log(response);
+      const response = await axios.put('http://localhost:8080/apis/put', param);
+      console.log(response.data.nickname);
+      const infoParam: InfoProps = {
+        email: response.data.email,
+        nickname: response.data.nickname,
+      };
+      dispatch(setInfo(infoParam));
     } catch (err) {
       console.log(err);
     }
