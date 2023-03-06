@@ -8,6 +8,10 @@ interface ActiveProps {
   isActive: boolean;
 }
 
+interface NavActiveProps {
+  navActive: boolean;
+}
+
 export const LoginDisplay = styled.div<Login>`
   display: flex;
   justify-content: center;
@@ -232,4 +236,17 @@ export const updateBtn = styled.button<ActiveProps>`
   color: #fff;
   cursor: ${(props) => (props.isActive ? 'pointer' : 'default')};
   font-weight: 600;
+`;
+
+export const mySideList = styled.div<NavActiveProps>`
+  padding: 10px;
+  cursor: pointer;
+  margin: 5px 0;
+  line-height: 1.5;
+  border-radius: 6px;
+  background-color: ${(props) => (props.navActive ? '#dfe4ea' : '')};
+
+  :hover {
+    background-color: #dfe4ea;
+  }
 `;
