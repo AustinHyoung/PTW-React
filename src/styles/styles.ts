@@ -69,6 +69,7 @@ export const LoginBtn = styled.button`
   &:hover {
     background-color: #0969c6;
   }
+  font-family: inherit;
 `;
 
 export const EctBox = styled.div`

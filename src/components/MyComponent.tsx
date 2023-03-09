@@ -32,7 +32,7 @@ const MyComponent = () => {
 
   const nicknameUpdate = async () => {
     try {
-      const response = await axios.put('http://localhost:8080/apis/put', param);
+      const response = await axios.put('http://localhost:8080/apis/nick/change', param);
       const infoParam: InfoProps = {
         email: response.data.email,
         nickname: response.data.nickname,

@@ -2,14 +2,18 @@ import axios from 'axios';
 import React, { useRef } from 'react';
 import * as S from '../../styles/styles';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/reducer';
 
 interface FormValue {
+  email: string;
   password: string;
   newPassword: string;
   newPasswordConfirm: string;
 }
 
 const PwChangeForm = () => {
+  const data = useSelector((state: RootState) => state.persistedReducer.data);
   const {
     register,
     handleSubmit,
@@ -22,8 +26,10 @@ const PwChangeForm = () => {
   };
 
   const doPasswordChange = async (param: FormValue) => {
+    param.email = data?.email as string;
+
     try {
-      const response = await axios.post('http://localhost:8080/apis/login', param);
+      const response = await axios.put('http://localhost:8080/apis/password/change', param);
       console.log(response);
     } catch (err) {
       console.log(err);
@@ -41,14 +47,20 @@ const PwChangeForm = () => {
           <div style={{ lineHeight: 2 }}>현재 비밀번호</div>
           <S.SetInput type="password" {...register('password', { required: true })} />
         </div>
+        {errors.password && errors.password.type === 'required' ? <S.ErrText>비밀번호를 입력해 주세요!</S.ErrText> : null}
         <div style={{ marginTop: 10 }}>
           <div style={{ lineHeight: 2 }}>새 비밀번호</div>
           <S.SetInput
             type="password"
-            placeholder="최소 특수문자, 대 소문자 한자씩"
             {...register('newPassword', { required: true, pattern: /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/ })}
           />
         </div>
+        {errors.newPassword && errors.newPassword.type === 'required' ? (
+          <S.ErrText>새 비밀번호를 입력해 주세요!</S.ErrText>
+        ) : null}
+        {errors.newPassword && errors.newPassword.type === 'pattern' ? (
+          <S.ErrText>대문자, 특수문자, 숫자 한 자씩 포함해 주세요!</S.ErrText>
+        ) : null}
         <div style={{ marginTop: 10 }}>
           <div style={{ lineHeight: 2 }}>새 비밀번호 확인</div>
           <S.SetInput
