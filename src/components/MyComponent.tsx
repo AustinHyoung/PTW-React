@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { setInfo } from '../reducer/storage';
 import { InfoProps } from '../reducer/storage';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface UpdateProps {
   email: string;
@@ -57,6 +58,8 @@ const MyComponent = () => {
     console.log(btnIsActive);
   };
 
+  const navigate = useNavigate();
+
   const [sideActive, setSideActive] = useState('default');
 
   return (
@@ -83,7 +86,7 @@ const MyComponent = () => {
                   <div style={{ padding: '15px 0' }}>
                     <div style={{ lineHeight: 2 }}>이메일</div>
                     <div style={{ width: '100%' }}>
-                      <input
+                      <S.SetInput
                         style={{
                           border: '1px solid rgba(83,92,104,0.5)',
                           borderRadius: 4,
@@ -102,7 +105,7 @@ const MyComponent = () => {
                   <div style={{ padding: '15px 0' }}>
                     <div style={{ lineHeight: 2 }}>닉네임</div>
                     <div style={{ width: '100%' }}>
-                      <input
+                      <S.SetInput
                         ref={inputRef}
                         style={{
                           border: '1px solid rgba(83,92,104,0.5)',
@@ -127,11 +130,11 @@ const MyComponent = () => {
             </div>
             <S.Hr />
             <div style={{ padding: 50, justifyContent: 'flex-end', flex: 1 }}>
-              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <S.updateBtn onClick={nicknameUpdate} disabled={!btnIsActive} isActive={btnIsActive}>
+              <S.FEnd>
+                <S.UpdateBtn onClick={nicknameUpdate} disabled={!btnIsActive} isActive={btnIsActive}>
                   저장
-                </S.updateBtn>
-              </div>
+                </S.UpdateBtn>
+              </S.FEnd>
             </div>
           </div>
         )}
@@ -140,6 +143,11 @@ const MyComponent = () => {
             <div style={{ display: 'flex', padding: 40 }}>
               <div style={{ flex: 1 }}>
                 <h2 style={{ fontSize: 22, fontWeight: 600, margin: 0 }}>비밀번호</h2>
+                <S.FEnd style={{ padding: '15px 0' }}>
+                  <Link to="/my/change">
+                    <S.DeleteBtn>비밀번호 변경</S.DeleteBtn>
+                  </Link>
+                </S.FEnd>
               </div>
             </div>
             <S.Hr />

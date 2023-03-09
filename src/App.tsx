@@ -7,6 +7,7 @@ import Find from './pages/Find';
 import Board from './pages/Board';
 import Home from './pages/Home';
 import My from './pages/My';
+import PwChange from './pages/PwChange';
 import PrivateRoute from './utils/privateRouter';
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/board" element={<Board />} />
           <Route path="/my" element={<My />} />
         </Route>
+        <Route path="/my/change" element={<PwChange />} />
       </Route>
 
       <Route element={<PrivateRoute authentication={false} />}>

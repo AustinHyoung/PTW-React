@@ -229,13 +229,18 @@ export const FlexAlign = styled.div`
   align-items: center;
 `;
 
-export const updateBtn = styled.button<ActiveProps>`
+export const UpdateBtn = styled.button<ActiveProps>`
   padding: 10px 30px;
   background-color: ${(props) => (props.isActive ? '#1e90ff' : '#75BAFD')};
   border-radius: 6px;
   color: #fff;
   cursor: ${(props) => (props.isActive ? 'pointer' : 'default')};
-  font-weight: 600;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  :hover {
+    background-color: ${(props) => props.isActive && '#2980b9'};
+  }
 `;
 
 export const mySideList = styled.div<NavActiveProps>`
@@ -249,4 +254,45 @@ export const mySideList = styled.div<NavActiveProps>`
   :hover {
     background-color: #dfe4ea;
   }
+`;
+
+export const FEnd = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const DeleteBtn = styled.button`
+  padding: 10px 60px;
+  background-color: #e74c3c;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  :hover {
+    background-color: #c0392b;
+  }
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+`;
+
+export const SetInput = styled.input`
+  border: 1px solid rgba(83, 92, 104, 0.5);
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 16px;
+  :hover {
+    border: 1px solid rgba(83, 92, 104);
+  }
+  :focus {
+    border: 1px solid rgba(83, 92, 104);
+  }
+`;
+
+export const DefaultForm = styled.form`
+  flex-direction: column;
+  padding: 20px;
+  width: 50%;
 `;
