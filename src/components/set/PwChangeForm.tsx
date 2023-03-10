@@ -30,7 +30,8 @@ const PwChangeForm = () => {
 
     try {
       const response = await axios.put('http://localhost:8080/apis/password/change', param);
-      console.log(response);
+      alert(response.data.msg);
+      return;
     } catch (err) {
       console.log(err);
     }
@@ -47,7 +48,9 @@ const PwChangeForm = () => {
           <div style={{ lineHeight: 2 }}>현재 비밀번호</div>
           <S.SetInput type="password" {...register('password', { required: true })} />
         </div>
-        {errors.password && errors.password.type === 'required' ? <S.ErrText>비밀번호를 입력해 주세요!</S.ErrText> : null}
+        {errors.password && errors.password.type === 'required' ? (
+          <S.ErrText style={{ marginTop: 5 }}>비밀번호를 입력해 주세요!</S.ErrText>
+        ) : null}
         <div style={{ marginTop: 10 }}>
           <div style={{ lineHeight: 2 }}>새 비밀번호</div>
           <S.SetInput
@@ -56,10 +59,10 @@ const PwChangeForm = () => {
           />
         </div>
         {errors.newPassword && errors.newPassword.type === 'required' ? (
-          <S.ErrText>새 비밀번호를 입력해 주세요!</S.ErrText>
+          <S.ErrText style={{ marginTop: 5 }}>새 비밀번호를 입력해 주세요!</S.ErrText>
         ) : null}
         {errors.newPassword && errors.newPassword.type === 'pattern' ? (
-          <S.ErrText>대문자, 특수문자, 숫자 한 자씩 포함해 주세요!</S.ErrText>
+          <S.ErrText style={{ marginTop: 5 }}>대문자, 특수문자, 숫자 한 자씩 포함해 주세요!</S.ErrText>
         ) : null}
         <div style={{ marginTop: 10 }}>
           <div style={{ lineHeight: 2 }}>새 비밀번호 확인</div>
@@ -73,7 +76,7 @@ const PwChangeForm = () => {
           />
         </div>
         {errors.newPasswordConfirm && errors.newPasswordConfirm.type === 'validate' ? (
-          <S.ErrText>비밀번호를 다시 확인해 주세요</S.ErrText>
+          <S.ErrText style={{ marginTop: 5 }}>비밀번호를 다시 확인해 주세요</S.ErrText>
         ) : null}
 
         <S.LoginBtn style={{ width: '100%', margin: 0, marginTop: 30 }}>비밀번호 변경</S.LoginBtn>
