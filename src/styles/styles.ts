@@ -262,8 +262,8 @@ export const FEnd = styled.div`
   justify-content: flex-end;
 `;
 
-export const DeleteBtn = styled.button`
-  padding: 10px 60px;
+export const DangerBtn = styled.button`
+  padding: 10px 30px;
   background-color: #e74c3c;
   border-radius: 6px;
   color: #fff;
@@ -274,6 +274,7 @@ export const DeleteBtn = styled.button`
   font-family: inherit;
   font-size: 16px;
   font-weight: 400;
+  width: 200px;
 `;
 
 export const SetInput = styled.input`

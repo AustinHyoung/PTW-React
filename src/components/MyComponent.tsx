@@ -22,6 +22,8 @@ const MyComponent = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [nickVal, setNickVal] = useState<any>(data?.nickname);
   const [btnIsActive, setBtnIsActive] = useState(false);
+  const [sideActive, setSideActive] = useState('default');
+  const navigate = useNavigate();
 
   useEffect(() => {}, [nickVal, dispatch, data]);
 
@@ -58,9 +60,17 @@ const MyComponent = () => {
     console.log(btnIsActive);
   };
 
-  const navigate = useNavigate();
-
-  const [sideActive, setSideActive] = useState('default');
+  const doDeleteUser = async () => {
+    try {
+      const response = await axios.delete('http://localhost:8080/apis/delete/user', { data: param });
+      if (response.data.code === 200) {
+        sessionStorage.clear();
+        navigate('/login');
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -145,14 +155,36 @@ const MyComponent = () => {
                 <h2 style={{ fontSize: 22, fontWeight: 600, margin: 0 }}>비밀번호</h2>
                 <S.FEnd style={{ padding: '15px 0' }}>
                   <Link to="/my/change">
-                    <S.DeleteBtn>비밀번호 변경</S.DeleteBtn>
+                    <S.DangerBtn>비밀번호 변경</S.DangerBtn>
                   </Link>
                 </S.FEnd>
               </div>
             </div>
             <S.Hr />
             <div style={{ display: 'flex', padding: 40 }}>
-              <h2 style={{ fontSize: 22, fontWeight: 600, margin: 0 }}>계정삭제</h2>
+              <div style={{ flex: 1 }}>
+                <h2 style={{ fontSize: 22, fontWeight: 600, margin: 0 }}>계정삭제</h2>
+                <div
+                  style={{
+                    border: '1px solid rgba(9,30,66,0.6)',
+                    borderRadius: 6,
+                    fontSize: 13,
+                    color: 'rgba(9,30,66,0.6)',
+                    padding: 10,
+                    marginTop: 15,
+                    lineHeight: 1.7,
+                    wordWrap: 'break-word',
+                    whiteSpace: 'normal',
+                  }}
+                >
+                  회원 탈퇴일로부터 계정과 닉네임을 포함한 계정 정보(이메일/닉네임)는 60일간 보관(잠김)되며, 60일 경과된 후에는
+                  모든 개인 정보는 완전히 삭제되며 더 이상 복구할 수 없게 됩니다. 복구를 원하신다면{' '}
+                  <span style={{ color: '#2e86de' }}>jhy2297@naver.com</span> 로 연락 주시기 바랍니다.
+                </div>
+                <S.FEnd style={{ padding: '15px 0' }}>
+                  <S.DangerBtn onClick={doDeleteUser}>회원 탈퇴</S.DangerBtn>
+                </S.FEnd>
+              </div>
             </div>
           </div>
         )}
