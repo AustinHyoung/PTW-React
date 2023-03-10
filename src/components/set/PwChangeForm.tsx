@@ -4,6 +4,7 @@ import * as S from '../../styles/styles';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/reducer';
+import { useNavigate } from 'react-router-dom';
 
 interface FormValue {
   email: string;
@@ -13,6 +14,7 @@ interface FormValue {
 }
 
 const PwChangeForm = () => {
+  const navigate = useNavigate();
   const data = useSelector((state: RootState) => state.persistedReducer.data);
   const {
     register,
@@ -30,8 +32,10 @@ const PwChangeForm = () => {
 
     try {
       const response = await axios.put('http://localhost:8080/apis/password/change', param);
-      alert(response.data.msg);
-      return;
+      if (response.data.code === 400) {
+        alert(response.data.msg);
+      }
+      navigate('/my');
     } catch (err) {
       console.log(err);
     }
