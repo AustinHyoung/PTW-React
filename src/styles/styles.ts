@@ -326,3 +326,14 @@ export const FlexEnd = styled.div`
   align-items: center;
   justify-content: flex-end;
 `;
+
+export const BoardItem = styled.div`
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+`;
