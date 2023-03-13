@@ -30,7 +30,7 @@ const LoginComponent = () => {
   const doLogin = async (param: FormValue) => {
     try {
       const response = await axios.post('http://localhost:8080/apis/login', param);
-      if (response.data.code === 404) {
+      if (response.data.code === 400) {
         alert(response.data.msg);
         return;
       }

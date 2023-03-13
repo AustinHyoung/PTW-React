@@ -1,27 +1,24 @@
 import React, { useState } from 'react';
 import * as S from '../../styles/styles';
 import DefaultModal from '../modal/DefaultModal';
-import Modal from 'react-modal'
-
+import Modal from 'react-modal';
 
 const LeftSide = () => {
   // content, modal open boolean, outside click close
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  
+
   const outsideClose = () => {
-    setModalIsOpen(false)
-  }
+    setModalIsOpen(false);
+  };
 
   function ModalContent() {
     return (
       <>
-       <div>hello this is modal</div>
+        <div>hello this is modal</div>
         <button onClick={() => setModalIsOpen(false)}>close button</button>
       </>
-     
-    )
+    );
   }
-
 
   return (
     <>

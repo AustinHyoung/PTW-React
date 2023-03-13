@@ -193,6 +193,11 @@ export const MainDisplay = styled.div`
   height: 100%;
 `;
 
+export const FlexColBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const BoardHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -203,6 +208,10 @@ export const BoardHeader = styled.div`
 export const FlexBox = styled.div`
   display: flex;
   height: 100%;
+`;
+
+export const Flex = styled.div`
+  display: flex;
 `;
 
 export const DndBox = styled.div`
@@ -257,11 +266,6 @@ export const mySideList = styled.div<NavActiveProps>`
   }
 `;
 
-export const FEnd = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
 export const DangerBtn = styled.button`
   padding: 10px 30px;
   background-color: #e74c3c;
@@ -297,4 +301,28 @@ export const DefaultForm = styled.form`
   flex-direction: column;
   padding: 20px;
   width: 50%;
+`;
+
+export const SetSide = styled.div`
+  width: 200px;
+  padding: 40px;
+`;
+export const SetTitle = styled.h2`
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+`;
+
+export const MVertical30 = styled.div`
+  margin: 30px 0;
+`;
+
+export const MVertical15 = styled.div`
+  margin: 15px 0;
+`;
+
+export const FlexEnd = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 `;
