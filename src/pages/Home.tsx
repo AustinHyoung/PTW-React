@@ -3,10 +3,19 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import * as S from '../styles/styles';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/reducer';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+
+const fetchData = async () => {
+  const { data } = await axios.get('http://localhost:8080/apis/boardlist', { withCredentials: true });
+  return data;
+};
 
 const Home = () => {
-  const data = useSelector((state: RootState) => state.persistedReducer.data);
-  console.log(data);
+  const info = useSelector((state: RootState) => state.persistedReducer.data);
+  const { data, isLoading, error } = useQuery('data', fetchData);
+  console.log('data ::: ', data);
+  console.log(info);
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <div

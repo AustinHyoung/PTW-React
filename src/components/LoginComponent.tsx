@@ -29,7 +29,7 @@ const LoginComponent = () => {
 
   const doLogin = async (param: FormValue) => {
     try {
-      const response = await axios.post('http://localhost:8080/apis/login', param);
+      const response = await axios.post('http://localhost:8080/apis/login', param, { withCredentials: true });
       if (response.data.code === 400) {
         alert(response.data.msg);
         return;
