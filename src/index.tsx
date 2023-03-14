@@ -10,7 +10,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import rootReducer from './reducer';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 
 const store = createStore(rootReducer);
 const persistor = persistStore(store);
