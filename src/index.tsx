@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { render } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import './index.css';
@@ -14,6 +15,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 const store = createStore(rootReducer);
 const persistor = persistStore(store);
 const queryClient = new QueryClient();
+axios.defaults.withCredentials = true;
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);

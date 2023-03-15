@@ -1,14 +1,12 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import * as S from '../styles/styles';
-import * as Icons from '../styles/iconStyles';
-import Header from './layout/Header';
-import LeftSide from './layout/LeftSide';
-import RightSide from './layout/RightSide';
+import { mdiChat, mdiMenu } from '@mdi/js';
 import Icon from '@mdi/react';
-import { mdiMenu, mdiChat } from '@mdi/js';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/reducer';
+import * as Icons from '../styles/iconStyles';
+import * as S from '../styles/styles';
+import LeftSide from './layout/LeftSide';
+import RightSide from './layout/RightSide';
 
 const BoardComponent = () => {
   const [leftSide, setLeftSide] = useState(false);
