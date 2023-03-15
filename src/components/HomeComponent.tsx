@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RootState } from '../reducer';
 import * as S from '../styles/styles';
+import DefaultModal from './modal/DefaultModal';
 
 interface listProps {
   board_no: number;
@@ -19,7 +20,21 @@ const fetchData = async () => {
 const HomeComponent = () => {
   const info = useSelector((state: RootState) => state.persistedReducer.data);
   const { data } = useQuery('data', fetchData);
-  console.log(data);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const outsideClose = () => {
+    setModalIsOpen(false);
+  };
+
+  function ModalContent() {
+    return (
+      <>
+        <div>hello this is modal</div>
+        <button onClick={() => setModalIsOpen(false)}>close button</button>
+      </>
+    );
+  }
+
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <div
@@ -41,9 +56,10 @@ const HomeComponent = () => {
               </Link>
             );
           })}
-          <S.BoardItem>+ 새로 만들기</S.BoardItem>
+          <S.BoardItem onClick={() => setModalIsOpen(true)}>+ 새로 만들기</S.BoardItem>
         </div>
       </div>
+      {modalIsOpen && <DefaultModal isOpen={modalIsOpen} content={ModalContent()} outsideClose={outsideClose} />}
     </div>
   );
 };

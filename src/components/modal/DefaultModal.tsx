@@ -9,10 +9,10 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    backgroundColor: 'red',
+    backgroundColor: 'rgb(241, 242, 246)',
   },
   overlay: {
-    backgroundColor: 'rgba(47,53,66,0.8)',
+    backgroundColor: '#a6aaaf63',
   },
 };
 
