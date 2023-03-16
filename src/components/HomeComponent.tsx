@@ -5,11 +5,18 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { RootState } from '../reducer';
 import * as S from '../styles/styles';
+import Icon from '@mdi/react';
+import { mdiClose } from '@mdi/js';
 import DefaultModal from './modal/DefaultModal';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 interface listProps {
   board_no: number;
   title?: string;
+}
+
+interface FormValue {
+  title: string;
 }
 
 const fetchData = async () => {
@@ -20,18 +27,52 @@ const fetchData = async () => {
 const HomeComponent = () => {
   const info = useSelector((state: RootState) => state.persistedReducer.data);
   const { data } = useQuery('data', fetchData);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<FormValue>();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const outsideClose = () => {
     setModalIsOpen(false);
   };
 
+  const onSubmitHandler: SubmitHandler<FormValue> = (data) => {
+    console.log(data);
+    //doCreateBoard(data);
+  };
+
+  const doCreateBoard = async (param: FormValue) => {
+    try {
+      await axios.get('http://localhost:8080/apis/create/board');
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   function ModalContent() {
     return (
-      <>
-        <div>hello this is modal</div>
-        <button onClick={() => setModalIsOpen(false)}>close button</button>
-      </>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
+          <span onClick={() => setModalIsOpen(false)} style={{ cursor: 'pointer' }}>
+            <Icon path={mdiClose} size={1.2} />
+          </span>
+        </div>
+        <form
+          onSubmit={handleSubmit(onSubmitHandler)}
+          style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}
+        >
+          <h2>보드 생성</h2>
+          <div style={{ marginTop: 10, width: '100%' }}>
+            <div style={{ lineHeight: 2 }}>보드 제목</div>
+            <S.SetInput type="text" {...register('title', { required: true })} />
+            <S.LoginBtn style={{ width: '100%', margin: 0, marginTop: 30 }}>보드 생성</S.LoginBtn>
+          </div>
+        </form>
+      </div>
     );
   }
 

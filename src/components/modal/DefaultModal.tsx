@@ -10,6 +10,10 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     backgroundColor: 'rgb(241, 242, 246)',
+    width: '35%',
+    height: '35%',
+    borderRadius: '8px',
+    border: '0px',
   },
   overlay: {
     backgroundColor: '#a6aaaf63',
