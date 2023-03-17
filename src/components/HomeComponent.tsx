@@ -41,13 +41,13 @@ const HomeComponent = () => {
   };
 
   const onSubmitHandler: SubmitHandler<FormValue> = (data) => {
-    console.log(data);
-    //doCreateBoard(data);
+    doCreateBoard(data);
+    setModalIsOpen(false);
   };
 
   const doCreateBoard = async (param: FormValue) => {
     try {
-      await axios.get('http://localhost:8080/apis/create/board');
+      await axios.get('http://localhost:8080/apis/create/board', { params: param });
     } catch (err) {
       console.log(err);
     }
