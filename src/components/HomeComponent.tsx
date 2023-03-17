@@ -77,19 +77,28 @@ const HomeComponent = () => {
   }
 
   return (
-    <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ height: '100%', display: 'flex', flexDirection: 'column', backgroundColor: 'rgb(241, 242, 246)' }}>
+      <h2 style={{ textAlign: 'center' }}>보 드</h2>
+
       <div
         style={{
-          backgroundColor: 'rgb(241, 242, 246)',
           flex: 1,
-          padding: '40px 100px',
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          position: 'relative',
+          overflow: 'auto',
         }}
       >
-        <h2>bOARD</h2>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 10,
+            position: 'absolute',
+            alignItems: 'center',
+            padding: '40px 100px',
+            overflow: 'auto',
+          }}
+        >
           {data?.map((item: listProps) => {
             return (
               <Link to={`/board/${item.board_no}`} key={item.board_no}>
@@ -100,6 +109,7 @@ const HomeComponent = () => {
           <S.BoardItem onClick={() => setModalIsOpen(true)}>+ 새로 만들기</S.BoardItem>
         </div>
       </div>
+
       {modalIsOpen && <DefaultModal isOpen={modalIsOpen} content={ModalContent()} outsideClose={outsideClose} />}
     </div>
   );
