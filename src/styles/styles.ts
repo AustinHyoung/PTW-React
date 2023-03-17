@@ -152,6 +152,7 @@ export const DropBox = styled.div`
   font-size: 12px;
   line-height: 20px;
   padding: 5px 0;
+  z-index: 99;
 `;
 
 export const DropMenu = styled.div`
@@ -182,6 +183,7 @@ export const SideChat = styled.div`
 export const IconBtn = styled.button`
   cursor: pointer;
   border-radius: 6px;
+  background-color: inherit;
   :hover {
     background-color: #dfe4ea;
   }
