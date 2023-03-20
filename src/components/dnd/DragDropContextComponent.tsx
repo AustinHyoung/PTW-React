@@ -13,20 +13,18 @@ interface Props {
 }
 
 const DragDropContextComponent = ({ items }: Props) => {
-  // const onDragEnd = (result: DropResult) => {
-  //   if (!result.destination) {
-  //     return;
-  //   }
-  //   const newItems = [...items];
-  //   const [removedItem] = newItems.splice(result.source.index, 1);
-  //   newItems.splice(result.destination.index, 0, removedItem);
-  // };
-
-  console.log('dnd item ::: ', items);
+  const onDragEnd = (result: DropResult) => {
+    if (!result.destination) {
+      return;
+    }
+    const newItems = [...items];
+    const [removedItem] = newItems.splice(result.source.index, 1);
+    newItems.splice(result.destination.index, 0, removedItem);
+  };
 
   return (
     <>
-      {/* <DragDropContext onDragEnd={onDragEnd}>
+      <DragDropContext onDragEnd={onDragEnd}>
         <div style={{ display: 'flex' }}>
           {Data.map((v) => {
             return (
@@ -54,7 +52,7 @@ const DragDropContextComponent = ({ items }: Props) => {
             );
           })}
         </div>
-      </DragDropContext> */}
+      </DragDropContext>
     </>
   );
 };
