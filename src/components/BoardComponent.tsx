@@ -1,6 +1,8 @@
 import { mdiChat, mdiMenu } from '@mdi/js';
 import Icon from '@mdi/react';
+import axios from 'axios';
 import { useState } from 'react';
+import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { RootState } from 'src/reducer';
@@ -10,20 +12,26 @@ import DragDropContextComponent from './dnd/DragDropContextComponent';
 import LeftSide from './layout/LeftSide';
 import RightSide from './layout/RightSide';
 
-const ItemsData = [
-  { id: 'item1', content: '아이템1' },
-  { id: 'item2', content: '아이템2' },
-  { id: 'item3', content: '아이템3' },
-];
+interface listProps {
+  cards_list_no: number;
+  board_no: number;
+  title: string;
+}
 
 const BoardComponent = () => {
   const { id } = useParams();
-  console.log(id);
+  const fetchData = async () => {
+    const { data } = await axios.get(`http://localhost:8080/apis/cardlist/${id}`);
+    return data;
+  };
+
+  const { data } = useQuery('data', fetchData);
+  console.log(data);
+
   const [leftSide, setLeftSide] = useState(false);
   const [rightSide, setRightSide] = useState(false);
 
-  const data = useSelector((state: RootState) => state.persistedReducer.data);
-  console.log(data);
+  const info = useSelector((state: RootState) => state.persistedReducer.data);
 
   return (
     <>
@@ -44,7 +52,7 @@ const BoardComponent = () => {
           <S.FlexBox>
             {leftSide && <LeftSide />}
             <S.DndBox>
-              <DragDropContextComponent items={ItemsData} />
+              <DragDropContextComponent items={data} />
             </S.DndBox>
             {rightSide && <RightSide />}
           </S.FlexBox>
