@@ -2,7 +2,7 @@ import { mdiChat, mdiMenu } from '@mdi/js';
 import Icon from '@mdi/react';
 import axios from 'axios';
 import { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQueries, useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { RootState } from 'src/reducer';
@@ -12,26 +12,32 @@ import DragDropContextComponent from './dnd/DragDropContextComponent';
 import LeftSide from './layout/LeftSide';
 import RightSide from './layout/RightSide';
 
-interface listProps {
-  cards_list_no: number;
-  board_no: number;
-  title: string;
-}
-
 const BoardComponent = () => {
+  const info = useSelector((state: RootState) => state.persistedReducer.data);
   const { id } = useParams();
-  const fetchData = async () => {
+
+  const fetchCardsList = async () => {
     const { data } = await axios.get(`http://localhost:8080/apis/cardlist/${id}`);
     return data;
   };
 
-  const { data } = useQuery('data', fetchData);
-  console.log(data);
+  const fetchCard = async () => {
+    const { data } = await axios.get(`http://localhost:8080/apis/card/${id}`);
+    return data;
+  };
+
+  const queries = useQueries([
+    { queryKey: 'cardsList', queryFn: fetchCardsList },
+    { queryKey: 'cards', queryFn: fetchCard },
+  ]);
+
+  const [cardsList, cards] = queries.map((query) => query.data);
+
+  console.log(cardsList);
+  console.log(cards);
 
   const [leftSide, setLeftSide] = useState(false);
   const [rightSide, setRightSide] = useState(false);
-
-  const info = useSelector((state: RootState) => state.persistedReducer.data);
 
   return (
     <>
@@ -52,7 +58,7 @@ const BoardComponent = () => {
           <S.FlexBox>
             {leftSide && <LeftSide />}
             <S.DndBox>
-              <DragDropContextComponent lists={data} />
+              <DragDropContextComponent lists={cardsList} cards={cards} />
             </S.DndBox>
             {rightSide && <RightSide />}
           </S.FlexBox>

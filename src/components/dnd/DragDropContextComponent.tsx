@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
-import { List, ListProps } from './index';
+import { CardListProps } from './index';
 
 // const Data = [{ id: 'droppable-1' }, { id: 'droppable-2' }];
 
-const DragDropContextComponent = ({ lists }: ListProps) => {
+const DragDropContextComponent = ({ lists, cards }: CardListProps) => {
   // const onDragEnd = (result: DropResult) => {
   //   if (!result.destination) {
   //     return;
