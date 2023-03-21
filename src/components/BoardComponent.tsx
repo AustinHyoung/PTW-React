@@ -33,9 +33,6 @@ const BoardComponent = () => {
 
   const [cardsList, cards] = queries.map((query) => query.data);
 
-  console.log(cardsList);
-  console.log(cards);
-
   const [leftSide, setLeftSide] = useState(false);
   const [rightSide, setRightSide] = useState(false);
 

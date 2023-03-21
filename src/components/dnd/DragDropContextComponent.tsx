@@ -17,13 +17,18 @@ const DragDropContextComponent = ({ lists, cards }: CardListProps) => {
   return (
     <>
       <div style={{ display: 'flex' }}>
-        {lists?.map((item) => {
-          return (
-            <div key={item.cards_list_no} style={{ width: 100, height: 100, border: '1px solid gray', margin: 10 }}>
-              hi
-            </div>
-          );
-        })}
+        {lists?.map((list) => (
+          <div key={list.cards_list_no} style={{ width: 300, height: 500, border: '1px solid gray', margin: 10 }}>
+            <h2>{list.title}</h2>
+            {cards
+              .filter((card) => card.card_list_no === list.cards_list_no)
+              .map((card) => (
+                <div key={card.card_no} style={{ width: 230, height: 100, border: '1px solid red', margin: 5 }}>
+                  {card.contents}
+                </div>
+              ))}
+          </div>
+        ))}
       </div>
 
       {/* <DragDropContext onDragEnd={onDragEnd}>
