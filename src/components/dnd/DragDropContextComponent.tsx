@@ -1,8 +1,7 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 import { CardListProps } from './index';
-
-// const Data = [{ id: 'droppable-1' }, { id: 'droppable-2' }];
 
 const DragDropContextComponent = ({ lists, cards }: CardListProps) => {
   // const onDragEnd = (result: DropResult) => {
@@ -13,6 +12,14 @@ const DragDropContextComponent = ({ lists, cards }: CardListProps) => {
   //   const [removedItem] = newItems.splice(result.source.index, 1);
   //   newItems.splice(result.destination.index, 0, removedItem);
   // };
+
+  // const updateBtn = async () => {
+  //   try {
+  //     const response = await axios.put('http://localhost:8080/apis/card/change')
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   return (
     <>
