@@ -25,7 +25,7 @@ const fetchData = async () => {
 };
 
 const HomeComponent = () => {
-  const info = useSelector((state: RootState) => state.persistedReducer.data);
+  const info = useSelector((state: RootState) => state.info.data);
   const { data } = useQuery('data', fetchData);
   const {
     register,

@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiAccountCircle, mdiMagnify } from '@mdi/js';
 import { useSelector } from 'react-redux';
-import { RootState } from 'src/reducer';
+import { RootState } from '../../reducer';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const Header = () => {
   const dropMenuRef = useRef<HTMLDivElement | null>(null);
 
   // user info
-  const data = useSelector((state: RootState) => state.persistedReducer.data);
+  const data = useSelector((state: RootState) => state.info.data);
 
   //Dropdown 클릭, 공백 클릭
   useEffect(() => {

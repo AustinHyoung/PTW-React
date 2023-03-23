@@ -2,13 +2,13 @@ import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import * as S from '../styles/styles';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'src/reducer';
+import { RootState } from '../reducer';
 import Icon from '@mdi/react';
 import { mdiAccountCircle } from '@mdi/js';
 import axios from 'axios';
 import { useQuery } from 'react-query';
-import { setInfo } from '../reducer/storage';
-import { InfoProps } from '../reducer/storage';
+import { setInfo } from '../reducer/infoReducer';
+import { InfoProps } from '../reducer/infoReducer';
 import { Link, useNavigate } from 'react-router-dom';
 
 interface UpdateProps {
@@ -18,7 +18,7 @@ interface UpdateProps {
 
 const MyComponent = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state: RootState) => state.persistedReducer.data);
+  const data = useSelector((state: RootState) => state.info.data);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [nickVal, setNickVal] = useState<any>(data?.nickname);
   const [btnIsActive, setBtnIsActive] = useState(false);

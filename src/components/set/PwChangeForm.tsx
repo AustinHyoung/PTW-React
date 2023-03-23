@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import * as S from '../../styles/styles';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import { RootState } from 'src/reducer';
+import { RootState } from '../../reducer';
 import { useNavigate } from 'react-router-dom';
 
 interface FormValue {
@@ -15,7 +15,7 @@ interface FormValue {
 
 const PwChangeForm = () => {
   const navigate = useNavigate();
-  const data = useSelector((state: RootState) => state.persistedReducer.data);
+  const data = useSelector((state: RootState) => state.info.data);
   const {
     register,
     handleSubmit,

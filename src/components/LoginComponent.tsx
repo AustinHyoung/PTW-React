@@ -5,8 +5,8 @@ import { useQuery } from 'react-query/types/react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as S from '../styles/styles';
 import { useSelector, useDispatch } from 'react-redux';
-import { setInfo } from '../reducer/storage';
-import { InfoProps } from '../reducer/storage';
+import { setInfo } from '../reducer/infoReducer';
+import { InfoProps } from '../reducer/infoReducer';
 
 interface FormValue {
   email: string;

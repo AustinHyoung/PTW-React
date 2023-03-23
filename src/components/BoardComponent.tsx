@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useQueries, useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { RootState } from 'src/reducer';
+import { RootState } from '../reducer';
 import * as Icons from '../styles/iconStyles';
 import * as S from '../styles/styles';
 import DragDropContextComponent from './dnd/DragDropContextComponent';
@@ -13,8 +13,9 @@ import LeftSide from './layout/LeftSide';
 import RightSide from './layout/RightSide';
 
 const BoardComponent = () => {
-  const info = useSelector((state: RootState) => state.persistedReducer.data);
+  const info = useSelector((state: RootState) => state.info.data);
   const { id } = useParams();
+  console.log('info', info);
 
   const fetchCardsList = async () => {
     const { data } = await axios.get(`http://localhost:8080/apis/cardlist/${id}`);

@@ -1,8 +1,22 @@
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 import { combineReducers } from 'redux';
-import { persistedReducer } from './storage';
+import { infoReducer } from './infoReducer';
+import { listReducer } from './listReducer';
+
+const infoPersistConfig = {
+  key: 'info',
+  storage,
+};
+
+const listPersistConfig = {
+  key: 'list',
+  storage,
+};
 
 const rootReducer = combineReducers({
-  persistedReducer,
+  info: persistReducer(infoPersistConfig, infoReducer),
+  list: persistReducer(listPersistConfig, listReducer),
 });
 
 export default rootReducer;
