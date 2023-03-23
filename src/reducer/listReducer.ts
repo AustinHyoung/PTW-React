@@ -1,11 +1,11 @@
 const SET_LIST = 'storage/SET_LIST' as const;
 
-export type ListProps = {
-  email: string;
-  nickname: string;
-};
+// export type ListProps = {
+//   email: string;
+//   nickname: string;
+// };
 
-export const setList = (diff: ListProps) => ({
+export const setList = (diff: any) => ({
   type: SET_LIST,
   payload: diff,
 });
@@ -13,7 +13,7 @@ export const setList = (diff: ListProps) => ({
 type ListAction = ReturnType<typeof setList>;
 
 type ListState = {
-  data: ListProps | null;
+  data: any | null;
 };
 
 export const initialState: ListState = {

@@ -1,9 +1,17 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
+import { useDispatch } from 'react-redux';
+import { setList } from '../../reducer/listReducer';
+import { setCard } from '../../reducer/cardReducer';
 import { CardListProps } from './index';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../reducer';
 
 const DragDropContextComponent = ({ lists, cards }: CardListProps) => {
+  console.log('redux store list', lists);
+  console.log('redux store card', cards);
+
   // const onDragEnd = (result: DropResult) => {
   //   if (!result.destination) {
   //     return;

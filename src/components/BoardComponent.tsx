@@ -3,8 +3,11 @@ import Icon from '@mdi/react';
 import axios from 'axios';
 import { useState } from 'react';
 import { useQueries, useQuery } from 'react-query';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { setCard } from '../reducer/cardReducer';
+import { setList } from '../reducer/listReducer';
 import { RootState } from '../reducer';
 import * as Icons from '../styles/iconStyles';
 import * as S from '../styles/styles';
@@ -34,6 +37,16 @@ const BoardComponent = () => {
 
   const [cardsList, cards] = queries.map((query) => query.data);
 
+  console.log('cardsList', cardsList);
+  console.log('cards', cards);
+
+  const dispatch = useDispatch();
+  dispatch(setList(cardsList));
+  dispatch(setCard(cards));
+
+  const list = useSelector((state: RootState) => state.list.data);
+  const card = useSelector((state: RootState) => state.card.data);
+
   const [leftSide, setLeftSide] = useState(false);
   const [rightSide, setRightSide] = useState(false);
 
@@ -56,7 +69,7 @@ const BoardComponent = () => {
           <S.FlexBox>
             {leftSide && <LeftSide />}
             <S.DndBox>
-              <DragDropContextComponent lists={cardsList} cards={cards} />
+              <DragDropContextComponent lists={list} cards={card} />
             </S.DndBox>
             {rightSide && <RightSide />}
           </S.FlexBox>
