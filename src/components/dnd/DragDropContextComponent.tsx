@@ -7,11 +7,14 @@ import { setCard } from '../../reducer/cardReducer';
 import { CardListProps } from './index';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../reducer';
+import * as actions from '../../reducer/actions';
 
 const DragDropContextComponent = ({ lists, cards }: CardListProps) => {
-  console.log('redux store list', lists);
-  console.log('redux store card', cards);
+  const dispatch = useDispatch();
 
+  const { boards, currentBoard, board = boards[currentBoard] } = useSelector((state: RootState) => state.app);
+
+  const handleOnDragEnd = (result: DropResult) => result.destination && dispatch(actions.onDragEnd(result));
   // const onDragEnd = (result: DropResult) => {
   //   if (!result.destination) {
   //     return;
@@ -31,7 +34,7 @@ const DragDropContextComponent = ({ lists, cards }: CardListProps) => {
 
   return (
     <>
-      <div style={{ display: 'flex' }}>
+      {/* <div style={{ display: 'flex' }}>
         {lists?.map((list) => (
           <div key={list.cards_list_no} style={{ width: 300, height: 500, border: '1px solid gray', margin: 10 }}>
             <h2>{list.title}</h2>
@@ -44,7 +47,9 @@ const DragDropContextComponent = ({ lists, cards }: CardListProps) => {
               ))}
           </div>
         ))}
-      </div>
+      </div> */}
+
+      <DragDropContext onDragEnd={handleOnDragEnd}>{/* <Board id={board.id} columns={board.columns} /> */}</DragDropContext>
 
       {/* <DragDropContext onDragEnd={onDragEnd}>
         <div style={{ display: 'flex' }}>
