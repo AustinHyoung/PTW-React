@@ -8,32 +8,18 @@ import { CardListProps } from './index';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../reducer';
 import * as actions from '../../reducer/actions';
+import Board from './Board';
 
-const DragDropContextComponent = ({ lists, cards }: CardListProps) => {
+const DragDropContextComponent = () => {
   const dispatch = useDispatch();
-
   const { boards, currentBoard, board = boards[currentBoard] } = useSelector((state: RootState) => state.app);
-
   const handleOnDragEnd = (result: DropResult) => result.destination && dispatch(actions.onDragEnd(result));
-  // const onDragEnd = (result: DropResult) => {
-  //   if (!result.destination) {
-  //     return;
-  //   }
-  //   const newItems = [...items];
-  //   const [removedItem] = newItems.splice(result.source.index, 1);
-  //   newItems.splice(result.destination.index, 0, removedItem);
-  // };
-
-  // const updateBtn = async () => {
-  //   try {
-  //     const response = await axios.put('http://localhost:8080/apis/card/change')
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
 
   return (
     <>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Board id={board.id} title={null} columns={board.columns} />
+      </DragDropContext>
       {/* <div style={{ display: 'flex' }}>
         {lists?.map((list) => (
           <div key={list.cards_list_no} style={{ width: 300, height: 500, border: '1px solid gray', margin: 10 }}>
@@ -48,38 +34,6 @@ const DragDropContextComponent = ({ lists, cards }: CardListProps) => {
           </div>
         ))}
       </div> */}
-
-      <DragDropContext onDragEnd={handleOnDragEnd}>{/* <Board id={board.id} columns={board.columns} /> */}</DragDropContext>
-
-      {/* <DragDropContext onDragEnd={onDragEnd}>
-        <div style={{ display: 'flex' }}>
-          {Data.map((v) => {
-            return (
-              <Droppable droppableId={v.id}>
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps} style={{ border: '1px solid blue' }}>
-                    {items.slice(0, 2).map((item, index) => (
-                      <Draggable key={item.id} draggableId={item.id} index={index}>
-                        {(provided) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={{ border: '1px solid red' }}
-                          >
-                            {item.content}
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            );
-          })}
-        </div>
-      </DragDropContext> */}
     </>
   );
 };
