@@ -20,32 +20,32 @@ const BoardComponent = () => {
   const { id } = useParams();
   console.log('info', info);
 
-  const fetchCardsList = async () => {
-    const { data } = await axios.get(`http://localhost:8080/apis/cardlist/${id}`);
-    return data;
-  };
+  // const fetchCardsList = async () => {
+  //   const { data } = await axios.get(`http://localhost:8080/apis/cardlist/${id}`);
+  //   return data;
+  // };
 
-  const fetchCard = async () => {
-    const { data } = await axios.get(`http://localhost:8080/apis/card/${id}`);
-    return data;
-  };
+  // const fetchCard = async () => {
+  //   const { data } = await axios.get(`http://localhost:8080/apis/card/${id}`);
+  //   return data;
+  // };
 
-  const queries = useQueries([
-    { queryKey: 'cardsList', queryFn: fetchCardsList },
-    { queryKey: 'cards', queryFn: fetchCard },
-  ]);
+  // const queries = useQueries([
+  //   { queryKey: 'cardsList', queryFn: fetchCardsList },
+  //   { queryKey: 'cards', queryFn: fetchCard },
+  // ]);
 
-  const [cardsList, cards] = queries.map((query) => query.data);
+  // const [cardsList, cards] = queries.map((query) => query.data);
 
-  console.log('cardsList', cardsList);
-  console.log('cards', cards);
+  // console.log('cardsList', cardsList);
+  // console.log('cards', cards);
 
-  const dispatch = useDispatch();
-  dispatch(setList(cardsList));
-  dispatch(setCard(cards));
+  // const dispatch = useDispatch();
+  // dispatch(setList(cardsList));
+  // dispatch(setCard(cards));
 
-  const list = useSelector((state: RootState) => state.list.data);
-  const card = useSelector((state: RootState) => state.card.data);
+  // const list = useSelector((state: RootState) => state.list.data);
+  // const card = useSelector((state: RootState) => state.card.data);
 
   const [leftSide, setLeftSide] = useState(false);
   const [rightSide, setRightSide] = useState(false);
@@ -69,7 +69,7 @@ const BoardComponent = () => {
           <S.FlexBox>
             {leftSide && <LeftSide />}
             <S.DndBox>
-              <DragDropContextComponent lists={list} cards={card} />
+              <DragDropContextComponent />
             </S.DndBox>
             {rightSide && <RightSide />}
           </S.FlexBox>
