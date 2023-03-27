@@ -1,16 +1,16 @@
 import * as types from './types';
 
-export const addColumn = (payload: any) => ({
+export const addColumn = (payload: { title: string }) => ({
   type: types.ADD_COLUMN,
   payload,
 });
 
-export const editColumn = (payload: any) => ({
+export const editColumn = (payload: { title: string; columnId: string }) => ({
   type: types.EDIT_COLUMN,
   payload,
 });
 
-export const deleteColumn = (payload: any) => ({
+export const deleteColumn = (payload: { columnId: string }) => ({
   type: types.DELETE_COLUMN,
   payload,
 });
