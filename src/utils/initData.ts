@@ -6,24 +6,24 @@ export const initializeState = () => {
   return { boards: { [newBoard.id]: newBoard }, currentBoard: newBoard.id, board: newBoard };
 };
 
-export interface Column {
+export interface ColumnProps {
   id: string;
   title: string;
-  cards: Cards[];
+  cards: CardsProps[];
 }
 
-export interface Cards {
+export interface CardsProps {
   id: string;
   title: string;
 }
 
-export interface Board {
+export interface BoardProps {
   id: string;
   title: string;
-  columns: Column[];
+  columns: ColumnProps[];
 }
 
-const createBoard = (): Board => ({
+const createBoard = (): BoardProps => ({
   id: uuid(),
   title: 'Fresh Board',
   columns: [
@@ -50,12 +50,12 @@ const createBoard = (): Board => ({
   ],
 });
 
-export const createCard = (title: string): Cards => ({
+export const createCard = (title: string): CardsProps => ({
   id: uuid(),
   title,
 });
 
-export const createColumn = (title: string): Column => ({
+export const createColumn = (title: string): ColumnProps => ({
   id: uuid(),
   title,
   cards: [],
