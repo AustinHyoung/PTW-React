@@ -3,8 +3,8 @@ import { ClickAwayListener } from '@material-ui/core';
 
 interface ColumnTitleProps {
   title: string;
-  onDelete: (columnId: string) => void;
-  onEdit: (columnId: string) => void;
+  onDelete: () => void;
+  onEdit: (title: string) => void;
 }
 
 const ColumnTitle = ({ title, onDelete, onEdit, ...rest }: ColumnTitleProps) => {
@@ -54,7 +54,7 @@ const ColumnTitle = ({ title, onDelete, onEdit, ...rest }: ColumnTitleProps) => 
           </form>
         </ClickAwayListener>
       )}
-      <button onClick={() => onDelete}>삭제</button>
+      <button onClick={onDelete}>삭제</button>
     </div>
   );
 };
