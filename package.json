@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "@mdi/js": "^7.1.96",
     "@mdi/react": "^1.6.1",
     "@mui/icons-material": "^5.11.0",
