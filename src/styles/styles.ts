@@ -1,3 +1,4 @@
+import { Popover } from '@material-ui/core';
 import styled from 'styled-components';
 
 interface Login {
@@ -339,4 +340,26 @@ export const BoardItem = styled.div`
   width: 100px;
   height: 100px;
   cursor: pointer;
+`;
+
+export const StyledPopover = styled(Popover)`
+  .MuiPopver-root {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .MuiPopover-paper {
+    display: flex;
+    flex-direction: column;
+    gap: 5;
+    max-width: 400;
+  }
+`;
+
+export const CardSaveBtn = styled.button`
+  background: '#5AAC44';
+  color: #fff;
+  &:hover {
+    background: cross-fade('#5AAC44', 0.75);
+  }
+  justify-self: flex-start;
 `;
