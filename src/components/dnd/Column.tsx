@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { CardsProps } from '../../utils/initData';
 import { addCard, deleteCard, editCard } from '../../reducer/actions';
 import ColumnHeader from './ColumnHeader';
+import Card from './Card';
+import AddCard from './AddCard';
 
 interface ColumnsProps {
   id: string;
@@ -53,7 +55,11 @@ const Column = ({ id: columnId, title, cards, index, handleOnDeleteColumn, handl
             <Droppable droppableId={columnId} type="COLUMN">
               {(provided) => {
                 return (
-                  <div {...provided.droppableProps} ref={provided.innerRef} className={classes.dropabbleColumn}>
+                  <div
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                    style={{ marginTop: 5, boxSizing: 'border-box', overflowY: 'auto', width: '100%', flex: 1 }}
+                  >
                     {cards?.map((card, index) => {
                       return (
                         <Card
