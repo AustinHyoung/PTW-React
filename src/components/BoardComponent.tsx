@@ -69,7 +69,7 @@ const BoardComponent = () => {
           <S.FlexBox>
             {leftSide && <LeftSide />}
             <S.DndBox>
-              <DragDropContextComponent />
+              <DragDropContextComponent id={id} />
             </S.DndBox>
             {rightSide && <RightSide />}
           </S.FlexBox>

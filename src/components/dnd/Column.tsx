@@ -44,6 +44,7 @@ const Column = ({ id: columnId, title, cards, index, handleOnDeleteColumn, handl
               width: 250,
               margin: 2,
               padding: 2,
+              border: '2px solid skyblue',
             }}
           >
             <ColumnHeader

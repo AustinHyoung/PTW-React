@@ -1,4 +1,6 @@
+import axios from 'axios';
 import { v4 as uuid } from 'uuid';
+import { RootState } from '../reducer';
 
 export const initializeState = () => {
   const newBoard = createBoard();
@@ -60,3 +62,7 @@ export const createColumn = (title: string): ColumnProps => ({
   title,
   cards: [],
 });
+
+export const getBoardById = (state: RootState, boardId: string): BoardProps | undefined => {
+  return state.app.boards[boardId];
+};

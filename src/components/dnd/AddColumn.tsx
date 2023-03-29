@@ -13,7 +13,7 @@ const AddColumn = ({ handleOnAddColumn }: AddColumnProps) => {
   };
 
   return (
-    <div style={{ width: 250 }}>
+    <div style={{ width: 250, border: '1px solid green' }}>
       {open ? (
         // 컬럼 추가 버튼 이후 input 생성
         <div>

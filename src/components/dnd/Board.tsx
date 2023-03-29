@@ -23,10 +23,13 @@ const Board = ({ id: boardId, columns, title }: BoardProps) => {
             <div
               {...provided.droppableProps}
               ref={provided.innerRef}
-              style={{ display: 'flex', height: '100%', overflowY: 'hidden' }}
+              style={{ display: 'flex', height: '100%', overflowY: 'hidden', border: '1px solid red' }}
             >
               {columns.map(({ id: columnId, cards, title }, index) => (
-                <div style={{ height: '100%', display: 'inline-block', verticalAlign: 'top' }} key={columnId}>
+                <div
+                  style={{ height: '100%', display: 'inline-block', verticalAlign: 'top', border: '1px solid blue' }}
+                  key={columnId}
+                >
                   <Column
                     {...{
                       index,
