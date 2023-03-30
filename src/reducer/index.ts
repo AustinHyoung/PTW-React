@@ -2,23 +2,12 @@ import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import { combineReducers } from 'redux';
 import { infoReducer } from './infoReducer';
-import { listReducer } from './listReducer';
-import { cardReducer } from './cardReducer';
 import { appReducer } from './reducers';
+import storageSession from 'redux-persist/lib/storage/session';
 
 const infoPersistConfig = {
   key: 'info',
-  storage,
-};
-
-const listPersistConfig = {
-  key: 'list',
-  storage,
-};
-
-const cardPersistConfig = {
-  key: 'card',
-  storage,
+  storage: storageSession,
 };
 
 const addPersistConfig = {
@@ -28,8 +17,6 @@ const addPersistConfig = {
 
 const rootReducer = combineReducers({
   info: persistReducer(infoPersistConfig, infoReducer),
-  list: persistReducer(listPersistConfig, listReducer),
-  card: persistReducer(cardPersistConfig, cardReducer),
   app: persistReducer(addPersistConfig, appReducer),
 });
 
