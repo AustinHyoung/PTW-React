@@ -14,11 +14,31 @@ import * as S from '../styles/styles';
 import DragDropContextComponent from './dnd/DragDropContextComponent';
 import LeftSide from './layout/LeftSide';
 import RightSide from './layout/RightSide';
+import { increase, decrease, numIncrease } from '../redux/action/count-actions';
+import Counter from './Counter';
 
 const BoardComponent = () => {
   const info = useSelector((state: RootState) => state.info.data);
   const { id } = useParams();
   console.log('info', info);
+
+  // 상태 조회
+  const count = useSelector((state: RootState) => state.count.count);
+  const dispatch = useDispatch();
+  console.log(count);
+
+  // 액션 함수에 디스패치 => 업데이트
+  const onIncrease = () => {
+    dispatch(increase());
+  };
+
+  const onDecrease = () => {
+    dispatch(decrease());
+  };
+
+  const onNumIncrease = (payload: number) => {
+    dispatch(numIncrease(payload));
+  };
 
   // const fetchCardsList = async () => {
   //   const { data } = await axios.get(`http://localhost:8080/apis/cardlist/${id}`);
@@ -69,7 +89,8 @@ const BoardComponent = () => {
           <S.FlexBox>
             {leftSide && <LeftSide />}
             <S.DndBox>
-              <DragDropContextComponent id={id} />
+              {/* <DragDropContextComponent id={id} /> */}
+              <Counter count={count} onIncrease={onIncrease} onDecrease={onDecrease} onNumIncrease={onNumIncrease} />
             </S.DndBox>
             {rightSide && <RightSide />}
           </S.FlexBox>

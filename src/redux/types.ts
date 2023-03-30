@@ -10,5 +10,9 @@ export const DELETE_CARD = 'DELETE_CARD' as const;
 export const ON_DRAG_END = 'ON_DRAG_END' as const;
 
 // user info
-
 export const SET_INFO = 'user/SET_INFO' as const;
+
+//test counter
+export const INCREASE = 'counter/INCREASE' as const;
+export const DECREASE = 'counter/DECREASE' as const;
+export const NUM_INCREASE = 'counter/NUM_INCREASE' as const;

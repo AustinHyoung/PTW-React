@@ -6,13 +6,14 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { legacy_createStore as createStore } from 'redux';
+import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import rootReducer from './redux/store';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { middleWare } from './redux/middleware';
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(middleWare));
 const persistor = persistStore(store);
 const queryClient = new QueryClient();
 axios.defaults.withCredentials = true;
