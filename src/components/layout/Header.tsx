@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiAccountCircle, mdiMagnify } from '@mdi/js';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../reducer';
+import { RootState } from '../../redux/store';
 
 const Header = () => {
   const navigate = useNavigate();

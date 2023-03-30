@@ -1,8 +1,8 @@
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import { combineReducers } from 'redux';
-import { infoReducer } from './infoReducer';
-import { appReducer } from './reducers';
+import { infoReducer } from './reducer/infoReducer';
+import { appReducer } from './reducer/reducers';
 import storageSession from 'redux-persist/lib/storage/session';
 
 const infoPersistConfig = {

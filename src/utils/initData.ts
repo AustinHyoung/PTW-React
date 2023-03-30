@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
-import { RootState } from '../reducer';
+import { RootState } from '../redux/store';
 
 export const initializeState = () => {
   const newBoard = createBoard();

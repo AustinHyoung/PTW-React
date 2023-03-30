@@ -1,6 +1,6 @@
-import * as utils from '../utils/initData';
-import * as types from './types';
-import * as actions from './actions';
+import * as utils from '../../utils/initData';
+import * as types from '../types';
+import * as actions from '../action/actions';
 
 const initialState = utils.initializeState();
 

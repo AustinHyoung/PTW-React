@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { legacy_createStore as createStore } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
-import rootReducer from './reducer';
+import rootReducer from './redux/store';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 const store = createStore(rootReducer);

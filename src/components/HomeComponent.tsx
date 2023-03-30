@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { RootState } from '../reducer';
+import { RootState } from '../redux/store';
 import * as S from '../styles/styles';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';

@@ -1,5 +1,5 @@
-import * as types from './types';
-import { CardsProps } from '../utils/initData';
+import * as types from '../types';
+import { CardsProps } from '../../utils/initData';
 
 export const addColumn = (payload: { title: string }) => ({
   type: types.ADD_COLUMN,

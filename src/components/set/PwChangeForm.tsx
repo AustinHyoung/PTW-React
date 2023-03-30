@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import * as S from '../../styles/styles';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../reducer';
+import { RootState } from '../../redux/store';
 import { useNavigate } from 'react-router-dom';
 
 interface FormValue {

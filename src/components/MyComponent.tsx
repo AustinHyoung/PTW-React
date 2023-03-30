@@ -2,13 +2,12 @@ import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import * as S from '../styles/styles';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../reducer';
+import { RootState } from '../redux/store';
 import Icon from '@mdi/react';
 import { mdiAccountCircle } from '@mdi/js';
 import axios from 'axios';
 import { useQuery } from 'react-query';
-import { setInfo } from '../reducer/infoReducer';
-import { InfoProps } from '../reducer/infoReducer';
+import { setInfo, InfoProps } from '../redux/action/info-actions';
 import { Link, useNavigate } from 'react-router-dom';
 
 interface UpdateProps {
