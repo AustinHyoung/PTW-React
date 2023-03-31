@@ -17,7 +17,7 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
   const param = {
     count: store.getState().count.count,
   };
-  putCount(param);
+  //putCount(param);
   console.log(param);
   console.groupEnd(); //그룹 끝
 };

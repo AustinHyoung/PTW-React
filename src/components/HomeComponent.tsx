@@ -2,13 +2,15 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RootState } from '../redux/store';
 import * as S from '../styles/styles';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import DefaultModal from './modal/DefaultModal';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { initCount } from '../redux/action/count-actions';
 
 interface listProps {
   board_no: number;
@@ -26,6 +28,8 @@ const fetchData = async () => {
 
 const HomeComponent = () => {
   const info = useSelector((state: RootState) => state.info.data);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { data } = useQuery('data', fetchData);
   const {
     register,
@@ -47,7 +51,22 @@ const HomeComponent = () => {
 
   const doCreateBoard = async (param: FormValue) => {
     try {
-      await axios.get('http://localhost:8080/apis/create/board', { params: param });
+      const response = await axios.get('http://localhost:8080/apis/create/board', { params: param });
+      console.log(response.data);
+
+      dispatch(initCount(response.data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const boardRouter = async (board_no: number) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/apis/board/data/${board_no}`);
+      console.log(response);
+      dispatch(initCount(response.data.count));
+
+      navigate(`/board/${board_no}`);
     } catch (err) {
       console.log(err);
     }
@@ -101,9 +120,12 @@ const HomeComponent = () => {
         >
           {data?.map((item: listProps) => {
             return (
-              <Link to={`/board/${item.board_no}`} key={item.board_no}>
+              // <Link to={`/board/${item.board_no}`} key={item.board_no}>
+              //   <S.BoardItem>{item.title}</S.BoardItem>
+              // </Link>
+              <div onClick={() => boardRouter(item.board_no)} key={item.board_no}>
                 <S.BoardItem>{item.title}</S.BoardItem>
-              </Link>
+              </div>
             );
           })}
           <S.BoardItem onClick={() => setModalIsOpen(true)}>+ 새로 만들기</S.BoardItem>
