@@ -1,6 +1,11 @@
 import * as types from '../types';
 
 // 액션 함수 생성
+export const initCount = (payload: number) => ({
+  type: types.INITCOUNT,
+  payload: payload,
+});
+
 export const increase = () => ({
   type: types.INCREASE,
 });
@@ -15,4 +20,8 @@ export const numIncrease = (payload: number) => ({
 });
 
 // 리듀서에서 적용할 액션 타입
-export type CounterAction = ReturnType<typeof increase> | ReturnType<typeof decrease> | ReturnType<typeof numIncrease>;
+export type CounterAction =
+  | ReturnType<typeof increase>
+  | ReturnType<typeof decrease>
+  | ReturnType<typeof numIncrease>
+  | ReturnType<typeof initCount>;
