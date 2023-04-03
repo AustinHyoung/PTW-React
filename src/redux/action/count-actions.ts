@@ -6,8 +6,12 @@ export const initCount = (payload: number) => ({
   payload: payload,
 });
 
-export const increase = () => ({
+export const increase = (payload: types.PathPayload) => ({
   type: types.INCREASE,
+  payload: {
+    id: payload.id,
+    payload: payload.payload,
+  },
 });
 
 export const decrease = () => ({

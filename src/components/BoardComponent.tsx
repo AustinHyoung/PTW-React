@@ -16,6 +16,7 @@ import LeftSide from './layout/LeftSide';
 import RightSide from './layout/RightSide';
 import { increase, decrease, numIncrease } from '../redux/action/count-actions';
 import Counter from './Counter';
+import { PathPayload } from '../redux/types';
 
 const BoardComponent = () => {
   const info = useSelector((state: RootState) => state.info.data);
@@ -28,8 +29,8 @@ const BoardComponent = () => {
   console.log(count);
 
   // 액션 함수에 디스패치 => 업데이트
-  const onIncrease = () => {
-    dispatch(increase());
+  const onIncrease = ({ id }: PathPayload) => {
+    dispatch(increase({ id }));
   };
 
   const onDecrease = () => {
@@ -90,7 +91,12 @@ const BoardComponent = () => {
             {leftSide && <LeftSide />}
             <S.DndBox>
               {/* <DragDropContextComponent id={id} /> */}
-              <Counter count={count} onIncrease={onIncrease} onDecrease={onDecrease} onNumIncrease={onNumIncrease} />
+              <Counter
+                count={count}
+                onIncrease={() => onIncrease({ id: id })}
+                onDecrease={onDecrease}
+                onNumIncrease={onNumIncrease}
+              />
             </S.DndBox>
             {rightSide && <RightSide />}
           </S.FlexBox>

@@ -12,14 +12,18 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
   console.log('액션', action);
   next(action);
   console.log('다음 상태', store.getState());
-  const path = store.getState().path;
-  console.log('path', path);
-  const param = {
-    count: store.getState().count.count,
-  };
-  //putCount(param);
-  console.log(param);
   console.groupEnd(); //그룹 끝
+
+  switch (action.type) {
+    case types.INCREASE:
+      const param = {
+        board_no: Number(action.payload?.id),
+        count: store.getState().count.count,
+      };
+
+      console.log('param', param);
+      putCount(param);
+  }
 };
 
 const putCount = async (param: any) => {
