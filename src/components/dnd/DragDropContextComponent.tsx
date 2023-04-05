@@ -24,8 +24,6 @@ const DragDropContextComponent = (props: Props) => {
 
   //const board = useSelector((state: RootState) => getBoardById(state, id));
 
-  //console.log('useBoard Func', board);
-
   const handleOnDragEnd = (result: DropResult) => result.destination && dispatch(actions.onDragEnd(result));
 
   return (

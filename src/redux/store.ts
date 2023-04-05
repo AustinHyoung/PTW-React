@@ -18,7 +18,7 @@ const countPersistConfig = {
 
 const addPersistConfig = {
   key: 'app',
-  storage,
+  storage: storage,
 };
 
 const rootReducer = combineReducers({
