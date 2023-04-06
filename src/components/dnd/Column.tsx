@@ -1,7 +1,7 @@
 import React from 'react';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
-import { CardsProps } from '../../utils/initData';
+import { CardsProps } from '../../redux/types';
 import { addCard, deleteCard, editCard } from '../../redux/action/actions';
 import ColumnHeader from './ColumnHeader';
 import Card from './Card';

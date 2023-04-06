@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CardsProps } from '../../utils/initData';
+import { CardsProps } from '../../redux/types';
 import * as S from '../../styles/styles';
 
 interface EditCardProps {

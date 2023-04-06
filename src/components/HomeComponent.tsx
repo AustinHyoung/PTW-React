@@ -11,6 +11,7 @@ import DefaultModal from './modal/DefaultModal';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { initCount } from '../redux/action/count-actions';
+import { initBoard } from '../redux/action/actions';
 
 interface listProps {
   board_no: number;
@@ -65,7 +66,7 @@ const HomeComponent = () => {
       });
 
       console.log(response);
-
+      //dispatch(initBoard(response.data));
       //dispatch(initCount(response.data.count));
 
       navigate(`/board/${board_no}`);

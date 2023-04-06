@@ -2,7 +2,7 @@ import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { addColumn, deleteColumn, editColumn } from '../../redux/action/actions';
-import { BoardProps } from '../../utils/initData';
+import { BoardProps } from '../../redux/types';
 import Column from './Column';
 import AddColumn from './AddColumn';
 

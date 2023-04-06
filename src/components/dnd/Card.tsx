@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { CardsProps } from '../../utils/initData';
+import { CardsProps } from '../../redux/types';
 import EditCard from './EditCard';
 
 interface CardProps {
