@@ -66,7 +66,7 @@ const HomeComponent = () => {
       });
 
       console.log(response);
-      //dispatch(initBoard(response.data));
+      dispatch(initBoard(response.data));
       //dispatch(initCount(response.data.count));
 
       navigate(`/board/${board_no}`);

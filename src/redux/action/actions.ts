@@ -1,7 +1,7 @@
 import * as types from '../types';
-import { CardsProps, BoardProps } from '../types';
+import { CardsProps, BoardsProps } from '../types';
 
-export const initBoard = (payload: BoardProps) => ({
+export const initBoard = (payload: BoardsProps) => ({
   type: types.INIT_BOARD,
   payload: payload,
 });
