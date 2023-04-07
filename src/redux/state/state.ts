@@ -13,6 +13,7 @@ export const initialState: BoardState = {
       {
         cards_list_no: 0,
         title: '',
+        position: -1,
         card: [
           {
             card_no: 0,
