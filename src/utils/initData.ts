@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
 import { RootState } from '../redux/store';
-import { ColumnProps, CardsProps, BoardProps } from '../redux/types';
+import { ColumnProps, CardsProps, BoardProps, CardProps, CardsListProps } from '../redux/types';
 
 export const initializeState = () => {
   const newBoard = createBoard();
@@ -47,7 +47,21 @@ export const createColumn = (title: string): ColumnProps => ({
   cards: [],
 });
 
+///////////////////////////////////////////////////////////////
+
+export const createCards = (contents: string): CardProps => ({
+  card_no: null,
+  contents,
+});
+
+export const createColumns = (title: string): CardsListProps => ({
+  cards_list_no: null,
+  title,
+  position: null,
+  card: [],
+});
+
 ////////
-export const getBoardById = (state: RootState, boardId: string): BoardProps | undefined => {
-  return state.app.boards[boardId];
-};
+// export const getBoardById = (state: RootState, boardId: string): BoardProps | undefined => {
+//   return state.app.boards[boardId];
+// };
