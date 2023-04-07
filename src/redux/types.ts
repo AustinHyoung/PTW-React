@@ -48,13 +48,14 @@ export interface BoardProps {
 
 /// //// ///
 export interface CardsListProps {
-  cards_list_no: number;
+  cards_list_no: number | null;
   title: string;
+  position: number;
   card: CardProps[];
 }
 
 export interface CardProps {
-  card_no: number;
+  card_no: number | null;
   contents: string;
 }
 
