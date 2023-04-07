@@ -10,7 +10,6 @@ import { RootState } from '../../redux/store';
 import * as actions from '../../redux/action/actions';
 import Board from './Board';
 import { useParams } from 'react-router';
-import { getBoardById } from '../../utils/initData';
 
 interface Props {
   id: string;
@@ -20,17 +19,18 @@ const DragDropContextComponent = (props: Props) => {
   const { id } = props;
 
   const dispatch = useDispatch();
-  const { boards, currentBoard, board = boards[currentBoard] } = useSelector((state: RootState) => state.app);
+  //const { boards, currentBoard, board = boards[currentBoard] } = useSelector((state: RootState) => state.app);
 
-  //const board = useSelector((state: RootState) => getBoardById(state, id));
+  const board = useSelector((state: RootState) => state.test.data);
+  console.log('dnd board', board);
 
   const handleOnDragEnd = (result: DropResult) => result.destination && dispatch(actions.onDragEnd(result));
 
   return (
     <>
-      {/* <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Board id={board.id} title={null} columns={board.columns} />
-      </DragDropContext> */}
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Board boardNo={board.board_no} title={null} cardsList={board.cards_list} />
+      </DragDropContext>
       {/* <div style={{ display: 'flex' }}>
         {lists?.map((list) => (
           <div key={list.cards_list_no} style={{ width: 300, height: 500, border: '1px solid gray', margin: 10 }}>

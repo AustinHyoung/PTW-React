@@ -2,22 +2,33 @@ import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { addColumn, deleteColumn, editColumn } from '../../redux/action/actions';
-import { BoardProps } from '../../redux/types';
+import { CardsListProps } from '../../redux/types';
 import Column from './Column';
 import AddColumn from './AddColumn';
 
-const Board = ({ id: boardId, columns, title }: BoardProps) => {
+interface Props {
+  boardNo: number;
+  title: string;
+  cardsList: CardsListProps[];
+}
+
+const Board = ({ boardNo, cardsList, title }: Props) => {
   const dispatch = useDispatch();
 
-  const handleOnAddColumn = (title: string) => dispatch(addColumn({ title }));
+  console.log(boardNo, cardsList, title);
 
-  const handleOnDeleteColumn = (columnId: string) => () => dispatch(deleteColumn({ columnId }));
+  // dnd의 id는 string만 됨
+  const strBoardNo = String(boardNo);
 
-  const handleOnEditColumn = (columnId: string) => (title: string) => dispatch(editColumn({ title, columnId }));
+  const handleOnAddColumn = (title: string) => dispatch(addColumn(title));
+
+  const handleOnDeleteColumn = (boardNo: number) => () => dispatch(deleteColumn(boardNo));
+
+  const handleOnEditColumn = (boardNo: number) => (title: string) => dispatch(editColumn(boardNo, title));
 
   return (
     <>
-      <Droppable droppableId={boardId} type="BOARD" direction="horizontal">
+      <Droppable droppableId={strBoardNo} type="BOARD" direction="horizontal">
         {(provided) => {
           return (
             <div
@@ -25,21 +36,21 @@ const Board = ({ id: boardId, columns, title }: BoardProps) => {
               ref={provided.innerRef}
               style={{ display: 'flex', height: '100%', overflowY: 'hidden', border: '1px solid red' }}
             >
-              {columns.map(({ id: columnId, cards, title }, index) => (
+              {cardsList.map(({ cards_list_no, title, card, position }) => (
                 <div
                   style={{ height: '100%', display: 'inline-block', verticalAlign: 'top', border: '1px solid blue' }}
-                  key={columnId}
+                  key={cards_list_no}
                 >
                   <Column
                     {...{
-                      index,
-                      id: columnId,
-                      cards,
+                      position,
+                      cards_list_no,
+                      card,
                       title,
-                      handleOnDeleteColumn: handleOnDeleteColumn(columnId),
-                      handleOnEditColumn: handleOnEditColumn(columnId),
+                      handleOnDeleteColumn: handleOnDeleteColumn(cards_list_no),
+                      handleOnEditColumn: handleOnEditColumn(cards_list_no),
                     }}
-                    key={columnId}
+                    key={cards_list_no}
                   />
                 </div>
               ))}

@@ -1,32 +1,34 @@
 import React from 'react';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
-import { CardsProps } from '../../redux/types';
+import { CardProps } from '../../redux/types';
 import { addCard, deleteCard, editCard } from '../../redux/action/actions';
 import ColumnHeader from './ColumnHeader';
 import Card from './Card';
 import AddCard from './AddCard';
 
-interface ColumnsProps {
-  id: string;
+interface Props {
+  cards_list_no: number;
   title: string;
-  cards: CardsProps[];
-  index: number;
+  card: CardProps[];
+  position: number;
   handleOnDeleteColumn: () => void;
   handleOnEditColumn: (title: string) => void;
 }
 
-const Column = ({ id: columnId, title, cards, index, handleOnDeleteColumn, handleOnEditColumn }: ColumnsProps) => {
+const Column = ({ cards_list_no, title, card, position, handleOnDeleteColumn, handleOnEditColumn }: Props) => {
   const dispatch = useDispatch();
+  // dnd의 id는 string만 됨
+  const strCardsListNo = String(cards_list_no);
 
-  const handleOnAddCard = (columnId: string) => (title: string) => dispatch(addCard({ title, columnId }));
+  //const handleOnAddCard = (cards_list_no: number) => (title: string) => dispatch(addCard({ title, columnId }));
 
-  const handleOnDeleteCard = (columnId: string) => (cardId: string) => dispatch(deleteCard({ columnId, cardId }));
+  //const handleOnDeleteCard = (cards_list_no: number) => (cardId: string) => dispatch(deleteCard({ columnId, cardId }));
 
-  const handleOnEditCard = (columnId: string) => (newCard: CardsProps) => dispatch(editCard({ columnId, newCard }));
+  //const handleOnEditCard = (cards_list_no: number) => (newCard: CardProps) => dispatch(editCard({ columnId, newCard }));
 
   return (
-    <Draggable draggableId={columnId} index={index}>
+    <Draggable draggableId={strCardsListNo} index={position}>
       {(provided) => {
         return (
           <div
@@ -42,8 +44,6 @@ const Column = ({ id: columnId, title, cards, index, handleOnDeleteColumn, handl
               boxSizing: 'border-box',
               maxWidth: 250,
               width: 250,
-              margin: 2,
-              padding: 2,
               border: '2px solid skyblue',
             }}
           >
@@ -53,7 +53,7 @@ const Column = ({ id: columnId, title, cards, index, handleOnDeleteColumn, handl
               onDelete={handleOnDeleteColumn}
               onEdit={handleOnEditColumn}
             />
-            <Droppable droppableId={columnId} type="COLUMN">
+            {/* <Droppable droppableId={strCardsListNo} type="COLUMN">
               {(provided) => {
                 return (
                   <div
@@ -61,25 +61,26 @@ const Column = ({ id: columnId, title, cards, index, handleOnDeleteColumn, handl
                     ref={provided.innerRef}
                     style={{ marginTop: 5, boxSizing: 'border-box', overflowY: 'auto', width: '100%', flex: 1 }}
                   >
-                    {cards?.map((card, index) => {
+                    {card?.map((cards, index) => {
                       return (
-                        <Card
-                          {...{
-                            card,
-                            index,
-                            onDelete: handleOnDeleteCard(columnId),
-                            onSave: handleOnEditCard(columnId),
-                          }}
-                          key={card.id}
-                        />
+                        // <Card
+                        //   {...{
+                        //     cards,
+                        //     index,
+                        //     onDelete: handleOnDeleteCard(cards_list_no),
+                        //     onSave: handleOnEditCard(cards_list_no),
+                        //   }}
+                        //   key={cards.card_no}
+                        // />
+                        <div>123123</div>
                       );
                     })}
                     {provided.placeholder}
                   </div>
                 );
               }}
-            </Droppable>
-            <AddCard handleOnAddCard={handleOnAddCard(columnId)} />
+            </Droppable> */}
+            {/* <AddCard handleOnAddCard={handleOnAddCard(cards_list_no)} /> */}
           </div>
         );
       }}
