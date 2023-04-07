@@ -2,7 +2,7 @@ import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import { combineReducers } from 'redux';
 import { infoReducer } from './reducer/infoReducer';
-import { appReducer, testReducer } from './reducer/reducers';
+import { testReducer } from './reducer/reducers';
 import storageSession from 'redux-persist/lib/storage/session';
 import { counter } from './reducer/countReducer';
 
@@ -29,7 +29,7 @@ const newPersistConfig = {
 const rootReducer = combineReducers({
   info: persistReducer(infoPersistConfig, infoReducer),
   count: persistReducer(countPersistConfig, counter),
-  app: persistReducer(addPersistConfig, appReducer),
+  //app: persistReducer(addPersistConfig, appReducer),
   test: persistReducer(newPersistConfig, testReducer),
 });
 

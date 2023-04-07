@@ -6,19 +6,19 @@ export const initBoard = (payload: BoardsProps) => ({
   payload: payload,
 });
 
-export const addColumn = (payload: { title: string }) => ({
+export const addColumn = (title: string) => ({
   type: types.ADD_COLUMN,
-  payload,
+  payload: title,
 });
 
-export const editColumn = (payload: { title: string; columnId: string }) => ({
+export const editColumn = (boardNo: number, title: string) => ({
   type: types.EDIT_COLUMN,
-  payload,
+  payload: { boardNo, title },
 });
 
-export const deleteColumn = (payload: { columnId: string }) => ({
+export const deleteColumn = (boardNo: number) => ({
   type: types.DELETE_COLUMN,
-  payload,
+  payload: boardNo,
 });
 
 export const onDragEnd = (payload: any) => ({
