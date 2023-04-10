@@ -11,12 +11,12 @@ interface Props {
   cards_list_no: number;
   title: string;
   card: CardProps[];
-  position: number;
+  list_order: number;
   handleOnDeleteColumn: () => void;
   handleOnEditColumn: (title: string) => void;
 }
 
-const Column = ({ cards_list_no, title, card, position, handleOnDeleteColumn, handleOnEditColumn }: Props) => {
+const Column = ({ cards_list_no, title, card, list_order, handleOnDeleteColumn, handleOnEditColumn }: Props) => {
   const dispatch = useDispatch();
   // dnd의 id는 string만 됨
   const strCardsListNo = String(cards_list_no);
@@ -28,7 +28,7 @@ const Column = ({ cards_list_no, title, card, position, handleOnDeleteColumn, ha
   //const handleOnEditCard = (cards_list_no: number) => (newCard: CardProps) => dispatch(editCard({ columnId, newCard }));
 
   return (
-    <Draggable draggableId={strCardsListNo} index={position}>
+    <Draggable draggableId={strCardsListNo} index={list_order}>
       {(provided) => {
         return (
           <div

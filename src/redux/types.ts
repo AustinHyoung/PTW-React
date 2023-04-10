@@ -50,7 +50,7 @@ export interface BoardProps {
 export interface CardsListProps {
   cards_list_no: number | null;
   title: string;
-  position: number;
+  list_order: number;
   card: CardProps[];
 }
 

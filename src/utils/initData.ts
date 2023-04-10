@@ -57,7 +57,7 @@ export const createCards = (contents: string): CardProps => ({
 export const createColumns = (title: string): CardsListProps => ({
   cards_list_no: null,
   title,
-  position: null,
+  list_order: null,
   card: [],
 });
 

@@ -36,14 +36,14 @@ const Board = ({ boardNo, cardsList, title }: Props) => {
               ref={provided.innerRef}
               style={{ display: 'flex', height: '100%', overflowY: 'hidden', border: '1px solid red' }}
             >
-              {cardsList.map(({ cards_list_no, title, card, position }) => (
+              {cardsList.map(({ cards_list_no, title, card, list_order }) => (
                 <div
                   style={{ height: '100%', display: 'inline-block', verticalAlign: 'top', border: '1px solid blue' }}
                   key={cards_list_no}
                 >
                   <Column
                     {...{
-                      position,
+                      list_order,
                       cards_list_no,
                       card,
                       title,
