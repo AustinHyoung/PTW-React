@@ -42,6 +42,7 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
       dragEndAPI(dragEndParam)
         .then((response) => {
           store.dispatch(initBoard(response.data));
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);

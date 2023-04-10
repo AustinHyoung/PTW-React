@@ -65,7 +65,7 @@ const HomeComponent = () => {
         params: { board_no: board_no, title: title },
       });
 
-      console.log('boardRouter::::::', response);
+      console.log(response);
       dispatch(initBoard(response.data));
       //dispatch(initCount(response.data.count));
 
