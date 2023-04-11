@@ -31,20 +31,6 @@ const DragDropContextComponent = (props: Props) => {
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Board boardNo={board.board_no} title={null} cardsList={board.cards_list} />
       </DragDropContext>
-      {/* <div style={{ display: 'flex' }}>
-        {lists?.map((list) => (
-          <div key={list.cards_list_no} style={{ width: 300, height: 500, border: '1px solid gray', margin: 10 }}>
-            <h2>{list.title}</h2>
-            {cards
-              ?.filter((card) => card.card_list_no === list.cards_list_no)
-              .map((card) => (
-                <div key={card.card_no} style={{ width: 230, height: 100, border: '1px solid red', margin: 5 }}>
-                  {card.contents}
-                </div>
-              ))}
-          </div>
-        ))}
-      </div> */}
     </>
   );
 };

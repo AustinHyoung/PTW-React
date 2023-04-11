@@ -5,6 +5,7 @@ import { addColumn, deleteColumn, editColumn } from '../../redux/action/actions'
 import { CardsListProps } from '../../redux/types';
 import Column from './Column';
 import AddColumn from './AddColumn';
+import * as S from '../../styles/styles';
 
 interface Props {
   boardNo: number;
@@ -31,20 +32,13 @@ const Board = ({ boardNo, cardsList, title }: Props) => {
       <Droppable droppableId={strBoardNo} type="BOARD" direction="horizontal">
         {(provided) => {
           return (
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              style={{ display: 'flex', height: '100%', overflowY: 'hidden', border: '1px solid red' }}
-            >
+            <S.DroppableBoard {...provided.droppableProps} ref={provided.innerRef}>
               {cardsList.map(({ cards_list_no, title, card, list_order }) => (
-                <div
-                  style={{ height: '100%', display: 'inline-block', verticalAlign: 'top', border: '1px solid blue' }}
-                  key={cards_list_no}
-                >
+                <S.CardsListSpace key={cards_list_no}>
                   <Column
                     {...{
-                      list_order,
-                      cards_list_no,
+                      listOrder: list_order,
+                      cardsListNo: cards_list_no,
                       card,
                       title,
                       handleOnDeleteColumn: handleOnDeleteColumn(cards_list_no),
@@ -52,13 +46,13 @@ const Board = ({ boardNo, cardsList, title }: Props) => {
                     }}
                     key={cards_list_no}
                   />
-                </div>
+                </S.CardsListSpace>
               ))}
               {provided.placeholder}
-              <div>
+              <S.AddColumnSpace>
                 <AddColumn handleOnAddColumn={handleOnAddColumn} />
-              </div>
-            </div>
+              </S.AddColumnSpace>
+            </S.DroppableBoard>
           );
         }}
       </Droppable>

@@ -1,5 +1,5 @@
 import * as types from '../types';
-import { CardsProps, BoardsProps } from '../types';
+import { CardsProps, BoardsProps, CardProps } from '../types';
 
 export const initBoard = (payload: BoardsProps) => ({
   type: types.INIT_BOARD,
@@ -26,19 +26,19 @@ export const onDragEnd = (payload: any) => ({
   payload,
 });
 
-export const addCard = (payload: { title: string; columnId: string }) => ({
+export const addCard = (title: string, cardsListNo: number) => ({
   type: types.ADD_CARD,
-  payload,
+  payload: { title, cardsListNo },
 });
 
-export const deleteCard = (payload: { columnId: string; cardId: string }) => ({
+export const deleteCard = (cardsListNo: number, cardNo: number) => ({
   type: types.DELETE_CARD,
-  payload,
+  payload: { cardsListNo, cardNo },
 });
 
-export const editCard = (payload: { columnId: string; newCard: CardsProps }) => ({
+export const editCard = (cardsListNo: number, newCard: CardProps) => ({
   type: types.EDIT_CARD,
-  payload,
+  payload: { cardsListNo, newCard },
 });
 
 /////////////////////////////////////

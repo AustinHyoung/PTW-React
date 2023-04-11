@@ -1,47 +1,45 @@
 import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { CardsProps } from '../../redux/types';
+import { CardProps } from '../../redux/types';
 import EditCard from './EditCard';
+import * as S from '../../styles/styles';
 
-interface CardProps {
-  card: CardsProps;
-  index: number;
-  onDelete: (cardId: string) => void;
-  onSave: (newCard: CardsProps) => void;
+interface Props {
+  cards: CardProps;
+  onDelete: (cardNo: number) => void;
+  onSave: (newCard: CardProps) => void;
 }
 
-const Card = ({ card, index, onDelete, onSave }: CardProps) => {
+const Card = ({ cards, onDelete, onSave }: Props) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleOnDelete = () => onDelete(card.id);
+  const strCardNo = String(cards.card_no);
+
+  const handleOnDelete = () => onDelete(cards.card_no);
 
   const handleOpenEdit = (e: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget);
 
   const handleCloseEdit = () => setAnchorEl(null);
 
-  const handleOnSave = (newCard: CardsProps) => {
+  const handleOnSave = (newCard: CardProps) => {
     setAnchorEl(null);
     onSave(newCard);
   };
   return (
     <>
-      <Draggable draggableId={card.id} index={index}>
+      <Draggable draggableId={strCardNo} index={cards.card_order}>
         {(provided, snapshot) => {
           return (
-            <div
+            <S.DraggableCard
               ref={provided.innerRef}
               {...provided.draggableProps}
               {...provided.dragHandleProps}
               style={{
                 ...provided.draggableProps.style,
-                height: 'auto',
-                background: 'ivory',
-                textAlign: 'left',
-                marginBottom: 5,
               }}
             >
               <div style={{ boxSizing: 'border-box', display: 'flex', padding: 5 }}>
-                <div style={{ flex: 1, wordBreak: 'break-all', whiteSpace: 'normal' }}>{card.title}</div>
+                <div style={{ flex: 1, wordBreak: 'break-all', whiteSpace: 'normal' }}>{cards.contents}</div>
                 <div>
                   <div style={{ display: 'flex', gap: 3 }}>
                     <button onClick={handleOpenEdit}>수정</button>
@@ -49,11 +47,11 @@ const Card = ({ card, index, onDelete, onSave }: CardProps) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </S.DraggableCard>
           );
         }}
       </Draggable>
-      {anchorEl && <EditCard anchorEl={anchorEl} onClose={handleCloseEdit} card={card} onSave={handleOnSave} />}
+      {/* {anchorEl && <EditCard anchorEl={anchorEl} onClose={handleCloseEdit} card={card} onSave={handleOnSave} />} */}
     </>
   );
 };
