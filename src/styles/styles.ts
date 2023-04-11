@@ -363,3 +363,47 @@ export const CardSaveBtn = styled.button`
   }
   justify-self: flex-start;
 `;
+
+export const DroppableBoard = styled.div`
+  display: flex;
+  height: 100%;
+  overflow-y: hidden;
+`;
+
+export const CardsListSpace = styled.div`
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+`;
+
+export const AddColumnSpace = styled.div`
+  margin-left: 4px;
+`;
+
+export const DraggableColumn = styled.div`
+  background-color: #e3e3e3;
+  position: relative;
+  display: inline-flex;
+  max-height: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 250px;
+  width: 250px;
+  margin: 0 4px;
+  padding: 8px;
+`;
+
+export const DroppableColumn = styled.div`
+  margin-top: 5px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  width: 100%;
+  flex: 1;
+`;
+
+export const DraggableCard = styled.div`
+  height: auto;
+  background-color: ivory;
+  text-align: left;
+  margin-bottom: 5px;
+`;
