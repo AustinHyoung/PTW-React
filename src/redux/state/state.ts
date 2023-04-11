@@ -18,6 +18,7 @@ export const initialState: BoardState = {
           {
             card_no: 0,
             contents: '',
+            card_order: -1,
           },
         ],
       },

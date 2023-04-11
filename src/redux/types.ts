@@ -57,6 +57,7 @@ export interface CardsListProps {
 export interface CardProps {
   card_no: number | null;
   contents: string;
+  card_order: number;
 }
 
 export interface BoardsProps {
