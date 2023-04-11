@@ -144,16 +144,15 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
       else if (type === 'COLUMN') {
         // DIFFERENT COLUMNS
         if (source.droppableId !== destination.droppableId) {
-          const sourceCards = board.cards_list.find((col) => col.cards_list_no === destination.droppableId).card;
-          const destinationCards = board.cards_list.find((col) => col.cards_list_no === destination.droppableId).card;
-
+          const sourceCards = board.cards_list.find((col) => col.cards_list_no === Number(source.droppableId)).card;
+          const destinationCards = board.cards_list.find((col) => col.cards_list_no === Number(destination.droppableId)).card;
           const [removed] = sourceCards.splice(source.index, 1);
           destinationCards.splice(destination.index, 0, removed);
           return { ...state };
         }
         // SAME COLUMN
         else {
-          const columnCards = board.cards_list.find((col) => col.cards_list_no === source.droppableId)?.card;
+          const columnCards = board.cards_list.find((col) => col.cards_list_no === Number(source.droppableId)).card;
           const [moved] = columnCards.splice(source.index, 1);
           columnCards.splice(destination.index, 0, moved);
           return { ...state };
