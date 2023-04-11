@@ -35,6 +35,7 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
     case types.ON_DRAG_END:
       const dragEndParam = {
         board_no: Number(store.getState().test.data.board_no),
+        title: store.getState().test.data.title,
         lists_order: listOrder,
       };
       console.log(dragEndParam);
