@@ -52,6 +52,7 @@ export const createColumn = (title: string): ColumnProps => ({
 export const createCards = (contents: string): CardProps => ({
   card_no: null,
   contents,
+  card_order: null,
 });
 
 export const createColumns = (title: string): CardsListProps => ({
