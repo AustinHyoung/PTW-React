@@ -23,45 +23,56 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
   console.groupEnd(); //그룹 끝
 
   switch (action.type) {
-    case types.INCREASE:
-      const param = {
-        board_no: Number(action.payload?.id),
-        count: store.getState().count.count,
-      };
-
-      console.log('param', param);
-      putCount(param);
-
     case types.ON_DRAG_END:
-      const dragEndParam = {
-        board_no: Number(store.getState().test.data.board_no),
-        title: store.getState().test.data.title,
-        lists_order: listOrder,
-      };
-      console.log(dragEndParam);
+      const { destination, source, type, draggableId } = action.payload;
+      console.log(destination, source, type, draggableId);
 
-      dragEndAPI(dragEndParam)
-        .then((response) => {
-          store.dispatch(initBoard(response.data));
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      if (type === 'BOARD') {
+        const dragEndBoardParam = {
+          board_no: Number(store.getState().test.data.board_no),
+          title: store.getState().test.data.title,
+          lists_order: listOrder,
+        };
+
+        dragEndBoardAPI(dragEndBoardParam)
+          .then((response) => {
+            store.dispatch(initBoard(response.data));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else if (type === 'COLUMN') {
+        if (source.droppableId !== destination.droppableId) {
+          const dragEndColumnPram = {
+            board_no: Number(store.getState().test.data.board_no),
+            title: store.getState().test.data.title,
+            source_card_list_no: Number(source.droppableId),
+            source_card_order: source.index,
+            destination_card_list_no: Number(destination.droppableId),
+            destination_card_order: destination.index,
+            card_no: Number(draggableId),
+          };
+
+          console.log(dragEndColumnPram);
+
+          dragEndColumnAPI(dragEndColumnPram)
+            .then((response) => {
+              store.dispatch(initBoard(response.data));
+              console.log('dispath 완');
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+        }
+      }
   }
 };
 
-//var board_no = 0;
-
-const putCount = async (param: any) => {
-  try {
-    const response = await axios.put('http://localhost:8080/apis/put/count', param);
-    console.log('response', response.data.msg);
-  } catch (err) {
-    console.log(err);
-  }
+const dragEndBoardAPI = async (param: any) => {
+  return await axios.put('http://localhost:8080/apis/set/position', param);
 };
 
-const dragEndAPI = async (param: any) => {
-  return axios.put('http://localhost:8080/apis/set/position', param);
+const dragEndColumnAPI = async (param: any) => {
+  return await axios.put('http://localhost:8080/apis/set/card/position', param);
 };

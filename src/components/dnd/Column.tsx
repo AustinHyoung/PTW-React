@@ -49,12 +49,12 @@ const Column = ({ cardsListNo, title, card, listOrder, handleOnDeleteColumn, han
               {(provided) => {
                 return (
                   <S.DroppableColumn {...provided.droppableProps} ref={provided.innerRef}>
-                    {card?.map((cards) => {
+                    {card?.map((cards, index) => {
                       return (
                         <Card
                           {...{
                             cards,
-
+                            index,
                             onDelete: handleOnDeleteCard(cardsListNo),
                             onSave: handleOnEditCard(cardsListNo),
                           }}

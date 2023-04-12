@@ -6,11 +6,12 @@ import * as S from '../../styles/styles';
 
 interface Props {
   cards: CardProps;
+  index: number;
   onDelete: (cardNo: number) => void;
   onSave: (newCard: CardProps) => void;
 }
 
-const Card = ({ cards, onDelete, onSave }: Props) => {
+const Card = ({ cards, onDelete, onSave, index }: Props) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const strCardNo = String(cards.card_no);
@@ -27,7 +28,7 @@ const Card = ({ cards, onDelete, onSave }: Props) => {
   };
   return (
     <>
-      <Draggable draggableId={strCardNo} index={cards.card_order}>
+      <Draggable draggableId={strCardNo} index={index}>
         {(provided, snapshot) => {
           return (
             <S.DraggableCard
