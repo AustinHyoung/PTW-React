@@ -172,7 +172,7 @@ export const MyInfo = styled.div`
 export const SideMenu = styled.div`
   width: 250px;
   background-color: #dfe4ea;
-  padding: 6px;
+  padding: 4px;
 `;
 
 export const SideChat = styled.div`
@@ -406,4 +406,12 @@ export const DraggableCard = styled.div`
   background-color: ivory;
   text-align: left;
   margin-bottom: 5px;
+`;
+
+export const BoardDelete = styled.div`
+  border-radius: 4px;
+  padding: 10px;
+  :hover {
+    background-color: #b4c3d4;
+  }
 `;
