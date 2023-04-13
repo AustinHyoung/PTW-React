@@ -4,12 +4,14 @@ import DefaultModal from '../modal/DefaultModal';
 import Icon from '@mdi/react';
 import { mdiClose } from '@mdi/js';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const LeftSide = () => {
   // content, modal open boolean, outside click close
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
+  const { id } = useParams();
+  console.log('sidemenu paramid', id);
 
   const outsideClose = () => {
     setModalIsOpen(false);
@@ -52,9 +54,12 @@ const LeftSide = () => {
     console.log('삭제');
 
     try {
-      const response = await axios.delete('http://localhost:8080/apis/delete/board');
+      const response = await axios.delete(`http://localhost:8080/apis/delete/board/${id}`);
       console.log(response);
-      navigate('/', { replace: true });
+
+      if (response.data.code === 200) {
+        navigate('/', { replace: true });
+      }
     } catch (err) {
       console.log(err);
     }
