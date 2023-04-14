@@ -129,7 +129,7 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
     }
     case types.ON_DRAG_END: {
       const { destination, source, type } = action.payload;
-      console.log(action.payload);
+      console.log('action.payload::', action.payload);
       const board = state.data;
 
       // DROP TYPE BOARD

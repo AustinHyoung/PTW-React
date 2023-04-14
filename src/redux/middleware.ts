@@ -18,8 +18,6 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
     return { list_order: item.list_order, change_list_order: index };
   });
 
-  console.log('list_order', listOrder);
-
   console.groupEnd(); //그룹 끝
 
   switch (action.type) {
@@ -42,28 +40,32 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
             console.log(error);
           });
       } else if (type === 'COLUMN') {
+        const dragEndColumnParam = {
+          board_no: Number(store.getState().test.data.board_no),
+          title: store.getState().test.data.title,
+          source_card_list_no: Number(source.droppableId),
+          source_card_order: source.index,
+          destination_card_list_no: Number(destination.droppableId),
+          destination_card_order: destination.index,
+          card_no: Number(draggableId),
+        };
+
         if (source.droppableId !== destination.droppableId) {
-          const dragEndColumnPram = {
-            board_no: Number(store.getState().test.data.board_no),
-            title: store.getState().test.data.title,
-            source_card_list_no: Number(source.droppableId),
-            source_card_order: source.index,
-            destination_card_list_no: Number(destination.droppableId),
-            destination_card_order: destination.index,
-            card_no: Number(draggableId),
-          };
-
-          console.log(dragEndColumnPram);
-
-          dragEndColumnAPI(dragEndColumnPram)
+          dragEndColumnAPI(dragEndColumnParam)
             .then((response) => {
               store.dispatch(initBoard(response.data));
-              console.log('dispath 완');
             })
             .catch((error) => {
               console.log(error);
             });
         } else {
+          dragEndSameColumnAPI(dragEndColumnParam)
+            .then((response) => {
+              store.dispatch(initBoard(response.data));
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }
       }
   }
@@ -75,4 +77,8 @@ const dragEndBoardAPI = async (param: any) => {
 
 const dragEndColumnAPI = async (param: any) => {
   return await axios.put('http://localhost:8080/apis/set/card/position', param);
+};
+
+const dragEndSameColumnAPI = async (param: any) => {
+  return await axios.put('http://localhost:8080/apis/set/card/same/position', param);
 };
