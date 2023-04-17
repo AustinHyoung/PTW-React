@@ -18,6 +18,9 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
     return { list_order: item.list_order, change_list_order: index };
   });
 
+  const cardsListArray = store.getState().test.data.cards_list.map((list: any) => list.list_order);
+  const maxCardsListOrder = Math.max(...cardsListArray);
+
   console.groupEnd(); //그룹 끝
 
   switch (action.type) {
@@ -68,6 +71,22 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
             });
         }
       }
+    case types.ADD_COLUMN: {
+      const addColumnParam = {
+        board_no: Number(store.getState().test.data.board_no),
+        board_title: store.getState().test.data.title,
+        title: action.payload,
+        list_order: maxCardsListOrder + 1,
+      };
+      addColumnAPI(addColumnParam)
+        .then((response) => {
+          console.log('addcolumn response', response);
+          store.dispatch(initBoard(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 };
 
@@ -81,4 +100,8 @@ const dragEndColumnAPI = async (param: any) => {
 
 const dragEndSameColumnAPI = async (param: any) => {
   return await axios.put('http://localhost:8080/apis/set/card/same/position', param);
+};
+
+const addColumnAPI = async (param: any) => {
+  return await axios.post('http://localhost:8080/apis/add/cardslist', param);
 };

@@ -172,10 +172,9 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
     }
 
     case types.ADD_COLUMN: {
-      const { title } = action.payload;
-      const board = state.data;
-      const newColumn = utils.createColumns(title);
-      board.cards_list.push(newColumn);
+      // const board = state.data;
+      // const newColumn = utils.createColumns(action.payload);
+      // board.cards_list.push(newColumn);
 
       return { ...state };
     }
