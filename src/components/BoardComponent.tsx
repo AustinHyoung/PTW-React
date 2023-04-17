@@ -53,9 +53,9 @@ const BoardComponent = () => {
               </S.IconBtn>
             </div>
             <div>
-              <S.IconBtn onClick={() => setRightSide((rightSide) => !rightSide)}>
+              {/* <S.IconBtn onClick={() => setRightSide((rightSide) => !rightSide)}>
                 <Icons.ChatIcon path={mdiChat} size={1} />
-              </S.IconBtn>
+              </S.IconBtn> */}
             </div>
           </S.BoardHeader>
           <S.FlexBox>
@@ -69,7 +69,7 @@ const BoardComponent = () => {
                 onNumIncrease={onNumIncrease}
               /> */}
             </S.DndBox>
-            {rightSide && <RightSide />}
+            {/* {rightSide && <RightSide />} */}
           </S.FlexBox>
         </S.MainDisplay>
       </S.MainDisplay>

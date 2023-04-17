@@ -14,21 +14,18 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
   next(action);
   console.log('다음 상태', store.getState().test.data);
 
-  const listOrder = store.getState().test.data.cards_list.map((item: any, index: number) => {
-    return { list_order: item.list_order, change_list_order: index };
-  });
-
-  const cardsListArray = store.getState().test.data.cards_list.map((list: any) => list.list_order);
-  const maxCardsListOrder = Math.max(...cardsListArray);
-
   console.groupEnd(); //그룹 끝
 
   switch (action.type) {
-    case types.ON_DRAG_END:
+    case types.ON_DRAG_END: {
       const { destination, source, type, draggableId } = action.payload;
       console.log(destination, source, type, draggableId);
 
       if (type === 'BOARD') {
+        const listOrder = store.getState().test.data.cards_list.map((item: any, index: number) => {
+          return { list_order: item.list_order, change_list_order: index };
+        });
+
         const dragEndBoardParam = {
           board_no: Number(store.getState().test.data.board_no),
           title: store.getState().test.data.title,
@@ -71,7 +68,11 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
             });
         }
       }
+      break;
+    }
     case types.ADD_COLUMN: {
+      const cardsListArray = store.getState().test.data.cards_list.map((list: any) => list.list_order);
+      const maxCardsListOrder = Math.max(...cardsListArray);
       const addColumnParam = {
         board_no: Number(store.getState().test.data.board_no),
         board_title: store.getState().test.data.title,
@@ -86,6 +87,10 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
+      break;
+    }
+    default: {
+      next(action);
     }
   }
 };
