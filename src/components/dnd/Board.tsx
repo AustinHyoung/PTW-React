@@ -23,9 +23,9 @@ const Board = ({ boardNo, cardsList, title }: Props) => {
 
   const handleOnAddColumn = (title: string) => dispatch(addColumn(title));
 
-  const handleOnDeleteColumn = (boardNo: number) => () => dispatch(deleteColumn(boardNo));
+  const handleOnDeleteColumn = (cardListNo: number) => () => dispatch(deleteColumn(cardListNo));
 
-  const handleOnEditColumn = (boardNo: number) => (title: string) => dispatch(editColumn(boardNo, title));
+  const handleOnEditColumn = (cardListNo: number) => (title: string) => dispatch(editColumn(cardListNo, title));
 
   return (
     <>
