@@ -89,6 +89,22 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
         });
       break;
     }
+    case types.EDIT_COLUMN: {
+      const editColumnParam = {
+        board_no: Number(store.getState().test.data.board_no),
+        cards_list_no: action.payload.cardListNo,
+        board_title: store.getState().test.data.title,
+        title: action.payload.title,
+      };
+
+      editColumnAPI(editColumnParam)
+        .then((response) => {
+          store.dispatch(initBoard(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
     default: {
       next(action);
     }
@@ -109,4 +125,8 @@ const dragEndSameColumnAPI = async (param: any) => {
 
 const addColumnAPI = async (param: any) => {
   return await axios.post('http://localhost:8080/apis/add/cardslist', param);
+};
+
+const editColumnAPI = async (param: any) => {
+  return await axios.put('http://localhost:8080/apis/edit/cardslist', param);
 };

@@ -161,15 +161,6 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
 
       return { ...state };
     }
-    case types.ADD_CARD: {
-      const { contents, columnId } = action.payload;
-      const board = state.data;
-      const column = board.cards_list.find((col) => col.cards_list_no === columnId);
-      const newCard = utils.createCards(contents);
-
-      column.card.push(newCard);
-      return { ...state };
-    }
 
     case types.ADD_COLUMN: {
       // const board = state.data;
@@ -193,6 +184,16 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
       column.title = title;
       console.log('edit column ::::', column);
 
+      return { ...state };
+    }
+
+    case types.ADD_CARD: {
+      const { contents, columnId } = action.payload;
+      const board = state.data;
+      const column = board.cards_list.find((col) => col.cards_list_no === columnId);
+      const newCard = utils.createCards(contents);
+
+      column.card.push(newCard);
       return { ...state };
     }
     case types.DELETE_CARD: {
