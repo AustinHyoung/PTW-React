@@ -11,14 +11,14 @@ export const addColumn = (title: string) => ({
   payload: title,
 });
 
-export const editColumn = (boardNo: number, title: string) => ({
+export const editColumn = (cardListNo: number, title: string) => ({
   type: types.EDIT_COLUMN,
-  payload: { boardNo, title },
+  payload: { cardListNo, title },
 });
 
-export const deleteColumn = (boardNo: number) => ({
+export const deleteColumn = (cardListNo: number) => ({
   type: types.DELETE_COLUMN,
-  payload: boardNo,
+  payload: cardListNo,
 });
 
 export const onDragEnd = (payload: any) => ({
