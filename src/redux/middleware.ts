@@ -105,6 +105,23 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
           console.log(error);
         });
     }
+    case types.DELETE_COLUMN: {
+      const deleteColumnParam = {
+        board_no: Number(store.getState().test.data.board_no),
+        cards_list_no: action.payload.cardListNo,
+        board_title: store.getState().test.data.title,
+        list_order: action.payload.listOrder,
+      };
+
+      deleteColumnAPI(deleteColumnParam)
+        .then((response) => {
+          console.log(response);
+          store.dispatch(initBoard(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
     default: {
       next(action);
     }
@@ -129,4 +146,8 @@ const addColumnAPI = async (param: any) => {
 
 const editColumnAPI = async (param: any) => {
   return await axios.put('http://localhost:8080/apis/edit/cardslist', param);
+};
+
+const deleteColumnAPI = async (param: any) => {
+  return await axios.delete('http://localhost:8080/apis/delete/cardslist', { data: param });
 };

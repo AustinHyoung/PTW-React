@@ -16,9 +16,9 @@ export const editColumn = (cardListNo: number, title: string) => ({
   payload: { cardListNo, title },
 });
 
-export const deleteColumn = (cardListNo: number) => ({
+export const deleteColumn = (cardListNo: number, listOrder: number) => ({
   type: types.DELETE_COLUMN,
-  payload: cardListNo,
+  payload: { cardListNo, listOrder },
 });
 
 export const onDragEnd = (payload: any) => ({

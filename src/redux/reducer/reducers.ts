@@ -170,9 +170,11 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
       return { ...state };
     }
     case types.DELETE_COLUMN: {
-      const { columnId } = action.payload;
+      const { cardListNo } = action.payload;
+      console.log('deletecardlistno::::', cardListNo);
       const board = state.data;
-      const newColumns = board.cards_list.filter((col) => col.cards_list_no !== columnId);
+      const newColumns = board.cards_list.filter((col) => col.cards_list_no !== cardListNo);
+      console.log('deleteCOlumns:::', newColumns);
       board.cards_list = newColumns;
 
       return { ...state };
@@ -182,7 +184,6 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
       const board = state.data;
       const column = board.cards_list.find((col) => col.cards_list_no === cardListNo);
       column.title = title;
-      console.log('edit column ::::', column);
 
       return { ...state };
     }

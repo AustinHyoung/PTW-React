@@ -13,7 +13,7 @@ interface Props {
   title: string;
   card: CardProps[];
   listOrder: number;
-  handleOnDeleteColumn: () => void;
+  handleOnDeleteColumn: (listOrder: number) => void;
   handleOnEditColumn: (title: string) => void;
 }
 
@@ -44,6 +44,7 @@ const Column = ({ cardsListNo, title, card, listOrder, handleOnDeleteColumn, han
               title={title}
               onDelete={handleOnDeleteColumn}
               onEdit={handleOnEditColumn}
+              listOrder={listOrder}
             />
             <Droppable droppableId={strCardsListNo} type="COLUMN">
               {(provided) => {
