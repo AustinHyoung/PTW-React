@@ -42,22 +42,47 @@ const RegistComponent = () => {
   return (
     <S.LoginDisplay backgroundColor="#fff">
       <S.LoginBox style={{ height: 550 }} onSubmit={handleSubmit(onSubmitHandler)}>
-        <S.IntroTitle>Plan The Work</S.IntroTitle>
+        <S.IntroTitle>ProTrack</S.IntroTitle>
         <S.IntroSubTitle>회원이 되어 사용해 보세요!</S.IntroSubTitle>
 
-        <S.LoginInput type="text" placeholder="이메일" {...register('email', { required: true, pattern: /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/ })} />
-        <S.LoginInput type="text" placeholder="이름" {...register('name', { required: true, pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z|]+$/ })} />
+        <S.LoginInput
+          type="text"
+          placeholder="이메일"
+          {...register('email', {
+            required: true,
+            pattern: /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/,
+          })}
+        />
+        <S.LoginInput
+          type="text"
+          placeholder="이름"
+          {...register('name', { required: true, pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z|]+$/ })}
+        />
         <S.ErrText style={{ color: 'black' }}>문자만 가능해요!</S.ErrText>
-        <S.LoginInput type="text" placeholder="닉네임" {...register('nickname', { required: true, pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/ })} />
+        <S.LoginInput
+          type="text"
+          placeholder="닉네임"
+          {...register('nickname', { required: true, pattern: /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/ })}
+        />
         <S.ErrText style={{ color: 'black' }}>문자와 숫자만 가능해요!</S.ErrText>
-        <S.LoginInput type="password" placeholder="비밀번호" {...register('password', { required: true, pattern: /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/ })} />
+        <S.LoginInput
+          type="password"
+          placeholder="비밀번호"
+          {...register('password', { required: true, pattern: /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/ })}
+        />
         <S.ErrText style={{ color: 'black' }}>대문자, 특수문자, 숫자 한 자씩 포함해 주세요</S.ErrText>
         <S.LoginInput
           type="password"
           placeholder="비밀번호 확인"
-          {...register('passwordConfirm', { required: true, validate: (value) => value === passwordRef.current, pattern: /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/ })}
+          {...register('passwordConfirm', {
+            required: true,
+            validate: (value) => value === passwordRef.current,
+            pattern: /(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
+          })}
         />
-        {errors.passwordConfirm && errors.passwordConfirm.type === 'validate' ? <S.ErrText>비밀번호를 다시 확인해 주세요</S.ErrText> : null}
+        {errors.passwordConfirm && errors.passwordConfirm.type === 'validate' ? (
+          <S.ErrText>비밀번호를 다시 확인해 주세요</S.ErrText>
+        ) : null}
 
         <S.LoginBtn>회원가입</S.LoginBtn>
         <S.EctBox>

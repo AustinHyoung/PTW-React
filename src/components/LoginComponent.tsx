@@ -62,7 +62,7 @@ const LoginComponent = () => {
   return (
     <S.LoginDisplay backgroundColor="#fff">
       <S.LoginBox onSubmit={handleSubmit(onSubmitHandler)}>
-        <S.IntroTitle>Plan The Work</S.IntroTitle>
+        <S.IntroTitle>ProTrack</S.IntroTitle>
         <S.IntroSubTitle>자신의 업무 진행도를 관리해보세요!</S.IntroSubTitle>
         <S.LoginInput
           type="text"

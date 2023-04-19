@@ -47,7 +47,7 @@ const PwChangeForm = () => {
   return (
     <S.LoginDisplay backgroundColor="">
       <S.DefaultForm onSubmit={handleSubmit(onSubmitHandler)}>
-        <h2 style={{ textAlign: 'center' }}>Plan The Work</h2>
+        <h2 style={{ textAlign: 'center' }}>ProTrack</h2>
         <div>
           <div style={{ lineHeight: 2 }}>현재 비밀번호</div>
           <S.SetInput type="password" {...register('password', { required: true })} />

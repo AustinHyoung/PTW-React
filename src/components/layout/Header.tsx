@@ -51,7 +51,7 @@ const Header = () => {
       <S.HeaderBox>
         <S.LeftContents>
           <li onClick={() => navigate('/', { replace: true })} style={{ cursor: 'default', fontSize: 24 }}>
-            Plan The Work
+            ProTrack
           </li>
         </S.LeftContents>
         <S.RightContents>
