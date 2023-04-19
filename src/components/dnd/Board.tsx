@@ -16,8 +16,6 @@ interface Props {
 const Board = ({ boardNo, cardsList, title }: Props) => {
   const dispatch = useDispatch();
 
-  console.log(boardNo, cardsList, title);
-
   // dnd의 id는 string만 됨
   const strBoardNo = String(boardNo);
 
@@ -29,14 +27,15 @@ const Board = ({ boardNo, cardsList, title }: Props) => {
 
   return (
     <>
-      <Droppable droppableId={strBoardNo} type="BOARD" direction="horizontal">
+      <Droppable droppableId={'Board-' + strBoardNo} type="BOARD" direction="horizontal">
         {(provided) => {
           return (
             <S.DroppableBoard {...provided.droppableProps} ref={provided.innerRef}>
-              {cardsList.map(({ cards_list_no, title, card, list_order }) => (
+              {cardsList.map(({ cards_list_no, title, card, list_order }, index) => (
                 <S.CardsListSpace key={cards_list_no}>
                   <Column
                     {...{
+                      index,
                       listOrder: list_order,
                       cardsListNo: cards_list_no,
                       card,

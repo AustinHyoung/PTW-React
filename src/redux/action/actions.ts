@@ -26,9 +26,9 @@ export const onDragEnd = (payload: any) => ({
   payload,
 });
 
-export const addCard = (title: string, cardsListNo: number) => ({
+export const addCard = (contents: string, cardsListNo: number) => ({
   type: types.ADD_CARD,
-  payload: { title, cardsListNo },
+  payload: { contents, cardsListNo },
 });
 
 export const deleteCard = (cardsListNo: number, cardNo: number) => ({

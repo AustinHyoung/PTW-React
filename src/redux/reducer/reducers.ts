@@ -129,7 +129,6 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
     }
     case types.ON_DRAG_END: {
       const { destination, source, type } = action.payload;
-      console.log('action.payload::', action.payload);
       const board = state.data;
 
       // DROP TYPE BOARD
@@ -143,16 +142,21 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
       // DROP TYPE COLUMN
       else if (type === 'COLUMN') {
         // DIFFERENT COLUMNS
+        const sourceDroppableIdArr = source.droppableId.split('-');
+        const destinationDroppableIdArr = destination.droppableId.split('-');
+
         if (source.droppableId !== destination.droppableId) {
-          const sourceCards = board.cards_list.find((col) => col.cards_list_no === Number(source.droppableId)).card;
-          const destinationCards = board.cards_list.find((col) => col.cards_list_no === Number(destination.droppableId)).card;
+          const sourceCards = board.cards_list.find((col) => col.cards_list_no === Number(sourceDroppableIdArr[1])).card;
+          const destinationCards = board.cards_list.find(
+            (col) => col.cards_list_no === Number(destinationDroppableIdArr[1]),
+          ).card;
           const [removed] = sourceCards.splice(source.index, 1);
           destinationCards.splice(destination.index, 0, removed);
           return { ...state };
         }
         // SAME COLUMN
         else {
-          const columnCards = board.cards_list.find((col) => col.cards_list_no === Number(source.droppableId)).card;
+          const columnCards = board.cards_list.find((col) => col.cards_list_no === Number(sourceDroppableIdArr[1])).card;
           const [moved] = columnCards.splice(source.index, 1);
           columnCards.splice(destination.index, 0, moved);
           return { ...state };
@@ -171,10 +175,8 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
     }
     case types.DELETE_COLUMN: {
       const { cardListNo } = action.payload;
-      console.log('deletecardlistno::::', cardListNo);
       const board = state.data;
       const newColumns = board.cards_list.filter((col) => col.cards_list_no !== cardListNo);
-      console.log('deleteCOlumns:::', newColumns);
       board.cards_list = newColumns;
 
       return { ...state };
@@ -189,12 +191,12 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
     }
 
     case types.ADD_CARD: {
-      const { contents, columnId } = action.payload;
+      const { contents, cardsListNo } = action.payload;
       const board = state.data;
-      const column = board.cards_list.find((col) => col.cards_list_no === columnId);
-      const newCard = utils.createCards(contents);
+      const column = board.cards_list.find((col) => col.cards_list_no === cardsListNo);
+      // const newCard = utils.createCards(contents);
 
-      column.card.push(newCard);
+      // column.card.push(newCard);
       return { ...state };
     }
     case types.DELETE_CARD: {

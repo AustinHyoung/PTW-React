@@ -3,12 +3,13 @@ import { ClickAwayListener } from '@material-ui/core';
 
 interface ColumnTitleProps {
   title: string;
+  index: number;
   listOrder: number;
   onDelete: (listOrder: number) => void;
   onEdit: (title: string) => void;
 }
 
-const ColumnTitle = ({ title, listOrder, onDelete, onEdit, ...rest }: ColumnTitleProps) => {
+const ColumnTitle = ({ title, listOrder, index, onDelete, onEdit, ...rest }: ColumnTitleProps) => {
   const [isInputOpen, setIsInputOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
@@ -55,7 +56,7 @@ const ColumnTitle = ({ title, listOrder, onDelete, onEdit, ...rest }: ColumnTitl
           </form>
         </ClickAwayListener>
       )}
-      <button onClick={() => onDelete(listOrder)}>삭제</button>
+      <button onClick={() => onDelete(index)}>삭제</button>
     </div>
   );
 };

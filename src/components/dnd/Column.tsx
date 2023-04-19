@@ -13,23 +13,24 @@ interface Props {
   title: string;
   card: CardProps[];
   listOrder: number;
+  index: number;
   handleOnDeleteColumn: (listOrder: number) => void;
   handleOnEditColumn: (title: string) => void;
 }
 
-const Column = ({ cardsListNo, title, card, listOrder, handleOnDeleteColumn, handleOnEditColumn }: Props) => {
+const Column = ({ cardsListNo, title, card, listOrder, index, handleOnDeleteColumn, handleOnEditColumn }: Props) => {
   const dispatch = useDispatch();
   // dnd의 id는 string만 됨
   const strCardsListNo = String(cardsListNo);
 
-  const handleOnAddCard = (cardsListNo: number) => (title: string) => dispatch(addCard(title, cardsListNo));
+  const handleOnAddCard = (cardsListNo: number) => (contents: string) => dispatch(addCard(contents, cardsListNo));
 
   const handleOnDeleteCard = (cardsListNo: number) => (cardNo: number) => dispatch(deleteCard(cardsListNo, cardNo));
 
   const handleOnEditCard = (cardsListNo: number) => (newCard: CardProps) => dispatch(editCard(cardsListNo, newCard));
 
   return (
-    <Draggable draggableId={strCardsListNo} index={listOrder}>
+    <Draggable draggableId={'Column-' + strCardsListNo} index={index}>
       {(provided) => {
         return (
           <S.DraggableColumn
@@ -45,8 +46,9 @@ const Column = ({ cardsListNo, title, card, listOrder, handleOnDeleteColumn, han
               onDelete={handleOnDeleteColumn}
               onEdit={handleOnEditColumn}
               listOrder={listOrder}
+              index={index}
             />
-            <Droppable droppableId={strCardsListNo} type="COLUMN">
+            <Droppable droppableId={'Column-' + strCardsListNo} type="COLUMN">
               {(provided) => {
                 return (
                   <S.DroppableColumn {...provided.droppableProps} ref={provided.innerRef}>

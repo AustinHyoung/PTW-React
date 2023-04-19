@@ -28,7 +28,7 @@ const Card = ({ cards, onDelete, onSave, index }: Props) => {
   };
   return (
     <>
-      <Draggable draggableId={strCardNo} index={index}>
+      <Draggable draggableId={'Card-' + strCardNo} index={index}>
         {(provided, snapshot) => {
           return (
             <S.DraggableCard

@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import InputCard from './InputCard';
 
 interface AddCardProps {
-  handleOnAddCard: (title: string) => void;
+  handleOnAddCard: (contents: string) => void;
 }
 
 const AddCard = ({ handleOnAddCard }: AddCardProps) => {
   const [open, setOpen] = useState(false);
 
-  const handleOnConfirm = (title: string) => {
-    handleOnAddCard(title);
+  const handleOnConfirm = (contents: string) => {
+    handleOnAddCard(contents);
   };
 
   return (

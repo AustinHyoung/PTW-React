@@ -5,31 +5,23 @@ import { matchPath, useLocation } from 'react-router-dom';
 import { initBoard } from './action/actions';
 
 export const middleWare: Middleware = (store) => (next) => (action) => {
-  //action 타입으로 log를 그룹화함
-  //다음 미들웨어 혹은 리듀서에게 전달
-  console.log('default');
-  console.group(action && action.type);
-  console.log('이전 상태', store.getState());
-  console.log('액션', action);
   next(action);
-  console.log('다음 상태', store.getState().test.data);
-
-  console.groupEnd(); //그룹 끝
 
   switch (action.type) {
     case types.ON_DRAG_END: {
       const { destination, source, type, draggableId } = action.payload;
-      console.log(destination, source, type, draggableId);
+
+      const draggableIdArr = draggableId.split('-');
+      const sourceDroppableIdArr = source.droppableId.split('-');
+      const destinationDroppableIdArr = destination.droppableId.split('-');
 
       if (type === 'BOARD') {
-        const listOrder = store.getState().test.data.cards_list.map((item: any, index: number) => {
-          return { list_order: item.list_order, change_list_order: index };
-        });
-
         const dragEndBoardParam = {
           board_no: Number(store.getState().test.data.board_no),
           title: store.getState().test.data.title,
-          lists_order: listOrder,
+          source_list_order: source.index,
+          destination_list_order: destination.index,
+          cards_list_no: Number(draggableIdArr[1]),
         };
 
         dragEndBoardAPI(dragEndBoardParam)
@@ -43,11 +35,11 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
         const dragEndColumnParam = {
           board_no: Number(store.getState().test.data.board_no),
           title: store.getState().test.data.title,
-          source_card_list_no: Number(source.droppableId),
+          source_card_list_no: Number(sourceDroppableIdArr[1]),
           source_card_order: source.index,
-          destination_card_list_no: Number(destination.droppableId),
+          destination_card_list_no: Number(destinationDroppableIdArr[1]),
           destination_card_order: destination.index,
-          card_no: Number(draggableId),
+          card_no: Number(draggableIdArr[1]),
         };
 
         if (source.droppableId !== destination.droppableId) {
@@ -72,7 +64,14 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
     }
     case types.ADD_COLUMN: {
       const cardsListArray = store.getState().test.data.cards_list.map((list: any) => list.list_order);
-      const maxCardsListOrder = Math.max(...cardsListArray);
+
+      let maxCardsListOrder;
+      if (cardsListArray.length === 0) {
+        maxCardsListOrder = 0;
+      } else {
+        maxCardsListOrder = Math.max(...cardsListArray);
+      }
+
       const addColumnParam = {
         board_no: Number(store.getState().test.data.board_no),
         board_title: store.getState().test.data.title,
@@ -104,6 +103,7 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
+      break;
     }
     case types.DELETE_COLUMN: {
       const deleteColumnParam = {
@@ -121,13 +121,47 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
+      break;
     }
+    case types.ADD_CARD: {
+      const column = store.getState().test.data.cards_list.find((col: any) => col.cards_list_no === action.payload.cardsListNo);
+      const cardArray = column.card.map((card: any) => card.card_order);
+
+      let maxCardOrder;
+      if (cardArray.length === 0) {
+        maxCardOrder = 0;
+      } else {
+        maxCardOrder = Math.max(...cardArray);
+      }
+
+      const addCardParam = {
+        board_no: Number(store.getState().test.data.board_no),
+        card_list_no: action.payload.cardsListNo,
+        board_title: store.getState().test.data.title,
+        card_order: maxCardOrder + 1,
+        contents: action.payload.contents,
+      };
+
+      addCardAPI(addCardParam)
+        .then((response) => {
+          store.dispatch(initBoard(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    }
+    // case types.EDIT_CARD: {
+    // }
+    // case types.DELETE_CARD: {
+    // }
     default: {
       next(action);
     }
   }
 };
 
+// drag & drop
 const dragEndBoardAPI = async (param: any) => {
   return await axios.put('http://localhost:8080/apis/set/position', param);
 };
@@ -140,6 +174,7 @@ const dragEndSameColumnAPI = async (param: any) => {
   return await axios.put('http://localhost:8080/apis/set/card/same/position', param);
 };
 
+// cardsList
 const addColumnAPI = async (param: any) => {
   return await axios.post('http://localhost:8080/apis/add/cardslist', param);
 };
@@ -150,4 +185,17 @@ const editColumnAPI = async (param: any) => {
 
 const deleteColumnAPI = async (param: any) => {
   return await axios.delete('http://localhost:8080/apis/delete/cardslist', { data: param });
+};
+
+// card
+const addCardAPI = async (param: any) => {
+  return await axios.post('http://localhost:8080/apis/add/card', param);
+};
+
+const editCardAPI = async (param: any) => {
+  return await axios.put('http://localhost:8080/apis/edit/card', param);
+};
+
+const deleteCardAPI = async (param: any) => {
+  return await axios.delete('http://localhost:8080/apis/delete/card', { data: param });
 };

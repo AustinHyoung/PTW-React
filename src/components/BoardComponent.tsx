@@ -21,24 +21,6 @@ import { PathPayload } from '../redux/types';
 const BoardComponent = () => {
   const { id } = useParams();
 
-  // // 상태 조회
-  // const count = useSelector((state: RootState) => state.count.count);
-  // const dispatch = useDispatch();
-  // console.log(count);
-
-  // // 액션 함수에 디스패치 => 업데이트
-  // const onIncrease = ({ id }: PathPayload) => {
-  //   dispatch(increase({ id }));
-  // };
-
-  // const onDecrease = () => {
-  //   dispatch(decrease());
-  // };
-
-  // const onNumIncrease = (payload: number) => {
-  //   dispatch(numIncrease(payload));
-  // };
-
   const [leftSide, setLeftSide] = useState(false);
   const [rightSide, setRightSide] = useState(false);
 
