@@ -52,7 +52,7 @@ const Card = ({ cards, onDelete, onSave, index }: Props) => {
           );
         }}
       </Draggable>
-      {/* {anchorEl && <EditCard anchorEl={anchorEl} onClose={handleCloseEdit} card={card} onSave={handleOnSave} />} */}
+      {anchorEl && <EditCard anchorEl={anchorEl} onClose={handleCloseEdit} cards={cards} onSave={handleOnSave} />}
     </>
   );
 };

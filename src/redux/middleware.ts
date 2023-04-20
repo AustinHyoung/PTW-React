@@ -151,10 +151,27 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
         });
       break;
     }
-    // case types.EDIT_CARD: {
-    // }
-    // case types.DELETE_CARD: {
-    // }
+    case types.EDIT_CARD: {
+      const editCardParam = {
+        board_no: Number(store.getState().test.data.board_no),
+        board_title: store.getState().test.data.title,
+        card_no: action.payload.newCard.card_no,
+        contents: action.payload.newCard.contents,
+      };
+
+      editCardAPI(editCardParam)
+        .then((response) => {
+          store.dispatch(initBoard(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      break;
+    }
+    case types.DELETE_CARD: {
+      break;
+    }
     default: {
       next(action);
     }

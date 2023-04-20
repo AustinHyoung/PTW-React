@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
-import { CardsProps } from '../../redux/types';
+import { CardProps } from '../../redux/types';
 import * as S from '../../styles/styles';
 
 interface EditCardProps {
   anchorEl: any;
   onClose: () => void;
-  card: CardsProps;
-  onSave: (newCard: CardsProps) => void;
+  cards: CardProps;
+  onSave: (newCard: CardProps) => void;
 }
 
-const EditCard = ({ anchorEl, onClose, card, onSave }: EditCardProps) => {
-  const [title, setTitle] = useState(card.title);
+const EditCard = ({ anchorEl, onClose, cards, onSave }: EditCardProps) => {
+  const [contents, setContents] = useState(cards.contents);
 
-  const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
+  const onContentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setContents(e.target.value);
   };
 
   const handleOnSave = () => {
-    if (!title.trim()) return;
+    if (!contents.trim()) return;
     onSave({
-      ...card,
-      title,
+      ...cards,
+      contents,
     });
   };
   return (
@@ -40,8 +40,8 @@ const EditCard = ({ anchorEl, onClose, card, onSave }: EditCardProps) => {
       >
         <input
           style={{ padding: 5, border: '1px solid lightgray', margin: 5, boxSizing: 'border-box', borderRadius: 6 }}
-          value={title}
-          onChange={onTitleChange}
+          value={contents}
+          onChange={onContentChange}
           placeholder="Card title"
         />
         <div style={{ display: 'flex', padding: 5, boxSizing: 'border-box', zIndex: 9999 }}>

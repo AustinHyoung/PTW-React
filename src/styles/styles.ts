@@ -356,10 +356,10 @@ export const StyledPopover = styled(Popover)`
 `;
 
 export const CardSaveBtn = styled.button`
-  background: '#5AAC44';
+  background-color: #5aac44;
   color: #fff;
   &:hover {
-    background: cross-fade('#5AAC44', 0.75);
+    background-color: #6cbc56;
   }
   justify-self: flex-start;
 `;

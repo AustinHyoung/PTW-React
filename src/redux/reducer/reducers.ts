@@ -208,12 +208,13 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
       return { ...state };
     }
     case types.EDIT_CARD: {
-      const { columnId, newCard } = action.payload;
-      const board = state.data;
-      const column = board.cards_list.find((col) => col.cards_list_no === columnId);
-      const card = column.card.find((card) => card.card_no === newCard.id);
+      console.log(action.payload);
+      // const { columnId, newCard } = action.payload;
+      // const board = state.data;
+      // const column = board.cards_list.find((col) => col.cards_list_no === columnId);
+      // const card = column.card.find((card) => card.card_no === newCard.id);
 
-      Object.assign(card, newCard);
+      // Object.assign(card, newCard);
 
       return { ...state };
     }
