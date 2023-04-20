@@ -31,9 +31,9 @@ export const addCard = (contents: string, cardsListNo: number) => ({
   payload: { contents, cardsListNo },
 });
 
-export const deleteCard = (cardsListNo: number, cardNo: number) => ({
+export const deleteCard = (cardsListNo: number, cardNo: number, cardOrder: number) => ({
   type: types.DELETE_CARD,
-  payload: { cardsListNo, cardNo },
+  payload: { cardsListNo, cardNo, cardOrder },
 });
 
 export const editCard = (cardsListNo: number, newCard: CardProps) => ({

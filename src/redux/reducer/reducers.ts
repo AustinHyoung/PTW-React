@@ -200,11 +200,11 @@ export const testReducer = (state: BoardState = initialState, action: KanbansAct
       return { ...state };
     }
     case types.DELETE_CARD: {
-      const { columnId, cardId } = action.payload;
-      const board = state.data;
-      const column = board.cards_list.find((col) => col.cards_list_no === columnId);
-      const newCards = column.card.filter((card) => card.card_no !== cardId);
-      column.card = newCards;
+      // const { columnId, cardId } = action.payload;
+      // const board = state.data;
+      // const column = board.cards_list.find((col) => col.cards_list_no === columnId);
+      // const newCards = column.card.filter((card) => card.card_no !== cardId);
+      // column.card = newCards;
       return { ...state };
     }
     case types.EDIT_CARD: {

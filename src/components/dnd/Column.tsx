@@ -25,7 +25,8 @@ const Column = ({ cardsListNo, title, card, listOrder, index, handleOnDeleteColu
 
   const handleOnAddCard = (cardsListNo: number) => (contents: string) => dispatch(addCard(contents, cardsListNo));
 
-  const handleOnDeleteCard = (cardsListNo: number) => (cardNo: number) => dispatch(deleteCard(cardsListNo, cardNo));
+  const handleOnDeleteCard = (cardsListNo: number) => (cardNo: number, cardOrder: number) =>
+    dispatch(deleteCard(cardsListNo, cardNo, cardOrder));
 
   const handleOnEditCard = (cardsListNo: number) => (newCard: CardProps) => dispatch(editCard(cardsListNo, newCard));
 

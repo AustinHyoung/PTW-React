@@ -7,7 +7,7 @@ import * as S from '../../styles/styles';
 interface Props {
   cards: CardProps;
   index: number;
-  onDelete: (cardNo: number) => void;
+  onDelete: (cardNo: number, cardOrder: number) => void;
   onSave: (newCard: CardProps) => void;
 }
 
@@ -16,7 +16,7 @@ const Card = ({ cards, onDelete, onSave, index }: Props) => {
 
   const strCardNo = String(cards.card_no);
 
-  const handleOnDelete = () => onDelete(cards.card_no);
+  const handleOnDelete = () => onDelete(cards.card_no, cards.card_order);
 
   const handleOpenEdit = (e: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget);
 

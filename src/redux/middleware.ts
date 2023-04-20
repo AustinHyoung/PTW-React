@@ -154,7 +154,7 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
     case types.EDIT_CARD: {
       const editCardParam = {
         board_no: Number(store.getState().test.data.board_no),
-        board_title: store.getState().test.data.title,
+        title: store.getState().test.data.title,
         card_no: action.payload.newCard.card_no,
         contents: action.payload.newCard.contents,
       };
@@ -170,6 +170,24 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
       break;
     }
     case types.DELETE_CARD: {
+      const deleteCardParam = {
+        board_no: Number(store.getState().test.data.board_no),
+        card_list_no: action.payload.cardsListNo,
+        card_no: action.payload.cardNo,
+        title: store.getState().test.data.title,
+        card_order: action.payload.cardOrder,
+      };
+
+      console.log('delete card param mmiddelware ::', deleteCardParam);
+
+      deleteCardAPI(deleteCardParam)
+        .then((response) => {
+          store.dispatch(initBoard(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
       break;
     }
     default: {
