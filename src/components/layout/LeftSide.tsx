@@ -38,6 +38,7 @@ const LeftSide = () => {
           </div>
           <S.LoginBtn
             onClick={() => {
+              console.log(id);
               deleteBoardData();
               setModalIsOpen(false);
             }}

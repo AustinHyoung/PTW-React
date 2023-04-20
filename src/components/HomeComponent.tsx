@@ -52,6 +52,7 @@ const HomeComponent = () => {
   const doCreateBoard = async (param: FormValue) => {
     try {
       await axios.get('http://localhost:8080/apis/create/board', { params: param });
+      window.location.replace('/');
     } catch (err) {
       console.log(err);
     }
