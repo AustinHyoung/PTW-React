@@ -32,7 +32,6 @@ const RegistComponent = () => {
   const doRegist = async (param: FormValue) => {
     try {
       const response = await axios.post('http://localhost:8080/apis/regist', param);
-      console.log(response);
       navigate('/login');
     } catch (err) {
       console.log(err);

@@ -39,7 +39,6 @@ const LoginComponent = () => {
         nickname: response.data.nickname,
       };
       dispath(setInfo(infoParam));
-      console.log(response);
       navigate('/');
     } catch (err) {
       console.log(err);

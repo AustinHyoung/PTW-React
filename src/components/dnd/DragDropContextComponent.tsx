@@ -2,14 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { DragDropContext, Draggable, Droppable, DropResult } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
-import { setList } from '../../redux/reducer/listReducer';
-import { setCard } from '../../redux/reducer/cardReducer';
-import { CardListProps } from './index';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import * as actions from '../../redux/action/actions';
 import Board from './Board';
-import { useParams } from 'react-router';
 
 interface Props {
   id: string;
@@ -21,7 +17,7 @@ const DragDropContextComponent = (props: Props) => {
   const dispatch = useDispatch();
   //const { boards, currentBoard, board = boards[currentBoard] } = useSelector((state: RootState) => state.app);
 
-  const board = useSelector((state: RootState) => state.test.data);
+  const board = useSelector((state: RootState) => state.track.data);
 
   const handleOnDragEnd = (result: DropResult) => result.destination && dispatch(actions.onDragEnd(result));
 

@@ -10,7 +10,6 @@ import { mdiClose } from '@mdi/js';
 import DefaultModal from './modal/DefaultModal';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { initCount } from '../redux/action/count-actions';
 import { initBoard } from '../redux/action/actions';
 
 interface listProps {
@@ -52,8 +51,7 @@ const HomeComponent = () => {
 
   const doCreateBoard = async (param: FormValue) => {
     try {
-      const response = await axios.get('http://localhost:8080/apis/create/board', { params: param });
-      console.log(response.data);
+      await axios.get('http://localhost:8080/apis/create/board', { params: param });
     } catch (err) {
       console.log(err);
     }
@@ -65,10 +63,7 @@ const HomeComponent = () => {
         params: { board_no: board_no, title: title },
       });
 
-      console.log(response);
       dispatch(initBoard(response.data));
-      //dispatch(initCount(response.data.count));
-
       navigate(`/board/${board_no}`);
     } catch (err) {
       console.log(err);
@@ -123,9 +118,6 @@ const HomeComponent = () => {
         >
           {data?.map((item: listProps) => {
             return (
-              // <Link to={`/board/${item.board_no}`} key={item.board_no}>
-              //   <S.BoardItem>{item.title}</S.BoardItem>
-              // </Link>
               <div onClick={() => boardRouter(item.board_no, item?.title)} key={item.board_no}>
                 <S.BoardItem>{item.title}</S.BoardItem>
               </div>

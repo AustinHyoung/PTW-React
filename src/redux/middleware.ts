@@ -17,8 +17,8 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
 
       if (type === 'BOARD') {
         const dragEndBoardParam = {
-          board_no: Number(store.getState().test.data.board_no),
-          title: store.getState().test.data.title,
+          board_no: Number(store.getState().track.data.board_no),
+          title: store.getState().track.data.title,
           source_list_order: source.index,
           destination_list_order: destination.index,
           cards_list_no: Number(draggableIdArr[1]),
@@ -33,8 +33,8 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
           });
       } else if (type === 'COLUMN') {
         const dragEndColumnParam = {
-          board_no: Number(store.getState().test.data.board_no),
-          title: store.getState().test.data.title,
+          board_no: Number(store.getState().track.data.board_no),
+          title: store.getState().track.data.title,
           source_card_list_no: Number(sourceDroppableIdArr[1]),
           source_card_order: source.index,
           destination_card_list_no: Number(destinationDroppableIdArr[1]),
@@ -63,7 +63,7 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
       break;
     }
     case types.ADD_COLUMN: {
-      const cardsListArray = store.getState().test.data.cards_list.map((list: any) => list.list_order);
+      const cardsListArray = store.getState().track.data.cards_list.map((list: any) => list.list_order);
 
       let maxCardsListOrder;
       if (cardsListArray.length === 0) {
@@ -73,14 +73,13 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
       }
 
       const addColumnParam = {
-        board_no: Number(store.getState().test.data.board_no),
-        board_title: store.getState().test.data.title,
+        board_no: Number(store.getState().track.data.board_no),
+        board_title: store.getState().track.data.title,
         title: action.payload,
         list_order: maxCardsListOrder + 1,
       };
       addColumnAPI(addColumnParam)
         .then((response) => {
-          console.log('addcolumn response', response);
           store.dispatch(initBoard(response.data));
         })
         .catch((error) => {
@@ -90,9 +89,9 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
     }
     case types.EDIT_COLUMN: {
       const editColumnParam = {
-        board_no: Number(store.getState().test.data.board_no),
+        board_no: Number(store.getState().track.data.board_no),
         cards_list_no: action.payload.cardListNo,
-        board_title: store.getState().test.data.title,
+        board_title: store.getState().track.data.title,
         title: action.payload.title,
       };
 
@@ -107,15 +106,14 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
     }
     case types.DELETE_COLUMN: {
       const deleteColumnParam = {
-        board_no: Number(store.getState().test.data.board_no),
+        board_no: Number(store.getState().track.data.board_no),
         cards_list_no: action.payload.cardListNo,
-        board_title: store.getState().test.data.title,
+        board_title: store.getState().track.data.title,
         list_order: action.payload.listOrder,
       };
 
       deleteColumnAPI(deleteColumnParam)
         .then((response) => {
-          console.log(response);
           store.dispatch(initBoard(response.data));
         })
         .catch((error) => {
@@ -124,7 +122,7 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
       break;
     }
     case types.ADD_CARD: {
-      const column = store.getState().test.data.cards_list.find((col: any) => col.cards_list_no === action.payload.cardsListNo);
+      const column = store.getState().track.data.cards_list.find((col: any) => col.cards_list_no === action.payload.cardsListNo);
       const cardArray = column.card.map((card: any) => card.card_order);
 
       let maxCardOrder;
@@ -135,9 +133,9 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
       }
 
       const addCardParam = {
-        board_no: Number(store.getState().test.data.board_no),
+        board_no: Number(store.getState().track.data.board_no),
         card_list_no: action.payload.cardsListNo,
-        board_title: store.getState().test.data.title,
+        board_title: store.getState().track.data.title,
         card_order: maxCardOrder + 1,
         contents: action.payload.contents,
       };
@@ -153,8 +151,8 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
     }
     case types.EDIT_CARD: {
       const editCardParam = {
-        board_no: Number(store.getState().test.data.board_no),
-        title: store.getState().test.data.title,
+        board_no: Number(store.getState().track.data.board_no),
+        title: store.getState().track.data.title,
         card_no: action.payload.newCard.card_no,
         contents: action.payload.newCard.contents,
       };
@@ -171,14 +169,12 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
     }
     case types.DELETE_CARD: {
       const deleteCardParam = {
-        board_no: Number(store.getState().test.data.board_no),
+        board_no: Number(store.getState().track.data.board_no),
         card_list_no: action.payload.cardsListNo,
         card_no: action.payload.cardNo,
-        title: store.getState().test.data.title,
+        title: store.getState().track.data.title,
         card_order: action.payload.cardOrder,
       };
-
-      console.log('delete card param mmiddelware ::', deleteCardParam);
 
       deleteCardAPI(deleteCardParam)
         .then((response) => {

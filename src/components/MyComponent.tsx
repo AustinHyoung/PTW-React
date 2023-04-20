@@ -54,9 +54,6 @@ const MyComponent = () => {
     } else {
       setBtnIsActive(true);
     }
-    console.log(nickVal);
-    console.log(data?.nickname);
-    console.log(btnIsActive);
   };
 
   const doDeleteUser = async () => {

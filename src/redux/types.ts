@@ -14,39 +14,6 @@ export const ON_DRAG_END = 'ON_DRAG_END' as const;
 // user info
 export const SET_INFO = 'user/SET_INFO' as const;
 
-// test counter
-export const INITCOUNT = 'counter/INIT' as const;
-export const INCREASE = 'counter/INCREASE' as const;
-export const DECREASE = 'counter/DECREASE' as const;
-export const NUM_INCREASE = 'counter/NUM_INCREASE' as const;
-
-// action parameter type counter
-export type PathPayload = {
-  id: string;
-  payload?: {
-    num: number;
-  };
-};
-
-//
-export interface ColumnProps {
-  id: string;
-  title: string;
-  cards: CardsProps[];
-}
-
-export interface CardsProps {
-  id: string;
-  title: string;
-}
-
-export interface BoardProps {
-  id: string;
-  title: string;
-  columns: ColumnProps[];
-}
-
-/// //// ///
 export interface CardsListProps {
   cards_list_no: number | null;
   title: string;

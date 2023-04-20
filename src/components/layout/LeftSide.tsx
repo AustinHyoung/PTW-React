@@ -11,7 +11,6 @@ const LeftSide = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log('sidemenu paramid', id);
 
   const outsideClose = () => {
     setModalIsOpen(false);
@@ -51,11 +50,8 @@ const LeftSide = () => {
   }
 
   const deleteBoardData = async () => {
-    console.log('삭제');
-
     try {
       const response = await axios.delete(`http://localhost:8080/apis/delete/board/${id}`);
-      console.log(response);
 
       if (response.data.code === 200) {
         navigate('/', { replace: true });

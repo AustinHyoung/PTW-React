@@ -18,10 +18,19 @@ const ColumnTitle = ({ title, listOrder, index, onDelete, onEdit, ...rest }: Col
     setIsInputOpen(true);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     setInputValue('');
     setIsInputOpen(false);
     if (inputValue.trim() !== title.trim()) onEdit(inputValue);
+  };
+
+  const handleClickAway = () => {
+    console.log('hanldecliackway');
+
+    // setInputValue('');
+    // setIsInputOpen(false);
+    // if (inputValue.trim() !== title.trim()) onEdit(inputValue);
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +55,7 @@ const ColumnTitle = ({ title, listOrder, index, onDelete, onEdit, ...rest }: Col
           </span>
         </div>
       ) : (
-        <ClickAwayListener onClickAway={handleSubmit}>
+        <ClickAwayListener onClickAway={handleClickAway}>
           <form onSubmit={handleSubmit}>
             <input
               style={{ background: '#fff', maxHeight: '100%', boxSizing: 'border-box', paddingLeft: 5, borderRadius: 6 }}

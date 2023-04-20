@@ -33,7 +33,6 @@ const Header = () => {
   const doLogout = async () => {
     try {
       const response = await axios.post('http://localhost:8080/apis/logout');
-      console.log(response);
       sessionStorage.clear();
       navigate('/login');
     } catch (err) {
