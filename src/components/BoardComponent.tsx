@@ -22,7 +22,7 @@ const BoardComponent = () => {
   return (
     <>
       <S.MainDisplay>
-        <S.MainDisplay style={{ backgroundColor: '#f1f2f6' }}>
+        <S.MainColor>
           <S.BoardHeader>
             <div>
               <S.IconBtn onClick={() => setLeftSide((leftSide) => !leftSide)}>
@@ -42,7 +42,7 @@ const BoardComponent = () => {
             </S.DndBox>
             {/* {rightSide && <RightSide />} */}
           </S.FlexBox>
-        </S.MainDisplay>
+        </S.MainColor>
       </S.MainDisplay>
     </>
   );

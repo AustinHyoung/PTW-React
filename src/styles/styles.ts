@@ -196,6 +196,13 @@ export const MainDisplay = styled.div`
   height: 100%;
 `;
 
+export const MainColor = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(4, 125, 247, 1) 3%, rgba(62, 139, 218, 1) 10%, rgba(116, 185, 255, 1) 100%);
+`;
+
 export const FlexColBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -221,6 +228,22 @@ export const DndBox = styled.div`
   flex: 1;
   overflow: auto;
   padding: 6px;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: gold;
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: red;
+  }
 `;
 
 export const Hr = styled.div`
@@ -381,7 +404,8 @@ export const AddColumnSpace = styled.div`
 `;
 
 export const DraggableColumn = styled.div`
-  background-color: #e3e3e3;
+  background-color: #ebecf0;
+  border-radius: 3px;
   position: relative;
   display: inline-flex;
   max-height: 100%;
@@ -391,6 +415,9 @@ export const DraggableColumn = styled.div`
   width: 250px;
   margin: 0 4px;
   padding: 8px;
+  box-shadow: 0px 1px 3px -1px rgba(9, 30, 66, 0.79);
+  -webkit-box-shadow: 0px 1px 3px -1px rgba(9, 30, 66, 0.79);
+  -moz-box-shadow: 0px 1px 3px -1px rgba(9, 30, 66, 0.79);
 `;
 
 export const DroppableColumn = styled.div`
@@ -403,15 +430,32 @@ export const DroppableColumn = styled.div`
 
 export const DraggableCard = styled.div`
   height: auto;
-  background-color: ivory;
+  background-color: #fff;
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  border-radius: 3px;
+  box-shadow: 0px 1px 3px -1px rgba(9, 30, 66, 0.79);
+  -webkit-box-shadow: 0px 1px 3px -1px rgba(9, 30, 66, 0.79);
+  -moz-box-shadow: 0px 1px 3px -1px rgba(9, 30, 66, 0.79);
 `;
 
 export const BoardDelete = styled.div`
   border-radius: 4px;
   padding: 10px;
-  :hover {
+  &:hover {
     background-color: #b4c3d4;
+  }
+`;
+
+export const AddCardBtn = styled.div`
+  padding: 5px;
+  background-color: #ebecf0;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  &:hover {
+    background-color: #d8dae1;
   }
 `;

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import InputCard from './InputCard';
+import * as S from '../../styles/styles';
+import Icon from '@mdi/react';
+import { mdiPlus } from '@mdi/js';
 
 interface AddCardProps {
   handleOnAddCard: (contents: string) => void;
@@ -20,9 +23,10 @@ const AddCard = ({ handleOnAddCard }: AddCardProps) => {
         </div>
       ) : (
         <div>
-          <div style={{ padding: 5, background: '#EBECF0', cursor: 'pointer' }} onClick={() => setOpen(!open)}>
-            <div>+ Add a Card</div>
-          </div>
+          <S.AddCardBtn onClick={() => setOpen(!open)}>
+            <Icon path={mdiPlus} size={0.7} style={{ display: 'flex', alignItems: 'center', marginRight: 5 }} />
+            <span>카드 추가</span>
+          </S.AddCardBtn>
         </div>
       )}
     </div>

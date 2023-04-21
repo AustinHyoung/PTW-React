@@ -3,6 +3,8 @@ import { Draggable } from 'react-beautiful-dnd';
 import { CardProps } from '../../redux/types';
 import EditCard from './EditCard';
 import * as S from '../../styles/styles';
+import Icon from '@mdi/react';
+import { mdiTrashCanOutline, mdiPencilOutline } from '@mdi/js';
 
 interface Props {
   cards: CardProps;
@@ -18,7 +20,7 @@ const Card = ({ cards, onDelete, onSave, index }: Props) => {
 
   const handleOnDelete = () => onDelete(cards.card_no, cards.card_order);
 
-  const handleOpenEdit = (e: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget);
+  const handleOpenEdit = (e: React.MouseEvent<HTMLDivElement>) => setAnchorEl(e.currentTarget);
 
   const handleCloseEdit = () => setAnchorEl(null);
 
@@ -43,8 +45,12 @@ const Card = ({ cards, onDelete, onSave, index }: Props) => {
                 <div style={{ flex: 1, wordBreak: 'break-all', whiteSpace: 'normal' }}>{cards.contents}</div>
                 <div>
                   <div style={{ display: 'flex', gap: 3 }}>
-                    <button onClick={handleOpenEdit}>수정</button>
-                    <button onClick={handleOnDelete}>삭제</button>
+                    <div onClick={handleOpenEdit}>
+                      <Icon path={mdiPencilOutline} size={0.7} style={{ padding: '0 3px', cursor: 'pointer' }} />
+                    </div>
+                    <div onClick={handleOnDelete} style={{ padding: '0 3px', cursor: 'pointer' }}>
+                      <Icon path={mdiTrashCanOutline} size={0.7} />
+                    </div>
                   </div>
                 </div>
               </div>
