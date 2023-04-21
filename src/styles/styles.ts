@@ -471,3 +471,13 @@ export const DeleteColumnBtn = styled.div`
     background-color: #d8dae1;
   }
 `;
+
+export const AddColumnBtn = styled.div`
+  width: 230px;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.16);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+`;
