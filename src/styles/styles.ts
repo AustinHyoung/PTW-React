@@ -420,6 +420,9 @@ export const DraggableCard = styled.div`
   box-shadow: 0px 1px 3px -1px rgba(9, 30, 66, 0.79);
   -webkit-box-shadow: 0px 1px 3px -1px rgba(9, 30, 66, 0.79);
   -moz-box-shadow: 0px 1px 3px -1px rgba(9, 30, 66, 0.79);
+  &:hover {
+    background-color: #f5f5f7;
+  }
 `;
 
 export const BoardDelete = styled.div`
@@ -438,6 +441,32 @@ export const AddCardBtn = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  &:hover {
+    background-color: #d8dae1;
+  }
+`;
+
+export const EditCardBtn = styled.div`
+  padding: 0 3px;
+  cursor: pointer;
+  border-radius: 4px;
+  &:hover {
+    background-color: #e1e3e9;
+  }
+`;
+
+export const DeleteCardBtn = styled.div`
+  padding: 0 3px;
+  cursor: pointer;
+  border-radius: 4px;
+  &:hover {
+    background-color: #e1e3e9;
+  }
+`;
+
+export const DeleteColumnBtn = styled.div`
+  cursor: pointer;
+  border-radius: 4px;
   &:hover {
     background-color: #d8dae1;
   }

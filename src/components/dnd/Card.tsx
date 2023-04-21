@@ -3,6 +3,7 @@ import { Draggable } from 'react-beautiful-dnd';
 import { CardProps } from '../../redux/types';
 import EditCard from './EditCard';
 import * as S from '../../styles/styles';
+import * as Icons from '../../styles/iconStyles';
 import Icon from '@mdi/react';
 import { mdiTrashCanOutline, mdiPencilOutline } from '@mdi/js';
 
@@ -45,12 +46,12 @@ const Card = ({ cards, onDelete, onSave, index }: Props) => {
                 <div style={{ flex: 1, wordBreak: 'break-all', whiteSpace: 'normal' }}>{cards.contents}</div>
                 <div>
                   <div style={{ display: 'flex', gap: 3 }}>
-                    <div onClick={handleOpenEdit}>
-                      <Icon path={mdiPencilOutline} size={0.7} style={{ padding: '0 3px', cursor: 'pointer' }} />
-                    </div>
-                    <div onClick={handleOnDelete} style={{ padding: '0 3px', cursor: 'pointer' }}>
+                    <S.EditCardBtn onClick={handleOpenEdit}>
+                      <Icon path={mdiPencilOutline} size={0.7} />
+                    </S.EditCardBtn>
+                    <S.DeleteCardBtn onClick={handleOnDelete}>
                       <Icon path={mdiTrashCanOutline} size={0.7} />
-                    </div>
+                    </S.DeleteCardBtn>
                   </div>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ClickAwayListener } from '@material-ui/core';
 import Icon from '@mdi/react';
 import { mdiTrashCanOutline } from '@mdi/js';
+import * as S from '../../styles/styles';
 
 interface ColumnTitleProps {
   title: string;
@@ -67,11 +68,9 @@ const ColumnTitle = ({ title, listOrder, index, onDelete, onEdit, ...rest }: Col
           </form>
         </ClickAwayListener>
       )}
-      <div onClick={() => onDelete(index)} style={{ cursor: 'pointer' }}>
+      <S.DeleteColumnBtn onClick={() => onDelete(index)}>
         <Icon path={mdiTrashCanOutline} size={1} />
-      </div>
-
-      {/* <button onClick={() => onDelete(index)}>삭제</button> */}
+      </S.DeleteColumnBtn>
     </div>
   );
 };
