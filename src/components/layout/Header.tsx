@@ -54,12 +54,12 @@ const Header = () => {
           </li>
         </S.LeftContents>
         <S.RightContents>
-          <S.RightList style={{ position: 'relative' }}>
+          {/* <S.RightList style={{ position: 'relative' }}>
             <div onClick={() => inputRef.current?.focus()}>
               <Icons.SearchIcon path={mdiMagnify} size={1} />
             </div>
             <S.SearchInput ref={inputRef} />
-          </S.RightList>
+          </S.RightList> */}
           <S.RightList style={{ margin: '6px 12px', cursor: 'pointer' }} onClick={() => setUserDropdown(true)}>
             <Icons.UserIcon path={mdiAccountCircle} size={1.5} />
           </S.RightList>

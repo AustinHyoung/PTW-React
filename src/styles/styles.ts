@@ -171,8 +171,9 @@ export const MyInfo = styled.div`
 
 export const SideMenu = styled.div`
   width: 250px;
-  background-color: #dfe4ea;
+  background-color: inherit;
   padding: 4px;
+  border-right: 1px solid rgba(255, 255, 255, 0.17);
 `;
 
 export const SideChat = styled.div`
@@ -183,10 +184,10 @@ export const SideChat = styled.div`
 
 export const IconBtn = styled.button`
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 3px;
   background-color: inherit;
-  :hover {
-    background-color: #dfe4ea;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.16);
   }
 `;
 
@@ -212,6 +213,7 @@ export const BoardHeader = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.17);
 `;
 
 export const FlexBox = styled.div`
@@ -429,7 +431,7 @@ export const BoardDelete = styled.div`
   border-radius: 4px;
   padding: 10px;
   &:hover {
-    background-color: #b4c3d4;
+    background-color: rgba(255, 255, 255, 0.16);
   }
 `;
 
