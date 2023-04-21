@@ -211,7 +211,6 @@ export const FlexColBox = styled.div`
 export const BoardHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgb(110, 110, 110, 0.3);
   padding: 6px;
 `;
 
@@ -228,22 +227,6 @@ export const DndBox = styled.div`
   flex: 1;
   overflow: auto;
   padding: 6px;
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: gold;
-    border-radius: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: #f5f5f5;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: red;
-  }
 `;
 
 export const Hr = styled.div`
