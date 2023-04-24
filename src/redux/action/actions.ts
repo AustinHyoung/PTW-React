@@ -40,3 +40,8 @@ export const editCard = (cardsListNo: number, newCard: CardProps) => ({
   type: types.EDIT_CARD,
   payload: { cardsListNo, newCard },
 });
+
+export const editBoardTitle = (title: string) => ({
+  type: types.EDIT_BOARD_TITLE,
+  payload: title,
+});

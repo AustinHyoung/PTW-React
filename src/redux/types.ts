@@ -9,6 +9,8 @@ export const ADD_CARD = 'ADD_CARD' as const;
 export const EDIT_CARD = 'EDIT_CARD' as const;
 export const DELETE_CARD = 'DELETE_CARD' as const;
 
+export const EDIT_BOARD_TITLE = 'EDIT_BOARD_TITLE' as const;
+
 export const ON_DRAG_END = 'ON_DRAG_END' as const;
 
 // user info

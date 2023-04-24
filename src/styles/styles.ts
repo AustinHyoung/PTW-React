@@ -212,6 +212,7 @@ export const FlexColBox = styled.div`
 export const BoardHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 6px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.17);
 `;
@@ -339,14 +340,16 @@ export const FlexEnd = styled.div`
 `;
 
 export const BoardItem = styled.div`
+  box-sizing: border-box;
   border: 1px solid black;
   border-radius: 6px;
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 100px;
+  width: 170px;
+  height: 170px;
+  white-space: pre-line;
   cursor: pointer;
 `;
 

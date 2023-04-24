@@ -10,7 +10,8 @@ type TrackAction =
   | ReturnType<typeof actions.onDragEnd>
   | ReturnType<typeof actions.addCard>
   | ReturnType<typeof actions.deleteCard>
-  | ReturnType<typeof actions.editCard>;
+  | ReturnType<typeof actions.editCard>
+  | ReturnType<typeof actions.editBoardTitle>;
 
 export const trackReducer = (state: BoardState = initialState, action: TrackAction): BoardState => {
   switch (action.type) {
@@ -55,6 +56,9 @@ export const trackReducer = (state: BoardState = initialState, action: TrackActi
 
       return { ...state };
     }
+    case types.EDIT_BOARD_TITLE: {
+      return { ...state, data: { ...state.data, title: action.payload } };
+    }
 
     case types.ADD_COLUMN: {
       return { ...state };
@@ -75,6 +79,7 @@ export const trackReducer = (state: BoardState = initialState, action: TrackActi
     case types.EDIT_CARD: {
       return { ...state };
     }
+
     default: {
       return state;
     }
