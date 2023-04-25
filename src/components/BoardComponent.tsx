@@ -1,7 +1,7 @@
 import { mdiChat, mdiMenu } from '@mdi/js';
 import Icon from '@mdi/react';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ClickAwayListener } from '@material-ui/core';
 import { useQueries, useQuery } from 'react-query';
 import { useDispatch } from 'react-redux';
@@ -24,6 +24,13 @@ const BoardComponent = () => {
 
   const [leftSide, setLeftSide] = useState(false);
   const [rightSide, setRightSide] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isInputOpen && inputRef.current) {
+      inputRef.current.select();
+    }
+  }, [isInputOpen]);
 
   const editTitleAPI = async (inputValue: string) => {
     const param = {
@@ -46,6 +53,7 @@ const BoardComponent = () => {
     e.preventDefault();
     setInputValue('');
     setIsInputOpen(false);
+
     if (inputValue.trim() !== boardTitle.trim()) {
       dispatch(editBoardTitle(inputValue));
       editTitleAPI(inputValue);
@@ -63,7 +71,7 @@ const BoardComponent = () => {
           <S.BoardHeader>
             <div>
               <S.IconBtn onClick={() => setLeftSide((leftSide) => !leftSide)}>
-                <Icon path={mdiMenu} size={1} />
+                <Icon path={mdiMenu} size={1} color="#fff" />
               </S.IconBtn>
             </div>
             {!isInputOpen ? (
@@ -73,11 +81,7 @@ const BoardComponent = () => {
             ) : (
               <ClickAwayListener onClickAway={handleSubmit}>
                 <form onSubmit={handleSubmit}>
-                  <input
-                    style={{ background: '#fff', maxHeight: '100%', boxSizing: 'border-box', paddingLeft: 5, borderRadius: 6 }}
-                    value={inputValue}
-                    onChange={onChange}
-                  />
+                  <S.BoardEditInput ref={inputRef} value={inputValue} onChange={onChange} />
                 </form>
               </ClickAwayListener>
             )}

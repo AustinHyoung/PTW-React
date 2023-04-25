@@ -16,31 +16,36 @@ const AddColumn = ({ handleOnAddColumn }: AddColumnProps) => {
   };
 
   return (
-    <S.AddColumnBtn>
+    <>
       {open ? (
         // 컬럼 추가 버튼 이후 input 생성
-        <div>
-          <InputCard
-            multiline={false}
-            content={'Add Column'}
-            setOpen={setOpen}
-            onConfirm={handleOnConfirm}
-            placeholder={'Column Title'}
-          />
-        </div>
+        <S.AddColumnBtnInput>
+          <div>
+            <InputCard
+              multiline={false}
+              content={'리스트 추가'}
+              open={open}
+              setOpen={setOpen}
+              onConfirm={handleOnConfirm}
+              placeholder={'리스트 제목'}
+            />
+          </div>
+        </S.AddColumnBtnInput>
       ) : (
         // 컬럼 추가 버튼
-        <div>
-          <div
-            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', color: '#FFF' }}
-            onClick={() => setOpen(!open)}
-          >
-            <Icon path={mdiPlus} size={0.7} style={{ display: 'flex', alignItems: 'center', marginRight: 5 }} />
-            <span>리스트 추가</span>
+        <S.AddColumnBtn>
+          <div>
+            <div
+              style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', color: '#FFF' }}
+              onClick={() => setOpen(!open)}
+            >
+              <Icon path={mdiPlus} size={0.7} style={{ display: 'flex', alignItems: 'center', marginRight: 5 }} />
+              <span>리스트 추가</span>
+            </div>
           </div>
-        </div>
+        </S.AddColumnBtn>
       )}
-    </S.AddColumnBtn>
+    </>
   );
 };
 

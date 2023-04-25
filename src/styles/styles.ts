@@ -433,6 +433,7 @@ export const DraggableCard = styled.div`
 export const BoardDelete = styled.div`
   border-radius: 4px;
   padding: 10px;
+  color: #fff;
   &:hover {
     background-color: rgba(255, 255, 255, 0.16);
   }
@@ -484,5 +485,34 @@ export const AddColumnBtn = styled.div`
   background-color: rgba(0, 0, 0, 0.16);
   &:hover {
     background-color: rgba(0, 0, 0, 0.25);
+  }
+`;
+
+export const AddColumnBtnInput = styled.div`
+  width: 230px;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.16);
+`;
+
+export const BoardEditInput = styled.input`
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 16px;
+  width: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+`;
+
+export const AddCardsListBtn = styled.button`
+  background-color: #2ecc71;
+  color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+  margin-right: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(46, 204, 113, 0.7);
   }
 `;

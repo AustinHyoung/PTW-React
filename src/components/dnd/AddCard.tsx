@@ -19,7 +19,14 @@ const AddCard = ({ handleOnAddCard }: AddCardProps) => {
     <div style={{ width: '100%', marginTop: 5 }}>
       {open ? (
         <div>
-          <InputCard content={'Add Card'} setOpen={setOpen} onConfirm={handleOnConfirm} placeholder={'Add Title'} multiline />
+          <InputCard
+            content={'Add Card'}
+            setOpen={setOpen}
+            open={open}
+            onConfirm={handleOnConfirm}
+            placeholder={'Add Title'}
+            multiline
+          />
         </div>
       ) : (
         <div>

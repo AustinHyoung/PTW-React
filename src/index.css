@@ -16,6 +16,7 @@ input,
 button {
   outline: none;
   border: 0px solid;
+  font-family: 'Pretendard-Regular';
 }
 
 a {
