@@ -363,16 +363,27 @@ export const StyledPopover = styled(Popover)`
     flex-direction: column;
     gap: 5;
     max-width: 400;
+    padding: 10px;
   }
 `;
 
 export const CardSaveBtn = styled.button`
-  background-color: #5aac44;
+  background-color: #1e90ff;
   color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 6px 16px;
   &:hover {
-    background-color: #6cbc56;
+    background-color: rgba(30, 144, 255, 0.7);
   }
   justify-self: flex-start;
+`;
+
+export const CardSaveBtnBox = styled.div`
+  display: flex;
+  box-sizing: border-box;
+  margin-top: 10px;
 `;
 
 export const DroppableBoard = styled.div`

@@ -20,12 +20,13 @@ const AddCard = ({ handleOnAddCard }: AddCardProps) => {
       {open ? (
         <div>
           <InputCard
-            content={'Add Card'}
+            content={'카드 추가'}
             setOpen={setOpen}
             open={open}
             onConfirm={handleOnConfirm}
-            placeholder={'Add Title'}
+            placeholder={'카드 내용'}
             multiline
+            color={'#7f8c8d'}
           />
         </div>
       ) : (

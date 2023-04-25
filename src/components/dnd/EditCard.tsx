@@ -38,15 +38,11 @@ const EditCard = ({ anchorEl, onClose, cards, onSave }: EditCardProps) => {
         open={true}
         onClose={onClose}
       >
-        <input
-          style={{ padding: 5, border: '1px solid lightgray', margin: 5, boxSizing: 'border-box', borderRadius: 6 }}
-          value={contents}
-          onChange={onContentChange}
-          placeholder="Card title"
-        />
-        <div style={{ display: 'flex', padding: 5, boxSizing: 'border-box', zIndex: 9999 }}>
-          <S.CardSaveBtn onClick={handleOnSave}>Save</S.CardSaveBtn>
-        </div>
+        <div style={{ textAlign: 'center', marginBottom: 10, fontSize: 16 }}>카드 내용 변경</div>
+        <S.BoardEditInput value={contents} onChange={onContentChange} placeholder="카드 내용" />
+        <S.CardSaveBtnBox>
+          <S.CardSaveBtn onClick={handleOnSave}>저장</S.CardSaveBtn>
+        </S.CardSaveBtnBox>
       </S.StyledPopover>
     </>
   );

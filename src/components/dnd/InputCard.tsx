@@ -5,6 +5,7 @@ import * as S from '../../styles/styles';
 
 interface InputCardProps {
   setOpen: (open: boolean) => void;
+  color: string;
   open: boolean;
   content: string;
   onConfirm: (contents: string) => void;
@@ -12,7 +13,7 @@ interface InputCardProps {
   multiline: boolean;
 }
 
-export default function InputCard({ setOpen, open, content, onConfirm, placeholder, ...rest }: InputCardProps) {
+export default function InputCard({ setOpen, open, color, content, onConfirm, placeholder, ...rest }: InputCardProps) {
   const [contents, setContents] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -50,7 +51,7 @@ export default function InputCard({ setOpen, open, content, onConfirm, placehold
           <S.AddCardsListBtn type="submit">{content}</S.AddCardsListBtn>
         </div>
         <span onClick={() => setOpen(false)} style={{ cursor: 'pointer' }}>
-          <Icon path={mdiClose} size={1} color="#ecf0f1" />
+          <Icon path={mdiClose} size={1} color={color} />
         </span>
       </div>
     </form>

@@ -28,6 +28,7 @@ const AddColumn = ({ handleOnAddColumn }: AddColumnProps) => {
               setOpen={setOpen}
               onConfirm={handleOnConfirm}
               placeholder={'리스트 제목'}
+              color={'#ecf0f1'}
             />
           </div>
         </S.AddColumnBtnInput>
