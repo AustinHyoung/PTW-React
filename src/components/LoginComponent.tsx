@@ -88,7 +88,7 @@ const LoginComponent = () => {
         <S.LoginBtn>로그인</S.LoginBtn>
         <S.EctBox>
           <Link to="/find">
-            <S.EctLink>이메일 / 비밀번호 찾기</S.EctLink>
+            <S.EctLink>비밀번호 찾기</S.EctLink>
           </Link>
           <Link to="/regist">
             <S.EctLink>회원가입</S.EctLink>
