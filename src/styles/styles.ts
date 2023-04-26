@@ -527,3 +527,17 @@ export const AddCardsListBtn = styled.button`
     background-color: rgba(46, 204, 113, 0.7);
   }
 `;
+
+export const AuthBtn = styled.div`
+  margin: 5px;
+  padding: 11px;
+  font-size: 13px;
+  border-radius: 4px;
+  background-color: #418dd6;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    background-color: #0969c6;
+  }
+  font-family: inherit;
+`;

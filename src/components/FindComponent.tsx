@@ -30,7 +30,7 @@ const FindComponent = () => {
 
   const doPasswordFind = async (param: FormValue) => {
     try {
-      const response = await axios.post('http://localhost:8080/apis/mail/auth', param);
+      const response = await axios.post('http://localhost:8080/apis/find/password', param);
       if (response.data.code === 204) {
         setFindPw(response.data.msg);
         return;
