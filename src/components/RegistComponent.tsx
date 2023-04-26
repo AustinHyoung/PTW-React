@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation, useQuery } from 'react-query/types/react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -39,10 +39,10 @@ const RegistComponent = () => {
         navigate('/login');
         return;
       } else if (response.data.code === 401) {
-        alert('인증번호가 일치하지 않습니다.');
+        alert(response.data.msg);
         return;
       } else if (response.data.code === 409) {
-        alert('이미 가입된 이메일 입니다.');
+        alert(response.data.msg);
         return;
       }
 
