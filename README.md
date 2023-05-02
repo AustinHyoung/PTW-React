@@ -3,6 +3,6 @@
 
 <div align="center">
   :books: Tech Stack :books:
-  ---
 </div>
+---
 
