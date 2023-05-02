@@ -312,7 +312,7 @@ export const SetInput = styled.input`
 export const DefaultForm = styled.form`
   flex-direction: column;
   padding: 20px;
-  width: 50%;
+  width: 400px;
 `;
 
 export const SetSide = styled.div`
