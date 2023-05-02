@@ -2,6 +2,7 @@
 
 
 <div align="center">
-###  :books: Tech Stack :books:
+  :books: Tech Stack :books:
+  ---
 </div>
 
