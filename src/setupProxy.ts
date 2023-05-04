@@ -4,7 +4,7 @@ export default function (app: any) {
   app.use(
     '/apis',
     createProxyMiddleware({
-      target: 'http://localhost:8080',
+      target: `${process.env.REACT_APP_API_URL}`,
       changeOrigin: true,
     }),
   );

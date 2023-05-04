@@ -12,6 +12,8 @@ interface FormValue {
   password: string;
 }
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const LoginComponent = () => {
   const dispath = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +30,7 @@ const LoginComponent = () => {
 
   const doLogin = async (param: FormValue) => {
     try {
-      const response = await axios.post('http://localhost:8080/apis/login', param);
+      const response = await axios.post(`${API_URL}/apis/login`, param);
       if (response.data.code === 400) {
         alert(response.data.msg);
         return;
@@ -45,18 +47,7 @@ const LoginComponent = () => {
     }
   };
 
-  const param2 = {
-    email: 'jhy756@gmail.com',
-  };
-
-  const test = () => {
-    try {
-      const response = axios.post('http://localhost:8080/apis/mail/auth', param2);
-      console.log(response);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  console.log(API_URL);
 
   return (
     <S.LoginDisplay backgroundColor="#fff">
