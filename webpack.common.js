@@ -38,6 +38,5 @@ module.exports = {
       template: './public/index.html',
     }),
     new CleanWebpackPlugin(),
-    new Dotenv(),
   ],
 };

@@ -12,8 +12,6 @@ interface FormValue {
   password: string;
 }
 
-const API_URL = process.env.REACT_APP_API_URL;
-
 const LoginComponent = () => {
   const dispath = useDispatch();
   const navigate = useNavigate();
@@ -30,7 +28,7 @@ const LoginComponent = () => {
 
   const doLogin = async (param: FormValue) => {
     try {
-      const response = await axios.post(`${API_URL}/apis/login`, param);
+      const response = await axios.post(`${process.env.API_URL}/apis/login`, param);
       if (response.data.code === 400) {
         alert(response.data.msg);
         return;
@@ -46,8 +44,6 @@ const LoginComponent = () => {
       console.log(err);
     }
   };
-
-  console.log(API_URL);
 
   return (
     <S.LoginDisplay backgroundColor="#fff">
