@@ -194,39 +194,39 @@ export const middleWare: Middleware = (store) => (next) => (action) => {
 
 // drag & drop
 const dragEndBoardAPI = async (param: any) => {
-  return await axios.put('http://localhost:8080/apis/set/position', param);
+  return await axios.put(`${process.env.API_URL}/apis/set/position`, param);
 };
 
 const dragEndColumnAPI = async (param: any) => {
-  return await axios.put('http://localhost:8080/apis/set/card/position', param);
+  return await axios.put(`${process.env.API_URL}/apis/set/card/position`, param);
 };
 
 const dragEndSameColumnAPI = async (param: any) => {
-  return await axios.put('http://localhost:8080/apis/set/card/same/position', param);
+  return await axios.put(`${process.env.API_URL}/apis/set/card/same/position`, param);
 };
 
 // cardsList
 const addColumnAPI = async (param: any) => {
-  return await axios.post('http://localhost:8080/apis/add/cardslist', param);
+  return await axios.post(`${process.env.API_URL}/apis/add/cardslist`, param);
 };
 
 const editColumnAPI = async (param: any) => {
-  return await axios.put('http://localhost:8080/apis/edit/cardslist', param);
+  return await axios.put(`${process.env.API_URL}/apis/edit/cardslist`, param);
 };
 
 const deleteColumnAPI = async (param: any) => {
-  return await axios.delete('http://localhost:8080/apis/delete/cardslist', { data: param });
+  return await axios.delete(`${process.env.API_URL}/apis/delete/cardslist`, { data: param });
 };
 
 // card
 const addCardAPI = async (param: any) => {
-  return await axios.post('http://localhost:8080/apis/add/card', param);
+  return await axios.post(`${process.env.API_URL}/apis/add/card`, param);
 };
 
 const editCardAPI = async (param: any) => {
-  return await axios.put('http://localhost:8080/apis/edit/card', param);
+  return await axios.put(`${process.env.API_URL}/apis/edit/card`, param);
 };
 
 const deleteCardAPI = async (param: any) => {
-  return await axios.delete('http://localhost:8080/apis/delete/card', { data: param });
+  return await axios.delete(`${process.env.API_URL}/apis/delete/card`, { data: param });
 };

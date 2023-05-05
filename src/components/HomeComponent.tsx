@@ -22,7 +22,7 @@ interface FormValue {
 }
 
 const fetchData = async () => {
-  const { data } = await axios.get('http://localhost:8080/apis/boardlist');
+  const { data } = await axios.get(`${process.env.API_URL}/apis/boardlist`);
   return data;
 };
 
@@ -51,7 +51,7 @@ const HomeComponent = () => {
 
   const doCreateBoard = async (param: FormValue) => {
     try {
-      await axios.get('http://localhost:8080/apis/create/board', { params: param });
+      await axios.get(`${process.env.API_URL}/apis/create/board`, { params: param });
       window.location.replace('/');
     } catch (err) {
       console.log(err);
@@ -60,7 +60,7 @@ const HomeComponent = () => {
 
   const boardRouter = async (board_no: number, title: string) => {
     try {
-      const response = await axios.get('http://localhost:8080/apis/board/initial', {
+      const response = await axios.get(`${process.env.API_URL}/apis/board/initial`, {
         params: { board_no: board_no, title: title },
       });
 

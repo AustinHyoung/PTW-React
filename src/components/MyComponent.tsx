@@ -33,7 +33,7 @@ const MyComponent = () => {
 
   const nicknameUpdate = async () => {
     try {
-      const response = await axios.put('http://localhost:8080/apis/nick/change', param);
+      const response = await axios.put(`${process.env.API_URL}/apis/nick/change`, param);
       const infoParam: InfoProps = {
         email: response.data.email,
         nickname: response.data.nickname,
@@ -58,7 +58,7 @@ const MyComponent = () => {
 
   const doDeleteUser = async () => {
     try {
-      const response = await axios.delete('http://localhost:8080/apis/delete/user', { data: param });
+      const response = await axios.delete(`${process.env.API_URL}/apis/delete/user`, { data: param });
       if (response.data.code === 200) {
         sessionStorage.clear();
         navigate('/login');

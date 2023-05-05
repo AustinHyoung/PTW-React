@@ -52,7 +52,7 @@ const LeftSide = () => {
 
   const deleteBoardData = async () => {
     try {
-      const response = await axios.delete(`http://localhost:8080/apis/delete/board/${id}`);
+      const response = await axios.delete(`${process.env.API_URL}/apis/delete/board/${id}`);
 
       if (response.data.code === 200) {
         navigate('/', { replace: true });

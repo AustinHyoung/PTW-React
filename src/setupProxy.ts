@@ -4,7 +4,7 @@ export default function (app: any) {
   app.use(
     '/apis',
     createProxyMiddleware({
-      target: `${process.env.REACT_APP_API_URL}`,
+      target: `${process.env.API_URL}`,
       changeOrigin: true,
     }),
   );

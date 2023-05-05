@@ -38,7 +38,7 @@ const BoardComponent = () => {
       title: inputValue,
     };
     try {
-      await axios.put('http://localhost:8080/apis/edit/title', param);
+      await axios.put(`${process.env.API_URL}/apis/edit/title`, param);
     } catch (err) {
       console.log(err);
     }

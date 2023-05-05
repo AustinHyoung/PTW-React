@@ -34,7 +34,7 @@ const RegistComponent = () => {
 
   const doRegist = async (param: FormValue) => {
     try {
-      const response = await axios.post('http://localhost:8080/apis/regist', param);
+      const response = await axios.post(`${process.env.API_URL}/apis/regist`, param);
       if (response.data.code === 201) {
         navigate('/login');
         return;
@@ -60,7 +60,7 @@ const RegistComponent = () => {
       email: emailInput.value,
     };
     try {
-      const response = await axios.post('http://localhost:8080/apis/mail/auth', param);
+      const response = await axios.post(`${process.env.API_URL}/apis/mail/auth`, param);
       if (response.data.code === 200) {
         alert('인증번호 전송 완료. 해당메일을 확인해 주세요.');
       } else if (response.data.code === 500) {

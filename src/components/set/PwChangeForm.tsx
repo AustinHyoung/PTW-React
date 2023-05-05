@@ -31,7 +31,7 @@ const PwChangeForm = () => {
     param.email = data?.email as string;
 
     try {
-      const response = await axios.put('http://localhost:8080/apis/password/change', param);
+      const response = await axios.put(`${process.env.API_URL}/apis/password/change`, param);
       if (response.data.code === 400) {
         alert(response.data.msg);
       }

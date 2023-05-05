@@ -32,7 +32,7 @@ const Header = () => {
 
   const doLogout = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/apis/logout');
+      const response = await axios.post(`${process.env.API_URL}/apis/logout`);
       sessionStorage.clear();
       navigate('/login');
     } catch (err) {
