@@ -23,4 +23,4 @@
 
 ## :white_check_mark: Production
 
-ProTrack 바로가기 : https://pro-track.xyz
+<a href="https://pro-track.xyz" target="_blank">ProTrack 바로가기</a>
