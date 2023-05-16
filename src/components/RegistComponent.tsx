@@ -28,7 +28,6 @@ const RegistComponent = () => {
   passwordRef.current = watch('password');
 
   const onSubmitHandler: SubmitHandler<FormValue> = (data) => {
-    console.log(data);
     doRegist(data);
   };
 
@@ -62,9 +61,9 @@ const RegistComponent = () => {
     try {
       const response = await axios.post(`${process.env.API_URL}/apis/mail/auth`, param);
       if (response.data.code === 200) {
-        alert('인증번호 전송 완료. 해당메일을 확인해 주세요.');
+        alert(response.data.msg);
       } else if (response.data.code === 500) {
-        alert('인증번호 전송 실패.');
+        alert(response.data.msg);
       } else alert('관리자에게 문의해 주세요. jhy2297@naver.com');
     } catch (err) {
       console.log(err);
