@@ -15,9 +15,9 @@
 </div>
 
 ## :sunny: 소개 영상
-
 https://github.com/AustinHyoung/PTW-React/assets/63631952/ee5e9d1b-5e84-4442-8af9-2f3447d20969
 <hr />
+
 https://github.com/AustinHyoung/PTW-React/assets/63631952/128f530b-9a21-4100-be22-7b17b1448f51
 
 
