@@ -14,11 +14,13 @@
   <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat&logo=eslint&logoColor=fff" />
 </div>
 
-## :sunny: 소개
+## :sunny: 소개 영상
+Drag & Drop
+https://github.com/AustinHyoung/PTW-React/assets/63631952/ee5e9d1b-5e84-4442-8af9-2f3447d20969
 
-업무관리 메인
+CRUD
+https://github.com/AustinHyoung/PTW-React/assets/63631952/fc7b66af-4043-4708-b3c2-2ffb86779152
 
-![화면 캡처 2023-05-02 161008](https://user-images.githubusercontent.com/63631952/235605502-dbfef5de-cb89-4cf6-8ad0-794f9467f48b.png)
 <hr />
 
 ## :white_check_mark: Production
