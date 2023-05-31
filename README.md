@@ -15,13 +15,12 @@
 </div>
 
 ## :sunny: 소개 영상
-Drag & Drop
+
 https://github.com/AustinHyoung/PTW-React/assets/63631952/ee5e9d1b-5e84-4442-8af9-2f3447d20969
-
-CRUD
-https://github.com/AustinHyoung/PTW-React/assets/63631952/fc7b66af-4043-4708-b3c2-2ffb86779152
-
 <hr />
+https://github.com/AustinHyoung/PTW-React/assets/63631952/128f530b-9a21-4100-be22-7b17b1448f51
+
+
 
 ## :white_check_mark: Production
 
