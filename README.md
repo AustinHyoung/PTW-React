@@ -23,6 +23,6 @@ https://github.com/AustinHyoung/PTW-React/assets/63631952/128f530b-9a21-4100-be2
 <hr />
 
 ## :white_check_mark: Production
-ProTrack 바로가기 : https://pro-track.xyz<br>
+ProTrack 바로가기 : <a href="https://pro-track.xyz" target="_blank">바로가기</a><br>
 테스트 계정 : test@test.com<br>
 비밀번호 : Test123! (대문자T)
